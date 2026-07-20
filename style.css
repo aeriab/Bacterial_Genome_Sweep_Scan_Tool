@@ -1,0 +1,446 @@
+:root {
+  color-scheme: light;
+  --surface-1:      #fcfcfb;
+  --surface-2:      #f9f9f7;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --gridline:       #e1e0d9;
+  --baseline:       #c3c2b7;
+  --border:         rgba(11,11,11,0.10);
+
+  --series-neutral: #898781;
+  --series-hard:    #e34948;
+  --series-soft:    #2a78d6;
+  --band-hard:      rgba(227, 73, 72, 0.16);
+  --band-hard-edge: rgba(227, 73, 72, 0.55);
+  --band-soft:      rgba(42, 120, 214, 0.16);
+  --band-soft-edge: rgba(42, 120, 214, 0.55);
+
+  --contig-bg-a:    #eeede9;
+  --contig-bg-b:    #f7f7f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --surface-1:      #1a1a19;
+    --surface-2:      #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --gridline:       #2c2c2a;
+    --baseline:       #383835;
+    --border:         rgba(255,255,255,0.10);
+
+    --series-neutral: #898781;
+    --series-hard:    #e66767;
+    --series-soft:    #3987e5;
+    --band-hard:      rgba(230, 103, 103, 0.20);
+    --band-hard-edge: rgba(230, 103, 103, 0.6);
+    --band-soft:      rgba(57, 135, 229, 0.20);
+    --band-soft-edge: rgba(57, 135, 229, 0.6);
+
+    --contig-bg-a:    #232322;
+    --contig-bg-b:    #1a1a19;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-1:      #1a1a19;
+  --surface-2:      #0d0d0d;
+  --text-primary:   #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted:     #898781;
+  --gridline:       #2c2c2a;
+  --baseline:       #383835;
+  --border:         rgba(255,255,255,0.10);
+
+  --series-neutral: #898781;
+  --series-hard:    #e66767;
+  --series-soft:    #3987e5;
+  --band-hard:      rgba(230, 103, 103, 0.20);
+  --band-hard-edge: rgba(230, 103, 103, 0.6);
+  --band-soft:      rgba(57, 135, 229, 0.20);
+  --band-soft-edge: rgba(57, 135, 229, 0.6);
+
+  --contig-bg-a:    #232322;
+  --contig-bg-b:    #1a1a19;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.topbar h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.species-picker {
+  position: relative;
+  width: min(420px, 100%);
+}
+
+#species-search {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid var(--baseline);
+  border-radius: 6px;
+  background: var(--surface-1);
+  color: var(--text-primary);
+}
+
+.species-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  z-index: 20;
+}
+.species-dropdown.hidden { display: none; }
+
+.species-option {
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 13.5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.species-option:hover, .species-option.active {
+  background: var(--surface-2);
+}
+.species-option .meta {
+  color: var(--text-muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.species-option em {
+  font-style: normal;
+  color: var(--series-soft);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.controls {
+  width: 280px;
+  flex-shrink: 0;
+  padding: 16px;
+  border-right: 1px solid var(--border);
+  background: var(--surface-1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-group > label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+#pool-slider { width: 100%; }
+#pool-number {
+  width: 70px;
+  padding: 4px 6px;
+  border: 1px solid var(--baseline);
+  border-radius: 4px;
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.checkbox-row input { width: 16px; height: 16px; }
+
+.sub-control {
+  padding-left: 24px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+.sub-control input[type=number] {
+  width: 56px;
+  padding: 2px 5px;
+  border: 1px solid var(--baseline);
+  border-radius: 4px;
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font-size: 12.5px;
+  margin: 0 4px;
+}
+
+.gene-annotation-group { gap: 8px; }
+.gene-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gene-form select,
+.gene-form input[type=text],
+.gene-form input[type=number] {
+  width: 100%;
+  padding: 5px 7px;
+  border: 1px solid var(--baseline);
+  border-radius: 4px;
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font-size: 12.5px;
+}
+.gene-form-row {
+  display: flex;
+  gap: 6px;
+}
+.gene-form-row input { min-width: 0; flex: 1; }
+.gene-form input[type=color] {
+  flex: 0 0 44px;
+  padding: 2px;
+  height: 28px;
+  border: 1px solid var(--baseline);
+  border-radius: 4px;
+  background: var(--surface-1);
+  cursor: pointer;
+}
+#gene-add-btn {
+  padding: 6px 8px;
+  font-size: 12.5px;
+  border: 1px solid var(--baseline);
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+#gene-add-btn:hover { background: var(--gridline); }
+.gene-error {
+  font-size: 11.5px;
+  color: var(--series-hard);
+}
+.gene-error.hidden { display: none; }
+
+.gene-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.gene-list-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+.gene-list-item .sw {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.gene-list-item .gene-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-secondary);
+}
+.gene-list-item button {
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 2px 4px;
+}
+.gene-list-item button:hover { color: var(--series-hard); }
+
+button#reset-view-btn {
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1px solid var(--baseline);
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+button#reset-view-btn:hover { background: var(--gridline); }
+
+button#export-image-btn {
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1px solid var(--baseline);
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+button#export-image-btn:hover { background: var(--gridline); }
+
+.export-group {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.info-panel {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  gap: 4px;
+  line-height: 1.5;
+}
+
+.legend {
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+.legend-item.hidden { display: none; }
+
+/* The run-region entries stay in the flex layout (reserving their space)
+   even when their toggle is off, so the other legend items don't shift
+   position when "Hard-run region" / "Soft-run region" pop in and out. */
+#legend-hard-run.hidden,
+#legend-soft-run.hidden {
+  display: flex;
+  visibility: hidden;
+}
+
+.topbar-legend {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* Normally "Hard-run region" sits right after "Hard sweep" and "Soft-run
+   region" right after "Soft sweep". When only soft highlighting is on, the
+   reserved-but-invisible hard-run slot would otherwise sit awkwardly between
+   "Soft sweep" and "Soft-run region" — so in that case we reorder (via flex
+   `order`, not DOM position) to push the hidden hard-run item to the end. */
+#legend-hard-run { order: 1; }
+#legend-soft-run { order: 2; }
+.topbar-legend.swap-run-order #legend-hard-run { order: 2; }
+.topbar-legend.swap-run-order #legend-soft-run { order: 1; }
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+.swatch.band {
+  border-radius: 2px;
+  width: 16px;
+  height: 10px;
+}
+.swatch.band.hard { background: var(--band-hard); border: 1.5px solid var(--band-hard-edge); }
+.swatch.band.soft { background: var(--band-soft); border: 1.5px solid var(--band-soft-edge); }
+
+.plot-area {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#plot-canvas {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: none;
+}
+#plot-canvas:active { cursor: grabbing; }
+
+.loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.05);
+  font-size: 14px;
+  color: var(--text-secondary);
+  z-index: 10;
+}
+.loading.hidden { display: none; }
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  z-index: 15;
+  white-space: nowrap;
+}
+.tooltip.hidden { display: none; }

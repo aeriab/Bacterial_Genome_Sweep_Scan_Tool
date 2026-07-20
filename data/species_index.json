@@ -1,0 +1,128 @@
+[
+  {
+    "species": "Alistipes_finegoldii_56071",
+    "n_windows": 95456,
+    "n_contigs": 42,
+    "x_max": 3001730.0
+  },
+  {
+    "species": "Alistipes_onderdonkii_55464",
+    "n_windows": 83492,
+    "n_contigs": 16,
+    "x_max": 2842740.5
+  },
+  {
+    "species": "Alistipes_shahii_62199",
+    "n_windows": 125906,
+    "n_contigs": 1,
+    "x_max": 3760429.5
+  },
+  {
+    "species": "Bacteroides_caccae_53434",
+    "n_windows": 80356,
+    "n_contigs": 17,
+    "x_max": 4366005.5
+  },
+  {
+    "species": "Bacteroides_cellulosilyticus_58046",
+    "n_windows": 335106,
+    "n_contigs": 8,
+    "x_max": 6741870.0
+  },
+  {
+    "species": "Bacteroides_ovatus_58035",
+    "n_windows": 200871,
+    "n_contigs": 32,
+    "x_max": 7274708.5
+  },
+  {
+    "species": "Bacteroides_stercoris_56735",
+    "n_windows": 172197,
+    "n_contigs": 14,
+    "x_max": 3840136.5
+  },
+  {
+    "species": "Bacteroides_thetaiotaomicron_56941",
+    "n_windows": 206741,
+    "n_contigs": 19,
+    "x_max": 6319746.5
+  },
+  {
+    "species": "Bacteroides_uniformis_57318",
+    "n_windows": 98089,
+    "n_contigs": 22,
+    "x_max": 4251726.0
+  },
+  {
+    "species": "Bacteroides_vulgatus_57955",
+    "n_windows": 186833,
+    "n_contigs": 1,
+    "x_max": 5154993.0
+  },
+  {
+    "species": "Bacteroides_xylanisolvens_57185",
+    "n_windows": 107447,
+    "n_contigs": 23,
+    "x_max": 5622570.0
+  },
+  {
+    "species": "Barnesiella_intestinihominis_62208",
+    "n_windows": 162711,
+    "n_contigs": 13,
+    "x_max": 3369388.5
+  },
+  {
+    "species": "Coprococcus_sp_62244",
+    "n_windows": 83654,
+    "n_contigs": 1,
+    "x_max": 3115153.5
+  },
+  {
+    "species": "Dialister_invisus_61905",
+    "n_windows": 117119,
+    "n_contigs": 1,
+    "x_max": 1888316.0
+  },
+  {
+    "species": "Eubacterium_eligens_61678",
+    "n_windows": 122116,
+    "n_contigs": 2,
+    "x_max": 2751921.0
+  },
+  {
+    "species": "Eubacterium_rectale_56927",
+    "n_windows": 227919,
+    "n_contigs": 1,
+    "x_max": 3337671.5
+  },
+  {
+    "species": "Faecalibacterium_prausnitzii_61481",
+    "n_windows": 176463,
+    "n_contigs": 10,
+    "x_max": 2899598.5
+  },
+  {
+    "species": "Parabacteroides_distasonis_56985",
+    "n_windows": 191859,
+    "n_contigs": 13,
+    "x_max": 4819891.0
+  },
+  {
+    "species": "Parabacteroides_merdae_56972",
+    "n_windows": 108914,
+    "n_contigs": 19,
+    "x_max": 3582191.0
+  },
+  {
+    "species": "Prevotella_copri_61740",
+    "n_windows": 167828,
+    "n_contigs": 18,
+    "x_max": 3290569.0
+  },
+  {
+    "species": "Roseburia_intestinalis_56239",
+    "n_windows": 91170,
+    "n_contigs": 1,
+    "x_max": 4140086.0
+  }
+]

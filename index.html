@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bacterial Genome Sweep Scan Tool</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Bacterial Genome Sweep Scan Tool</h1>
+  <div class="legend topbar-legend" id="topbar-legend">
+    <div class="legend-item"><span class="swatch" style="background:#8f979e"></span> Neutral</div>
+    <div class="legend-item"><span class="swatch" style="background:#e2445c"></span> Hard sweep</div>
+    <div class="legend-item"><span class="swatch" style="background:#4aa3df"></span> Soft sweep</div>
+    <div class="legend-item hidden" id="legend-hard-run"><span class="swatch band hard"></span> Hard-run region</div>
+    <div class="legend-item hidden" id="legend-soft-run"><span class="swatch band soft"></span> Soft-run region</div>
+  </div>
+  <div class="species-picker">
+    <input id="species-search" type="text" placeholder="Search species..." autocomplete="off">
+    <div id="species-dropdown" class="species-dropdown hidden"></div>
+  </div>
+</header>
+
+<main>
+  <aside class="controls">
+    <section class="control-group">
+      <label for="pool-slider">Pooling <span id="pool-value">30</span> window<span id="pool-plural">s</span></label>
+      <input id="pool-slider" type="range" min="1" max="300" value="30" step="1">
+      <input id="pool-number" type="number" min="1" max="300" value="30">
+    </section>
+
+    <section class="control-group">
+      <label class="checkbox-row">
+        <input id="annotate-hard" type="checkbox">
+        Highlight hard-sweep regions
+      </label>
+      <div class="sub-control">
+        <label for="hard-threshold">≥ <input id="hard-threshold" type="number" min="2" max="500" value="20"> consecutive hard calls in a row</label>
+      </div>
+    </section>
+
+    <section class="control-group">
+      <label class="checkbox-row">
+        <input id="annotate-soft" type="checkbox">
+        Highlight soft-sweep regions
+      </label>
+      <div class="sub-control">
+        <label for="soft-threshold">≥ <input id="soft-threshold" type="number" min="2" max="500" value="20"> consecutive soft calls in a row</label>
+      </div>
+    </section>
+
+    <section class="control-group gene-annotation-group">
+      <label>Gene / region annotations</label>
+      <div class="gene-form">
+        <select id="gene-contig"></select>
+        <div class="gene-form-row">
+          <input id="gene-start" type="number" min="0" placeholder="start bp">
+          <input id="gene-end" type="number" min="0" placeholder="end bp">
+        </div>
+        <div class="gene-form-row">
+          <input id="gene-text" type="text" placeholder="label (e.g. geneX)" maxlength="60">
+          <input id="gene-color" type="color" value="#8e44ad" title="highlight color">
+        </div>
+        <button id="gene-add-btn">Add annotation</button>
+        <div id="gene-error" class="gene-error hidden"></div>
+      </div>
+      <div id="gene-list" class="gene-list"></div>
+    </section>
+
+    <section class="control-group">
+      <button id="reset-view-btn">Reset zoom / pan</button>
+    </section>
+
+    <section class="control-group info-panel">
+      <div id="species-info">No species loaded.</div>
+    </section>
+
+    <section class="control-group export-group">
+      <button id="export-image-btn">Export view as PNG</button>
+    </section>
+  </aside>
+
+  <section class="plot-area">
+    <div id="loading" class="loading hidden">Loading…</div>
+    <canvas id="plot-canvas"></canvas>
+    <div id="tooltip" class="tooltip hidden"></div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
