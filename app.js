@@ -439,14 +439,17 @@
     if (!state.species || !speciesCache.has(state.species)) return;
     const { w, h, dpr } = resizeCanvasToDisplaySize();
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    renderCore(w, h);
+    renderCore(w, h, false);
   }
 
   // Draws the full chart into whatever `ctx` currently points at, using a
   // (w, h) viewport in CSS-pixel units. Shared by the live on-screen render
   // and the high-resolution PNG export (which temporarily swaps `ctx` to an
-  // offscreen canvas scaled up by EXPORT_SCALE).
-  function renderCore(w, h) {
+  // offscreen canvas scaled up by EXPORT_SCALE). `exportMode` adds a small
+  // in-image caption explaining the pooling/threshold settings -- the live
+  // view already has those as sidebar controls, but an exported PNG is
+  // handed to people who only ever see the flat image.
+  function renderCore(w, h, exportMode) {
     ctx.clearRect(0, 0, w, h);
 
     const colors = readColors();
@@ -569,7 +572,43 @@
     ctx.lineWidth = 1;
     ctx.strokeRect(MARGIN.left + 0.5, MARGIN.top + 0.5, plotW - 1, plotH - 1);
 
+    if (exportMode) drawExportInfoBox(colors, plotW);
+
     updateInfoPanels(entry);
+  }
+
+  // In-image caption for PNG exports: pooling window size always, plus each
+  // run-length threshold only when its highlighting is actually turned on
+  // (an unused threshold value would be misleading to someone who only sees
+  // the flat PNG and can't tell the checkbox was off).
+  function drawExportInfoBox(colors, plotW) {
+    const lines = [`Pooled: ${state.binSize} window${state.binSize === 1 ? '' : 's'}`];
+    if (state.annotateHard) lines.push(`Hard-sweep region: ≥ ${state.hardThreshold} consecutive hard calls`);
+    if (state.annotateSoft) lines.push(`Soft-sweep region: ≥ ${state.softThreshold} consecutive soft calls`);
+
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+
+    const padX = 9, padY = 7, lineH = 15;
+    let textW = 0;
+    for (const line of lines) textW = Math.max(textW, ctx.measureText(line).width);
+    const boxW = textW + padX * 2;
+    const boxH = lines.length * lineH + padY * 2;
+    const boxX1 = MARGIN.left + plotW - 10;
+    const boxX0 = boxX1 - boxW;
+    const boxY0 = MARGIN.top + 10;
+
+    ctx.fillStyle = hexToRgba(colors.surface1, 0.92);
+    ctx.fillRect(boxX0, boxY0, boxW, boxH);
+    ctx.strokeStyle = colors.baseline;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(boxX0 + 0.5, boxY0 + 0.5, boxW - 1, boxH - 1);
+
+    ctx.fillStyle = colors.textSecondary;
+    lines.forEach((line, i) => {
+      ctx.fillText(line, boxX0 + padX, boxY0 + padY + i * lineH);
+    });
   }
 
   function drawRuns(runs, fill, edge, xMin, xMax, xToPx, plotH) {
@@ -893,7 +932,7 @@
     const liveCtx = ctx;
     ctx = offCtx;
     try {
-      renderCore(w, h);
+      renderCore(w, h, true);
     } finally {
       ctx = liveCtx;
     }
