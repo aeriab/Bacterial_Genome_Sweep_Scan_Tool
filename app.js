@@ -80,10 +80,16 @@
     return `${m[1].replace(/_/g, ' ')} (${m[2]})`;
   }
 
+  // Rounds to `decimals` places but drops a trailing ".0"/".00" (e.g. "500.0"
+  // -> "500") so whole-unit values like "500 kb" don't carry a fake-precise decimal.
+  function trimTrailingZeros(v, decimals) {
+    return v.toFixed(decimals).replace(/0+$/, '').replace(/\.$/, '');
+  }
+
   function formatBp(bp) {
     const abs = Math.abs(bp);
-    if (abs >= 1e6) return (bp / 1e6).toFixed(2) + ' Mb';
-    if (abs >= 1e3) return (bp / 1e3).toFixed(1) + ' kb';
+    if (abs >= 1e6) return trimTrailingZeros(bp / 1e6, 2) + ' Mb';
+    if (abs >= 1e3) return trimTrailingZeros(bp / 1e3, 1) + ' kb';
     return Math.round(bp).toLocaleString() + ' bp';
   }
 
@@ -712,31 +718,45 @@
       }
     });
 
-    // per-contig bp ticks, only for contigs wide enough on screen
+    // per-contig bp ticks, only for contigs wide enough on screen. Contigs
+    // are visited left-to-right (manifest order matches x_start order), so a
+    // single running "next allowed x" cursor across the whole pass is enough
+    // to guarantee no two tick labels overlap -- both within one wide contig
+    // and across a boundary between two narrow adjacent contigs, which is
+    // the case that produced overlapping labels when fully zoomed out.
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
     ctx.fillStyle = colors.textMuted;
     ctx.beginPath();
+    let nextAllowedLabelPx = -Infinity;
+    const LABEL_GAP_PX = 10;
     visible.forEach((c) => {
       const segX0 = xToPx(Math.max(c.x_start, xMin));
       const segX1 = xToPx(Math.min(c.x_end, xMax));
       const segW = segX1 - segX0;
-      if (segW < 70) return;
+      if (segW < 90) return;
 
       const bpLo = Math.max(0, xMin - c.x_start);
       const bpHi = Math.min(c.x_end - c.x_start, xMax - c.x_start);
       const bpRange = bpHi - bpLo;
       if (bpRange <= 0) return;
-      const targetTicks = Math.max(2, Math.floor(segW / 90));
+      // Divisor of 130 (vs. a tighter default) deliberately asks for coarser,
+      // more widely-spaced ticks -- fewer labels to begin with, especially
+      // when zoomed all the way out and many contigs are on screen at once.
+      const targetTicks = Math.max(2, Math.floor(segW / 130));
       const step = niceTickStep(bpRange, targetTicks);
       const firstTick = Math.ceil(bpLo / step) * step;
       for (let bp = firstTick; bp <= bpHi; bp += step) {
         const cx = c.x_start + bp;
         if (cx < xMin || cx > xMax) continue;
         const px = xToPx(cx);
+        const label = formatBp(bp);
+        const halfW = ctx.measureText(label).width / 2;
+        if (px - halfW < nextAllowedLabelPx) continue;
         ctx.moveTo(px, plotBottom);
         ctx.lineTo(px, plotBottom + 5);
-        ctx.fillText(formatBp(bp), px, plotBottom + 8);
+        ctx.fillText(label, px, plotBottom + 8);
+        nextAllowedLabelPx = px + halfW + LABEL_GAP_PX;
       }
     });
     ctx.strokeStyle = colors.baseline;
