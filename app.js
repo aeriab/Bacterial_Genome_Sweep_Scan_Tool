@@ -56,6 +56,8 @@
 
   const resetViewBtn = document.getElementById('reset-view-btn');
   const exportImageBtn = document.getElementById('export-image-btn');
+  const exportCaptionToggle = document.getElementById('export-caption-toggle');
+  const exportLegendToggle = document.getElementById('export-legend-toggle');
 
   const legendHardRunEl = document.getElementById('legend-hard-run');
   const legendSoftRunEl = document.getElementById('legend-soft-run');
@@ -439,17 +441,18 @@
     if (!state.species || !speciesCache.has(state.species)) return;
     const { w, h, dpr } = resizeCanvasToDisplaySize();
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    renderCore(w, h, false);
+    renderCore(w, h, null);
   }
 
   // Draws the full chart into whatever `ctx` currently points at, using a
   // (w, h) viewport in CSS-pixel units. Shared by the live on-screen render
   // and the high-resolution PNG export (which temporarily swaps `ctx` to an
-  // offscreen canvas scaled up by EXPORT_SCALE). `exportMode` adds a small
-  // in-image caption explaining the pooling/threshold settings -- the live
-  // view already has those as sidebar controls, but an exported PNG is
-  // handed to people who only ever see the flat image.
-  function renderCore(w, h, exportMode) {
+  // offscreen canvas scaled up by EXPORT_SCALE). `exportOptions` is null for
+  // the live view; when exporting it's {showCaption, showLegend}, each
+  // opt-in via a checkbox next to the export button -- the live view already
+  // has pooling/threshold controls and a color key in the sidebar/topbar,
+  // but an exported PNG is handed to people who only ever see the flat image.
+  function renderCore(w, h, exportOptions) {
     ctx.clearRect(0, 0, w, h);
 
     const colors = readColors();
@@ -572,16 +575,37 @@
     ctx.lineWidth = 1;
     ctx.strokeRect(MARGIN.left + 0.5, MARGIN.top + 0.5, plotW - 1, plotH - 1);
 
-    if (exportMode) drawExportInfoBox(colors, plotW);
+    if (exportOptions) drawExportOverlays(colors, plotW, exportOptions);
 
     updateInfoPanels(entry);
+  }
+
+  // Shared box chrome (background + border) for the export-only overlays
+  // below, positioned/sized by the caller.
+  function drawExportBoxChrome(colors, x0, y0, boxW, boxH) {
+    ctx.fillStyle = hexToRgba(colors.surface1, 0.92);
+    ctx.fillRect(x0, y0, boxW, boxH);
+    ctx.strokeStyle = colors.baseline;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x0 + 0.5, y0 + 0.5, boxW - 1, boxH - 1);
+  }
+
+  // Stacks the opt-in export overlays (top-right corner, caption above
+  // legend) based on the two checkboxes next to the export button. Both
+  // default off so exports stay a clean plot unless the user asks for the
+  // extra context.
+  function drawExportOverlays(colors, plotW, exportOptions) {
+    let y = MARGIN.top + 10;
+    if (exportOptions.showCaption) y = drawExportCaptionBox(colors, plotW, y) + 8;
+    if (exportOptions.showLegend) y = drawExportLegendBox(colors, plotW, y) + 8;
   }
 
   // In-image caption for PNG exports: pooling window size always, plus each
   // run-length threshold only when its highlighting is actually turned on
   // (an unused threshold value would be misleading to someone who only sees
-  // the flat PNG and can't tell the checkbox was off).
-  function drawExportInfoBox(colors, plotW) {
+  // the flat PNG and can't tell the checkbox was off). Returns the box's
+  // bottom y so a second overlay can stack directly beneath it.
+  function drawExportCaptionBox(colors, plotW, yTop) {
     const lines = [`Pooled: ${state.binSize} window${state.binSize === 1 ? '' : 's'}`];
     if (state.annotateHard) lines.push(`Hard-sweep region: ≥ ${state.hardThreshold} consecutive hard calls`);
     if (state.annotateSoft) lines.push(`Soft-sweep region: ≥ ${state.softThreshold} consecutive soft calls`);
@@ -595,20 +619,54 @@
     for (const line of lines) textW = Math.max(textW, ctx.measureText(line).width);
     const boxW = textW + padX * 2;
     const boxH = lines.length * lineH + padY * 2;
-    const boxX1 = MARGIN.left + plotW - 10;
-    const boxX0 = boxX1 - boxW;
-    const boxY0 = MARGIN.top + 10;
+    const boxX0 = MARGIN.left + plotW - 10 - boxW;
 
-    ctx.fillStyle = hexToRgba(colors.surface1, 0.92);
-    ctx.fillRect(boxX0, boxY0, boxW, boxH);
-    ctx.strokeStyle = colors.baseline;
-    ctx.lineWidth = 1;
-    ctx.strokeRect(boxX0 + 0.5, boxY0 + 0.5, boxW - 1, boxH - 1);
-
+    drawExportBoxChrome(colors, boxX0, yTop, boxW, boxH);
     ctx.fillStyle = colors.textSecondary;
     lines.forEach((line, i) => {
-      ctx.fillText(line, boxX0 + padX, boxY0 + padY + i * lineH);
+      ctx.fillText(line, boxX0 + padX, yTop + padY + i * lineH);
     });
+    return yTop + boxH;
+  }
+
+  // In-image color key for PNG exports, mirroring the topbar legend
+  // (including the run-region swatches, shown only when that highlighting
+  // is actually on). Returns the box's bottom y for stacking.
+  function drawExportLegendBox(colors, plotW, yTop) {
+    const items = [
+      { text: 'Neutral', swatchFill: colors.neutral },
+      { text: 'Hard sweep', swatchFill: colors.hard },
+      { text: 'Soft sweep', swatchFill: colors.soft },
+    ];
+    if (state.annotateHard) items.push({ text: 'Hard-run region', swatchFill: colors.bandHard, swatchStroke: colors.bandHardEdge });
+    if (state.annotateSoft) items.push({ text: 'Soft-run region', swatchFill: colors.bandSoft, swatchStroke: colors.bandSoftEdge });
+
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+
+    const padX = 9, padY = 7, lineH = 16, swatchSize = 10, swatchGap = 7;
+    let textW = 0;
+    for (const it of items) textW = Math.max(textW, ctx.measureText(it.text).width);
+    const boxW = swatchSize + swatchGap + textW + padX * 2;
+    const boxH = items.length * lineH + padY * 2;
+    const boxX0 = MARGIN.left + plotW - 10 - boxW;
+
+    drawExportBoxChrome(colors, boxX0, yTop, boxW, boxH);
+    items.forEach((it, i) => {
+      const rowCy = yTop + padY + i * lineH + lineH / 2;
+      const sx = boxX0 + padX;
+      ctx.fillStyle = it.swatchFill;
+      ctx.fillRect(sx, rowCy - swatchSize / 2, swatchSize, swatchSize);
+      if (it.swatchStroke) {
+        ctx.strokeStyle = it.swatchStroke;
+        ctx.lineWidth = 1.2;
+        ctx.strokeRect(sx + 0.5, rowCy - swatchSize / 2 + 0.5, swatchSize - 1, swatchSize - 1);
+      }
+      ctx.fillStyle = colors.textSecondary;
+      ctx.fillText(it.text, sx + swatchSize + swatchGap, rowCy);
+    });
+    return yTop + boxH;
   }
 
   function drawRuns(runs, fill, edge, xMin, xMax, xToPx, plotH) {
@@ -929,10 +987,15 @@
     const offCtx = off.getContext('2d');
     offCtx.setTransform(EXPORT_SCALE, 0, 0, EXPORT_SCALE, 0, 0);
 
+    const exportOptions = {
+      showCaption: exportCaptionToggle.checked,
+      showLegend: exportLegendToggle.checked,
+    };
+
     const liveCtx = ctx;
     ctx = offCtx;
     try {
-      renderCore(w, h, true);
+      renderCore(w, h, exportOptions);
     } finally {
       ctx = liveCtx;
     }
