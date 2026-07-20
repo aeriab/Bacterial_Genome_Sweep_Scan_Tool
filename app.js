@@ -516,20 +516,34 @@
     const buckets = [[], [], []]; // neutral, hard, soft
     for (let i = lo; i < hi; i++) buckets[pooled.colorCode[i]].push(i);
 
+    // Neutral dots vastly outnumber hard/soft ones, so they stay simple
+    // filled squares (cheap to rasterize in bulk); hard/soft are drawn as
+    // circles since there are few enough of them that the extra per-point
+    // cost of an arc doesn't add up to a rendering slowdown.
     const colorFor = [colors.neutral, colors.hard, colors.soft];
-    const radiusFor = [1.1, 1.45, 1.45];
+    const squareSize = 1.6;
+    const circleRadius = 1.45;
     for (let cc = 0; cc < 3; cc++) {
       if (!buckets[cc].length) continue;
       ctx.fillStyle = colorFor[cc];
-      const r = radiusFor[cc];
-      ctx.beginPath();
-      for (const i of buckets[cc]) {
-        const px = xToPx(entry.position[i]);
-        const py = yToPx(pooled.y[i]);
-        ctx.moveTo(px + r, py);
-        ctx.arc(px, py, r, 0, Math.PI * 2);
+      if (cc === LABEL_NEUTRAL) {
+        const s = squareSize;
+        for (const i of buckets[cc]) {
+          const px = xToPx(entry.position[i]);
+          const py = yToPx(pooled.y[i]);
+          ctx.fillRect(px - s / 2, py - s / 2, s, s);
+        }
+      } else {
+        const r = circleRadius;
+        ctx.beginPath();
+        for (const i of buckets[cc]) {
+          const px = xToPx(entry.position[i]);
+          const py = yToPx(pooled.y[i]);
+          ctx.moveTo(px + r, py);
+          ctx.arc(px, py, r, 0, Math.PI * 2);
+        }
+        ctx.fill();
       }
-      ctx.fill();
     }
 
     // gene labels drawn last (within the clip) so they sit above the dots
