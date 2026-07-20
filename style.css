@@ -9,13 +9,13 @@
   --baseline:       #c3c2b7;
   --border:         rgba(11,11,11,0.10);
 
-  --series-neutral: #898781;
-  --series-hard:    #e34948;
-  --series-soft:    #2a78d6;
-  --band-hard:      rgba(227, 73, 72, 0.16);
-  --band-hard-edge: rgba(227, 73, 72, 0.55);
-  --band-soft:      rgba(42, 120, 214, 0.16);
-  --band-soft-edge: rgba(42, 120, 214, 0.55);
+  --series-neutral: #6c6a64;
+  --series-hard:    #c72d2c;
+  --series-soft:    #1c5eb0;
+  --band-hard:      rgba(227, 73, 72, 0.10);
+  --band-hard-edge: rgba(227, 73, 72, 0.40);
+  --band-soft:      rgba(42, 120, 214, 0.10);
+  --band-soft-edge: rgba(42, 120, 214, 0.40);
 
   --contig-bg-a:    #eeede9;
   --contig-bg-b:    #f7f7f5;
@@ -36,10 +36,10 @@
     --series-neutral: #898781;
     --series-hard:    #e66767;
     --series-soft:    #3987e5;
-    --band-hard:      rgba(230, 103, 103, 0.20);
-    --band-hard-edge: rgba(230, 103, 103, 0.6);
-    --band-soft:      rgba(57, 135, 229, 0.20);
-    --band-soft-edge: rgba(57, 135, 229, 0.6);
+    --band-hard:      rgba(230, 103, 103, 0.12);
+    --band-hard-edge: rgba(230, 103, 103, 0.42);
+    --band-soft:      rgba(57, 135, 229, 0.12);
+    --band-soft-edge: rgba(57, 135, 229, 0.42);
 
     --contig-bg-a:    #232322;
     --contig-bg-b:    #1a1a19;
@@ -59,10 +59,10 @@
   --series-neutral: #898781;
   --series-hard:    #e66767;
   --series-soft:    #3987e5;
-  --band-hard:      rgba(230, 103, 103, 0.20);
-  --band-hard-edge: rgba(230, 103, 103, 0.6);
-  --band-soft:      rgba(57, 135, 229, 0.20);
-  --band-soft-edge: rgba(57, 135, 229, 0.6);
+  --band-hard:      rgba(230, 103, 103, 0.12);
+  --band-hard-edge: rgba(230, 103, 103, 0.42);
+  --band-soft:      rgba(57, 135, 229, 0.12);
+  --band-soft-edge: rgba(57, 135, 229, 0.42);
 
   --contig-bg-a:    #232322;
   --contig-bg-b:    #1a1a19;

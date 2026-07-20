@@ -517,16 +517,19 @@
     for (let i = lo; i < hi; i++) buckets[pooled.colorCode[i]].push(i);
 
     const colorFor = [colors.neutral, colors.hard, colors.soft];
-    const sizeFor = [1.6, 2.1, 2.1];
+    const radiusFor = [1.1, 1.45, 1.45];
     for (let cc = 0; cc < 3; cc++) {
       if (!buckets[cc].length) continue;
       ctx.fillStyle = colorFor[cc];
-      const r = sizeFor[cc];
+      const r = radiusFor[cc];
+      ctx.beginPath();
       for (const i of buckets[cc]) {
         const px = xToPx(entry.position[i]);
         const py = yToPx(pooled.y[i]);
-        ctx.fillRect(px - r / 2, py - r / 2, r, r);
+        ctx.moveTo(px + r, py);
+        ctx.arc(px, py, r, 0, Math.PI * 2);
       }
+      ctx.fill();
     }
 
     // gene labels drawn last (within the clip) so they sit above the dots

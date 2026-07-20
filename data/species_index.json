@@ -1,5 +1,11 @@
 [
   {
+    "species": "Akkermansia_muciniphila_55290",
+    "n_windows": 159836,
+    "n_contigs": 1,
+    "x_max": 2660866.5
+  },
+  {
     "species": "Alistipes_finegoldii_56071",
     "n_windows": 95456,
     "n_contigs": 42,
@@ -7,9 +13,9 @@
   },
   {
     "species": "Alistipes_onderdonkii_55464",
-    "n_windows": 83492,
-    "n_contigs": 16,
-    "x_max": 2842740.5
+    "n_windows": 105374,
+    "n_contigs": 17,
+    "x_max": 3440946.0
   },
   {
     "species": "Alistipes_shahii_62199",
@@ -124,5 +130,11 @@
     "n_windows": 91170,
     "n_contigs": 1,
     "x_max": 4140086.0
+  },
+  {
+    "species": "Ruminococcus_bicirculans_59300",
+    "n_windows": 224641,
+    "n_contigs": 2,
+    "x_max": 2963442.5
   }
 ]
