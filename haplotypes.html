@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C. difficile haplotype images &middot; Bacterial Genome Sweep Scan Tool</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Haplotype images &mdash; <em>C. difficile</em>, strain-filtered</h1>
+  <a class="topbar-link" href="index.html">&larr; Back to scan tool</a>
+</header>
+
+<main class="hap-page">
+  <a class="hap-back" href="index.html">&larr; Bacterial Genome Sweep Scan Tool</a>
+
+  <h2>What these show</h2>
+  <p class="lead">
+    Each image is one CNN input window: 120 <em>C. difficile</em> genomes (rows)
+    &times; 400 polymorphic sites (columns), the same window width and sample
+    count used for the <strong>Clostridioides difficile strain filtered</strong>
+    scan in the tool. Before a window is built, genomes are drawn with a cap of
+    one genome per whole-genome relatedness cluster (&lt;1% pairwise divergence),
+    and the haplotype rows are clustered on minor alleles at &ge;20% frequency
+    with a missing-data-aware distance. Rows are ordered by similarity, so shared
+    haplotype backgrounds appear as horizontal bands.
+  </p>
+
+  <figure class="hap-figure">
+    <h3>Strain-filtered windows across the genome</h3>
+    <img src="haplotype_images/cdiff_filtered_grid.png"
+         alt="Grid of twelve C. difficile haplotype windows sampled across the genome">
+    <figcaption>
+      Twelve windows evenly spaced along the ~4.18 Mb genome, taken from the
+      dense per-site scan. Allele-state channel: dark = major allele,
+      light grey = missing, blue = minor allele.
+    </figcaption>
+  </figure>
+
+  <figure class="hap-figure">
+    <h3>Effect of the closely-related-strain filter</h3>
+    <img src="haplotype_images/cdiff_filter_before_after.png"
+         alt="Five matched C. difficile windows shown with and without the strain filter">
+    <figcaption>
+      The same five genomic windows sampled without the strain filter (top) and
+      with it (bottom). The per-window cluster cap removes some near-duplicate
+      rows; most of <em>C. difficile</em>&rsquo;s block-like structure comes from
+      genome-wide linkage rather than literal near-duplicate strains, so the
+      remaining difference is modest &mdash; narrowing the window is what most
+      changes how the CNN scores these windows.
+    </figcaption>
+  </figure>
+
+  <figure class="hap-figure">
+    <h3>Individual windows, both channels</h3>
+    <div class="hap-grid">
+      <img src="haplotype_images/cdiff_filtered_window_01.png" alt="Strain-filtered C. difficile window, allele state and mutation type">
+      <img src="haplotype_images/cdiff_filtered_window_02.png" alt="Strain-filtered C. difficile window, allele state and mutation type">
+      <img src="haplotype_images/cdiff_filtered_window_03.png" alt="Strain-filtered C. difficile window, allele state and mutation type">
+      <img src="haplotype_images/cdiff_filtered_window_04.png" alt="Strain-filtered C. difficile window, allele state and mutation type">
+    </div>
+    <figcaption>
+      Left panel of each pair is the allele-state channel; right panel is the
+      mutation-type channel (gold = synonymous, green = non-synonymous, dark =
+      major/missing).
+    </figcaption>
+  </figure>
+
+  <figure class="hap-figure">
+    <h3>How this connects to the scan</h3>
+    <figcaption>
+      A CNN trained on 400-site simulated windows and applied to these
+      strain-filtered <em>C. difficile</em> windows calls the genome
+      ~60% Neutral / ~19% Hard / ~22% Soft, versus ~13% Neutral / ~65% Hard
+      for the original 1114-site model. Load
+      <strong>Clostridioides difficile strain filtered</strong> in the scan tool
+      to see the per-window calls.
+    </figcaption>
+  </figure>
+</main>
+</body>
+</html>

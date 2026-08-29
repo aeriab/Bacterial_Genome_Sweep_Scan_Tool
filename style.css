@@ -444,3 +444,71 @@ button#export-image-btn:hover { background: var(--gridline); }
   white-space: nowrap;
 }
 .tooltip.hidden { display: none; }
+
+/* ------------------------------------------------------------------ */
+/* Top-bar link + standalone haplotype-image page                     */
+/* ------------------------------------------------------------------ */
+.topbar-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--series-soft);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 4px 2px;
+}
+.topbar-link:hover { text-decoration: underline; }
+
+.hap-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 22px 80px;
+}
+.hap-page h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+.hap-page p.lead {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 28px;
+  max-width: 760px;
+}
+.hap-figure {
+  margin: 0 0 40px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-1);
+  padding: 16px;
+}
+.hap-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+.hap-figure figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.hap-figure h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.hap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.hap-back {
+  display: inline-block;
+  margin-bottom: 22px;
+  font-size: 13px;
+  color: var(--series-soft);
+  text-decoration: none;
+}
+.hap-back:hover { text-decoration: underline; }
