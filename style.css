@@ -458,7 +458,13 @@ button#export-image-btn:hover { background: var(--gridline); }
 }
 .topbar-link:hover { text-decoration: underline; }
 
-.hap-page {
+body.hap-body { height: auto; overflow: auto; }
+body.hap-body .topbar h1 { white-space: normal; }
+
+main.hap-page {
+  display: block;
+  flex: none;
+  min-height: 0;
   max-width: 1100px;
   margin: 0 auto;
   padding: 28px 22px 80px;
