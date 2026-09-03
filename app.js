@@ -25,6 +25,8 @@
     // fraction of the canvas (top-left corner of the box). null = leave the
     // box in its default top-right stacked spot.
     overlayPos: { caption: null, legend: null },
+    hapSites: null,      // parsed data/<species>_haplotype_sites.json, or null
+    hapSelected: null,   // key of the currently shown haplotype snapshot
   };
 
   const speciesCache = new Map();   // species -> {manifest, position(Float64Array), pNeutral, pHard, pSoft, label(Uint8Array)}
@@ -75,6 +77,18 @@
   const geneAddBtn = document.getElementById('gene-add-btn');
   const geneErrorEl = document.getElementById('gene-error');
   const geneListEl = document.getElementById('gene-list');
+
+  const canvasWrapEl = document.querySelector('.plot-canvas-wrap');
+  const hapMarkersEl = document.getElementById('hap-markers');
+  const hapPanelEl = document.getElementById('hap-panel');
+  const hapPanelNoteEl = document.getElementById('hap-panel-note');
+  const hapToggleBtn = document.getElementById('hap-toggle');
+  const hapChipsEl = document.getElementById('hap-chips');
+  const hapFigureEl = document.getElementById('hap-figure');
+  const hapImageEl = document.getElementById('hap-image');
+  const hapImageLinkEl = document.getElementById('hap-image-link');
+  const hapCaptionEl = document.getElementById('hap-caption');
+  const HAP_COLLAPSE_KEY = 'genomeScanBrowser.hapPanelCollapsed.v1';
 
   // ---------------------------------------------------------------------
   // Formatting helpers
@@ -415,12 +429,16 @@
   // ---------------------------------------------------------------------
   // Rendering
   // ---------------------------------------------------------------------
-  const MARGIN = { top: 28, right: 20, bottom: 36, left: 60 };
+  const MARGIN = { top: 28, right: 20, bottom: 46, left: 60 };
   let renderScheduled = false;
 
   // Screen-space rects of the overlay boxes as last drawn on the live canvas,
   // for pointer hit-testing: [{kind, x, y, w, h}] in CSS pixels.
   let liveOverlayRects = [];
+
+  // Plot geometry from the last live render, in CSS pixels, so the HTML
+  // haplotype-snapshot markers can be positioned over the canvas.
+  let plotGeom = null;
 
   function scheduleRender() {
     if (renderScheduled) return;
@@ -460,6 +478,7 @@
     const { w, h, dpr } = resizeCanvasToDisplaySize();
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     liveOverlayRects = renderCore(w, h, currentOverlayOptions()) || [];
+    updateHapMarkers();
   }
 
   // Draws the full chart into whatever `ctx` currently points at, using a
@@ -596,6 +615,13 @@
     const overlayRects = exportOptions
       ? drawExportOverlays(colors, w, h, plotW, exportOptions)
       : [];
+
+    plotGeom = {
+      marginLeft: MARGIN.left,
+      plotW,
+      plotBottom: MARGIN.top + plotH,
+      xMin, xMax,
+    };
 
     updateInfoPanels(entry);
     return overlayRects;
@@ -926,6 +952,9 @@
       dropdownEl.classList.add('hidden');
       populateGeneContigSelect(entry);
       renderGeneList();
+      state.hapSites = await loadHapSites(species);
+      state.hapSelected = null;
+      renderHapPanel();
       scheduleRender();
     } finally {
       loadingEl.classList.add('hidden');
@@ -1043,6 +1072,7 @@
       renderCore(w, h, exportOptions);
     } finally {
       ctx = liveCtx;
+      scheduleRender();   // restore live plot geometry (marker positions)
     }
 
     off.toBlob((blob) => {
@@ -1285,14 +1315,159 @@
   if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', scheduleRender);
   }
+  // The plot canvas fills .plot-canvas-wrap, which shrinks/grows as the
+  // haplotype panel below it opens, loads an image, or is collapsed. Re-render
+  // (and thus re-size the canvas bitmap + reposition markers) on any such change.
+  if (window.ResizeObserver && canvasWrapEl) {
+    new ResizeObserver(() => scheduleRender()).observe(canvasWrapEl);
+  }
+
+  // ---------------------------------------------------------------------
+  // Haplotype snapshots: a small curated set of pre-rendered haplotype
+  // images per species (1/4, 1/2, 3/4 of the genome + the longest hard-run
+  // and soft-run windows). Markers sit over the plot at those x positions;
+  // the image itself shows in the panel below the plot so it never covers
+  // the scan. Absent-file => feature silently hidden for that species.
+  // ---------------------------------------------------------------------
+  const HAP_TYPE_ORDER = { baseline: 0, hard: 1, soft: 2 };
+
+  async function loadHapSites(species) {
+    try {
+      const r = await fetch(`${DATA_DIR}/${species}_haplotype_sites.json`);
+      if (!r.ok) return null;
+      const data = await r.json();
+      if (!data || !Array.isArray(data.sites) || !data.sites.length) return null;
+      data.sites.sort((a, b) =>
+        (HAP_TYPE_ORDER[a.type] - HAP_TYPE_ORDER[b.type]) || (a.x - b.x));
+      return data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function hapSiteLabel(s) {
+    if (s.type === 'baseline') return s.label;
+    const mb = (s.bp_lo / 1e6).toFixed(2);
+    return `${s.type === 'hard' ? 'Hard' : 'Soft'} run · ${mb} Mb`;
+  }
+
+  function renderHapPanel() {
+    hapChipsEl.innerHTML = '';
+    hapFigureEl.hidden = true;
+    hapImageEl.removeAttribute('src');
+    state.hapSelected = null;
+
+    if (!state.hapSites) {
+      hapPanelEl.hidden = true;
+      updateHapMarkers();
+      return;
+    }
+    hapPanelEl.hidden = false;
+
+    const sites = state.hapSites.sites;
+    const nHard = sites.filter(s => s.type === 'hard').length;
+    const nSoft = sites.filter(s => s.type === 'soft').length;
+    hapPanelNoteEl.textContent =
+      `${sites.length} windows — ¼/½/¾ genome` +
+      (nHard ? `, ${nHard} hard-run` : '') + (nSoft ? `, ${nSoft} soft-run` : '');
+
+    for (const s of sites) {
+      const chip = document.createElement('button');
+      chip.className = 'hap-chip';
+      chip.dataset.key = s.key;
+      const dot = document.createElement('span');
+      dot.className = `dot type-${s.type}`;
+      chip.appendChild(dot);
+      chip.appendChild(document.createTextNode(hapSiteLabel(s)));
+      chip.addEventListener('click', () => selectHapSite(s.key));
+      hapChipsEl.appendChild(chip);
+    }
+
+    // restore collapsed preference
+    let collapsed = false;
+    try { collapsed = localStorage.getItem(HAP_COLLAPSE_KEY) === '1'; } catch (e) {}
+    hapPanelEl.classList.toggle('is-collapsed', collapsed);
+    hapToggleBtn.setAttribute('aria-expanded', String(!collapsed));
+
+    updateHapMarkers();
+  }
+
+  function selectHapSite(key) {
+    const site = state.hapSites && state.hapSites.sites.find(s => s.key === key);
+    if (!site) return;
+    state.hapSelected = key;
+
+    for (const chip of hapChipsEl.children) {
+      chip.classList.toggle('is-active', chip.dataset.key === key);
+    }
+
+    const loc = (state.hapSites.sites.some(s => s.contig !== site.contig) ? `contig ${site.contig} · ` : '') +
+      `${(site.bp_lo / 1e6).toFixed(3)}–${(site.bp_hi / 1e6).toFixed(3)} Mb`;
+    hapImageEl.src = site.image;
+    hapImageLinkEl.href = site.image;
+    hapImageEl.alt = `${state.hapSites.pretty} haplotypes at ${loc} (${site.label})`;
+    hapCaptionEl.textContent =
+      `${state.hapSites.pretty} — ${site.label}. ${loc}. CNN call here: ${site.call_here}. ` +
+      `${state.hapSites.target_samples} genomes × ${state.hapSites.window_h} sites. ` +
+      `Left: allele state. Right: mutation type.`;
+    hapFigureEl.hidden = false;
+    hapPanelEl.scrollTop = 0;   // keep the chips/header in view
+
+    if (hapPanelEl.classList.contains('is-collapsed')) setHapCollapsed(false);
+
+    // The panel just grew (image shown) — re-render so the canvas resizes to
+    // the smaller area instead of overflowing and scrolling the page.
+    scheduleRender();
+  }
+
+  function setHapCollapsed(collapsed) {
+    hapPanelEl.classList.toggle('is-collapsed', collapsed);
+    hapToggleBtn.setAttribute('aria-expanded', String(!collapsed));
+    try { localStorage.setItem(HAP_COLLAPSE_KEY, collapsed ? '1' : '0'); } catch (e) {}
+    scheduleRender();
+  }
+
+  hapToggleBtn.addEventListener('click', () => {
+    setHapCollapsed(!hapPanelEl.classList.contains('is-collapsed'));
+  });
+
+  function updateHapMarkers() {
+    hapMarkersEl.innerHTML = '';
+    if (!state.hapSites || !plotGeom || hapPanelEl.hidden) return;
+    const { marginLeft, plotW, plotBottom, xMin, xMax } = plotGeom;
+    const span = xMax - xMin;
+    if (span <= 0) return;
+
+    for (const s of state.hapSites.sites) {
+      if (s.x < xMin || s.x > xMax) continue;
+      const px = marginLeft + ((s.x - xMin) / span) * plotW;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `hap-marker type-${s.type}` + (s.key === state.hapSelected ? ' is-active' : '');
+      btn.style.left = px + 'px';
+      btn.style.top = (plotBottom + 22) + 'px';   // in the strip below the x-axis tick labels
+      btn.title = `${hapSiteLabel(s)} — view haplotype image`;
+      btn.setAttribute('aria-label', btn.title);
+      btn.addEventListener('click', () => selectHapSite(s.key));
+      hapMarkersEl.appendChild(btn);
+    }
+  }
 
   // ---------------------------------------------------------------------
   // Boot
   // ---------------------------------------------------------------------
   (async function init() {
     await loadSpeciesIndex();
-    if (speciesIndex.length) {
-      await selectSpecies(speciesIndex[0].species);
+    if (!speciesIndex.length) return;
+    const params = new URLSearchParams(location.search);
+    const want = params.get('species');
+    const start = (want && speciesIndex.some(s => s.species === want))
+      ? want : speciesIndex[0].species;
+    await selectSpecies(start);
+
+    const wantHap = params.get('hap');
+    if (wantHap && state.hapSites && state.hapSites.sites.some(s => s.key === wantHap)) {
+      requestAnimationFrame(() => selectHapSite(wantHap));
     }
   })();
 })();

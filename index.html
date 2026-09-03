@@ -92,9 +92,30 @@
   </aside>
 
   <section class="plot-area">
-    <div id="loading" class="loading hidden">Loading…</div>
-    <canvas id="plot-canvas"></canvas>
-    <div id="tooltip" class="tooltip hidden"></div>
+    <div class="plot-canvas-wrap">
+      <div id="loading" class="loading hidden">Loading…</div>
+      <canvas id="plot-canvas"></canvas>
+      <div id="tooltip" class="tooltip hidden"></div>
+      <div id="hap-markers" class="hap-markers" aria-hidden="true"></div>
+    </div>
+
+    <section id="hap-panel" class="hap-panel" hidden>
+      <div class="hap-panel-head">
+        <button id="hap-toggle" class="hap-toggle" aria-expanded="true" title="Show / hide haplotype snapshots">
+          <span class="hap-caret">▾</span> Haplotype snapshots
+        </button>
+        <span id="hap-panel-note" class="hap-panel-note"></span>
+      </div>
+      <div id="hap-panel-body" class="hap-panel-body">
+        <div id="hap-chips" class="hap-chips"></div>
+        <figure id="hap-figure" class="hap-figure-inline" hidden>
+          <a id="hap-image-link" href="#" target="_blank" rel="noopener" title="Open full-size in a new tab">
+            <img id="hap-image" alt="">
+          </a>
+          <figcaption id="hap-caption"></figcaption>
+        </figure>
+      </div>
+    </section>
   </section>
 </main>
 
