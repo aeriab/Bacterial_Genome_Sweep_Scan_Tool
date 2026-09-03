@@ -352,6 +352,12 @@ button#export-image-btn:hover { background: var(--gridline); }
   padding-top: 12px;
   border-top: 1px solid var(--border);
 }
+.export-hint {
+  margin: 2px 0 0;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
 
 .info-panel {
   font-size: 12.5px;

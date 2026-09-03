@@ -21,6 +21,10 @@
     softThreshold: 20,
     species: null,
     viewport: null, // {xMin, xMax} in continuous genome coordinate for the current species
+    // Drag positions for the two PNG-export overlays, each {fx, fy} as a
+    // fraction of the canvas (top-left corner of the box). null = leave the
+    // box in its default top-right stacked spot.
+    overlayPos: { caption: null, legend: null },
   };
 
   const speciesCache = new Map();   // species -> {manifest, position(Float64Array), pNeutral, pHard, pSoft, label(Uint8Array)}
@@ -414,6 +418,10 @@
   const MARGIN = { top: 28, right: 20, bottom: 36, left: 60 };
   let renderScheduled = false;
 
+  // Screen-space rects of the overlay boxes as last drawn on the live canvas,
+  // for pointer hit-testing: [{kind, x, y, w, h}] in CSS pixels.
+  let liveOverlayRects = [];
+
   function scheduleRender() {
     if (renderScheduled) return;
     renderScheduled = true;
@@ -451,7 +459,7 @@
     if (!state.species || !speciesCache.has(state.species)) return;
     const { w, h, dpr } = resizeCanvasToDisplaySize();
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    renderCore(w, h, currentOverlayOptions());
+    liveOverlayRects = renderCore(w, h, currentOverlayOptions()) || [];
   }
 
   // Draws the full chart into whatever `ctx` currently points at, using a
@@ -585,9 +593,12 @@
     ctx.lineWidth = 1;
     ctx.strokeRect(MARGIN.left + 0.5, MARGIN.top + 0.5, plotW - 1, plotH - 1);
 
-    if (exportOptions) drawExportOverlays(colors, plotW, exportOptions);
+    const overlayRects = exportOptions
+      ? drawExportOverlays(colors, w, h, plotW, exportOptions)
+      : [];
 
     updateInfoPanels(entry);
+    return overlayRects;
   }
 
   // Shared box chrome (background + border) for the export-only overlays
@@ -600,49 +611,73 @@
     ctx.strokeRect(x0 + 0.5, y0 + 0.5, boxW - 1, boxH - 1);
   }
 
-  // Stacks the opt-in export overlays (top-right corner, caption above
-  // legend) based on the two checkboxes next to the export button. Both
-  // default off so exports stay a clean plot unless the user asks for the
-  // extra context.
-  function drawExportOverlays(colors, plotW, exportOptions) {
-    let y = MARGIN.top + 10;
-    if (exportOptions.showCaption) y = drawExportCaptionBox(colors, plotW, y) + 8;
-    if (exportOptions.showLegend) y = drawExportLegendBox(colors, plotW, y) + 8;
+  // Places the opt-in export overlays (caption / color key) and draws them.
+  // Default spot is the top-right of the plot, caption stacked above legend;
+  // once the user drags a box on the canvas it gets an explicit {fx,fy} in
+  // state.overlayPos and is placed there instead (always clamped to stay
+  // fully on-canvas). Returns [{kind,x,y,w,h}] for the boxes actually drawn,
+  // in the (w,h) coordinate space, so the pointer handlers can hit-test them
+  // and the PNG export lands each box exactly where the user left it.
+  function drawExportOverlays(colors, w, h, plotW, exportOptions) {
+    const boxes = [];
+    if (exportOptions.showCaption) boxes.push(measureExportCaptionBox());
+    if (exportOptions.showLegend) boxes.push(measureExportLegendBox(colors));
+
+    const defaultRight = MARGIN.left + plotW - 10;
+    let defaultY = MARGIN.top + 10;
+    const rects = [];
+
+    for (const box of boxes) {
+      const pos = state.overlayPos[box.kind];
+      let x0 = pos ? pos.fx * w : defaultRight - box.boxW;
+      let y0 = pos ? pos.fy * h : defaultY;
+      x0 = Math.max(0, Math.min(w - box.boxW, x0));
+      y0 = Math.max(0, Math.min(h - box.boxH, y0));
+
+      if (box.kind === 'caption') drawExportCaptionBox(colors, box, x0, y0);
+      else drawExportLegendBox(colors, box, x0, y0);
+
+      rects.push({ kind: box.kind, x: x0, y: y0, w: box.boxW, h: box.boxH });
+      if (!pos) defaultY = y0 + box.boxH + 8;
+    }
+    return rects;
   }
 
   // In-image caption for PNG exports: pooling window size always, plus each
   // run-length threshold only when its highlighting is actually turned on
   // (an unused threshold value would be misleading to someone who only sees
-  // the flat PNG and can't tell the checkbox was off). Returns the box's
-  // bottom y so a second overlay can stack directly beneath it.
-  function drawExportCaptionBox(colors, plotW, yTop) {
+  // the flat PNG and can't tell the checkbox was off).
+  function measureExportCaptionBox() {
     const lines = [`Pooled: ${state.binSize} window${state.binSize === 1 ? '' : 's'}`];
     if (state.annotateHard) lines.push(`Hard-sweep region: ≥ ${state.hardThreshold} consecutive hard calls`);
     if (state.annotateSoft) lines.push(`Soft-sweep region: ≥ ${state.softThreshold} consecutive soft calls`);
 
     ctx.font = '11px system-ui, sans-serif';
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'top';
-
     const padX = 9, padY = 7, lineH = 15;
     let textW = 0;
     for (const line of lines) textW = Math.max(textW, ctx.measureText(line).width);
-    const boxW = textW + padX * 2;
-    const boxH = lines.length * lineH + padY * 2;
-    const boxX0 = MARGIN.left + plotW - 10 - boxW;
+    return {
+      kind: 'caption', lines, padX, padY, lineH,
+      boxW: textW + padX * 2,
+      boxH: lines.length * lineH + padY * 2,
+    };
+  }
 
-    drawExportBoxChrome(colors, boxX0, yTop, boxW, boxH);
+  function drawExportCaptionBox(colors, box, x0, y0) {
+    drawExportBoxChrome(colors, x0, y0, box.boxW, box.boxH);
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
     ctx.fillStyle = colors.textSecondary;
-    lines.forEach((line, i) => {
-      ctx.fillText(line, boxX0 + padX, yTop + padY + i * lineH);
+    box.lines.forEach((line, i) => {
+      ctx.fillText(line, x0 + box.padX, y0 + box.padY + i * box.lineH);
     });
-    return yTop + boxH;
   }
 
   // In-image color key for PNG exports, mirroring the topbar legend
   // (including the run-region swatches, shown only when that highlighting
-  // is actually on). Returns the box's bottom y for stacking.
-  function drawExportLegendBox(colors, plotW, yTop) {
+  // is actually on).
+  function measureExportLegendBox(colors) {
     const items = [
       { text: 'Neutral', swatchFill: colors.neutral },
       { text: 'Hard sweep', swatchFill: colors.hard },
@@ -652,31 +687,34 @@
     if (state.annotateSoft) items.push({ text: 'Soft-run region', swatchFill: colors.bandSoft, swatchStroke: colors.bandSoftEdge });
 
     ctx.font = '11px system-ui, sans-serif';
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'middle';
-
     const padX = 9, padY = 7, lineH = 16, swatchSize = 10, swatchGap = 7;
     let textW = 0;
     for (const it of items) textW = Math.max(textW, ctx.measureText(it.text).width);
-    const boxW = swatchSize + swatchGap + textW + padX * 2;
-    const boxH = items.length * lineH + padY * 2;
-    const boxX0 = MARGIN.left + plotW - 10 - boxW;
+    return {
+      kind: 'legend', items, padX, padY, lineH, swatchSize, swatchGap,
+      boxW: swatchSize + swatchGap + textW + padX * 2,
+      boxH: items.length * lineH + padY * 2,
+    };
+  }
 
-    drawExportBoxChrome(colors, boxX0, yTop, boxW, boxH);
-    items.forEach((it, i) => {
-      const rowCy = yTop + padY + i * lineH + lineH / 2;
-      const sx = boxX0 + padX;
+  function drawExportLegendBox(colors, box, x0, y0) {
+    drawExportBoxChrome(colors, x0, y0, box.boxW, box.boxH);
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    box.items.forEach((it, i) => {
+      const rowCy = y0 + box.padY + i * box.lineH + box.lineH / 2;
+      const sx = x0 + box.padX;
       ctx.fillStyle = it.swatchFill;
-      ctx.fillRect(sx, rowCy - swatchSize / 2, swatchSize, swatchSize);
+      ctx.fillRect(sx, rowCy - box.swatchSize / 2, box.swatchSize, box.swatchSize);
       if (it.swatchStroke) {
         ctx.strokeStyle = it.swatchStroke;
         ctx.lineWidth = 1.2;
-        ctx.strokeRect(sx + 0.5, rowCy - swatchSize / 2 + 0.5, swatchSize - 1, swatchSize - 1);
+        ctx.strokeRect(sx + 0.5, rowCy - box.swatchSize / 2 + 0.5, box.swatchSize - 1, box.swatchSize - 1);
       }
       ctx.fillStyle = colors.textSecondary;
-      ctx.fillText(it.text, sx + swatchSize + swatchGap, rowCy);
+      ctx.fillText(it.text, sx + box.swatchSize + box.swatchGap, rowCy);
     });
-    return yTop + boxH;
   }
 
   function drawRuns(runs, fill, edge, xMin, xMax, xToPx, plotH) {
@@ -1108,13 +1146,60 @@
 
   let dragging = false;
   let dragLastX = 0;
+  // Active drag of a caption/legend overlay box, or null.
+  // {kind, startClientX, startClientY, boxX0, boxY0, canvasW, canvasH}
+  let overlayDrag = null;
+
+  // Topmost overlay box under (px, py) — CSS pixels relative to the canvas —
+  // or null. Iterated back-to-front so the last-drawn box wins on overlap.
+  function overlayHitTest(px, py) {
+    for (let i = liveOverlayRects.length - 1; i >= 0; i--) {
+      const r = liveOverlayRects[i];
+      if (px >= r.x && px <= r.x + r.w && py >= r.y && py <= r.y + r.h) return r;
+    }
+    return null;
+  }
+
   canvas.addEventListener('pointerdown', (e) => {
     if (!state.species) return;
+    const rect = canvas.getBoundingClientRect();
+    const hit = overlayHitTest(e.clientX - rect.left, e.clientY - rect.top);
+    if (hit) {
+      overlayDrag = {
+        kind: hit.kind,
+        startClientX: e.clientX,
+        startClientY: e.clientY,
+        boxX0: hit.x,
+        boxY0: hit.y,
+        canvasW: rect.width,
+        canvasH: rect.height,
+      };
+      canvas.style.cursor = 'grabbing';
+      hideTooltip();
+      canvas.setPointerCapture(e.pointerId);
+      return;
+    }
     dragging = true;
     dragLastX = e.clientX;
     canvas.setPointerCapture(e.pointerId);
   });
   canvas.addEventListener('pointermove', (e) => {
+    if (overlayDrag) {
+      let dx = e.clientX - overlayDrag.startClientX;
+      let dy = e.clientY - overlayDrag.startClientY;
+      // Shift locks the move to whichever axis the drag has favored so far,
+      // recomputed from the drag origin each move so toggling Shift mid-drag
+      // stays predictable.
+      if (e.shiftKey) {
+        if (Math.abs(dx) >= Math.abs(dy)) dy = 0; else dx = 0;
+      }
+      state.overlayPos[overlayDrag.kind] = {
+        fx: (overlayDrag.boxX0 + dx) / overlayDrag.canvasW,
+        fy: (overlayDrag.boxY0 + dy) / overlayDrag.canvasH,
+      };
+      scheduleRender();
+      return;
+    }
     if (dragging) {
       const dx = e.clientX - dragLastX;
       dragLastX = e.clientX;
@@ -1123,11 +1208,28 @@
       scheduleRender();
       hideTooltip();
     } else {
-      showTooltip(e);
+      const rect = canvas.getBoundingClientRect();
+      if (overlayHitTest(e.clientX - rect.left, e.clientY - rect.top)) {
+        canvas.style.cursor = 'move';
+        hideTooltip();
+      } else {
+        canvas.style.cursor = '';
+        showTooltip(e);
+      }
     }
   });
-  canvas.addEventListener('pointerup', (e) => { dragging = false; canvas.releasePointerCapture(e.pointerId); });
-  canvas.addEventListener('pointerleave', () => { dragging = false; hideTooltip(); });
+  canvas.addEventListener('pointerup', (e) => {
+    dragging = false;
+    overlayDrag = null;
+    canvas.style.cursor = '';
+    canvas.releasePointerCapture(e.pointerId);
+  });
+  canvas.addEventListener('pointerleave', () => {
+    dragging = false;
+    overlayDrag = null;
+    canvas.style.cursor = '';
+    hideTooltip();
+  });
 
   function hideTooltip() { tooltipEl.classList.add('hidden'); }
 
@@ -1142,7 +1244,7 @@
   }
 
   function showTooltip(e) {
-    if (!state.species || dragging) return;
+    if (!state.species || dragging || overlayDrag) return;
     const entry = speciesCache.get(state.species);
     const pooled = getPooled(state.species);
     const dataX = canvasDataXFromEvent(e);
