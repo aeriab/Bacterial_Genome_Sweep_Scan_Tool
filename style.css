@@ -70,6 +70,25 @@
 
 * { box-sizing: border-box; }
 
+/* Small, faint deployed-commit hash pinned to the top-right corner of every
+   page (populated at runtime by commit-badge.js from the GitHub API). Never
+   interactive, so it can't get in the way of the controls beneath it. */
+.commit-badge {
+  position: fixed;
+  top: 3px;
+  right: 6px;
+  z-index: 50;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+}
+.commit-badge[hidden] { display: none; }
+
 html, body {
   margin: 0;
   height: 100%;

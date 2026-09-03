@@ -437,21 +437,31 @@
     return { w, h, dpr };
   }
 
+  // The two export toggles (caption / color key) double as a live preview: when
+  // either is checked, the on-screen render draws the same overlay box it would
+  // bake into the PNG, so the user can see and position it before exporting.
+  function currentOverlayOptions() {
+    const showCaption = exportCaptionToggle.checked;
+    const showLegend = exportLegendToggle.checked;
+    if (!showCaption && !showLegend) return null;
+    return { showCaption, showLegend };
+  }
+
   function render() {
     if (!state.species || !speciesCache.has(state.species)) return;
     const { w, h, dpr } = resizeCanvasToDisplaySize();
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    renderCore(w, h, null);
+    renderCore(w, h, currentOverlayOptions());
   }
 
   // Draws the full chart into whatever `ctx` currently points at, using a
   // (w, h) viewport in CSS-pixel units. Shared by the live on-screen render
   // and the high-resolution PNG export (which temporarily swaps `ctx` to an
-  // offscreen canvas scaled up by EXPORT_SCALE). `exportOptions` is null for
-  // the live view; when exporting it's {showCaption, showLegend}, each
-  // opt-in via a checkbox next to the export button -- the live view already
-  // has pooling/threshold controls and a color key in the sidebar/topbar,
-  // but an exported PNG is handed to people who only ever see the flat image.
+  // offscreen canvas scaled up by EXPORT_SCALE). `exportOptions` is null when
+  // neither overlay is wanted; otherwise it's {showCaption, showLegend}, each
+  // opt-in via a checkbox next to the export button. Those checkboxes now also
+  // preview live on the canvas, so the overlay the user sees is exactly what
+  // the PNG will contain.
   function renderCore(w, h, exportOptions) {
     ctx.clearRect(0, 0, w, h);
 
@@ -987,10 +997,7 @@
     const offCtx = off.getContext('2d');
     offCtx.setTransform(EXPORT_SCALE, 0, 0, EXPORT_SCALE, 0, 0);
 
-    const exportOptions = {
-      showCaption: exportCaptionToggle.checked,
-      showLegend: exportLegendToggle.checked,
-    };
+    const exportOptions = currentOverlayOptions();
 
     const liveCtx = ctx;
     ctx = offCtx;
@@ -1015,6 +1022,10 @@
   }
 
   exportImageBtn.addEventListener('click', exportImage);
+  // Re-render on toggle so the caption / color-key box appears (or disappears)
+  // on the live canvas immediately, not only in the exported PNG.
+  exportCaptionToggle.addEventListener('change', scheduleRender);
+  exportLegendToggle.addEventListener('change', scheduleRender);
 
   // Initialize control DOM from state defaults.
   setBinSize(state.binSize);
