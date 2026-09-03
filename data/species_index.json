@@ -160,5 +160,11 @@
     "n_windows": 211646,
     "n_contigs": 1,
     "x_max": 2230170.0
+  },
+  {
+    "species": "Ruminococcus_bromii_62047_resorted",
+    "n_windows": 211646,
+    "n_contigs": 1,
+    "x_max": 2230170.0
   }
 ]
