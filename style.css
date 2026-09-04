@@ -447,54 +447,8 @@ button#export-image-btn:hover { background: var(--gridline); }
 #plot-canvas:active { cursor: grabbing; }
 
 /* ------------------------------------------------------------------ */
-/* Haplotype-snapshot markers (over the plot) + panel (below it)      */
+/* Haplotype-snapshot panel (below the plot)                          */
 /* ------------------------------------------------------------------ */
-/* The markers are HTML elements layered over the <canvas>, never drawn into
-   it, so they are automatically absent from the canvas-only PNG export. */
-.hap-markers {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-/* Downward-pointing triangle pinned inside the plot at the top edge, tip
-   aimed at the base-pair column that has a cached haplotype image. */
-.hap-marker {
-  position: absolute;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  padding: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 12px solid var(--text-muted);
-  background: none;
-  cursor: pointer;
-  pointer-events: auto;
-  opacity: 0.9;
-  filter: drop-shadow(0 1px 1.5px rgba(0,0,0,0.35));
-}
-.hap-marker::after {           /* larger invisible hit target */
-  content: "";
-  position: absolute;
-  left: -10px; right: -10px; top: -14px; bottom: -8px;
-}
-.hap-marker:hover,
-.hap-marker:focus-visible {
-  opacity: 1;
-  filter: brightness(1.15) drop-shadow(0 1px 1.5px rgba(0,0,0,0.4));
-  outline: none;
-}
-.hap-marker.type-hard { border-top-color: var(--series-hard); }
-.hap-marker.type-soft { border-top-color: var(--series-soft); }
-.hap-marker.type-baseline { border-top-color: var(--text-secondary); }
-.hap-marker.is-active {
-  border-left-width: 9px;
-  border-right-width: 9px;
-  border-top-width: 15px;
-  opacity: 1;
-}
-
 .hap-panel {
   flex: 0 0 auto;
   display: flex;
@@ -537,19 +491,20 @@ button#export-image-btn:hover { background: var(--gridline); }
 .hap-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
   padding-bottom: 10px;
 }
 .hap-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   border: 1px solid var(--baseline);
   border-radius: 999px;
   background: var(--surface-2);
   color: var(--text-secondary);
-  font-size: 12px;
-  padding: 4px 10px;
+  font-size: 10.5px;
+  line-height: 1;
+  padding: 3px 8px;
   cursor: pointer;
   white-space: nowrap;
 }
@@ -561,7 +516,7 @@ button#export-image-btn:hover { background: var(--gridline); }
   font-weight: 600;
 }
 .hap-chip .dot {
-  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
 }
 .hap-chip .dot.type-hard { background: var(--series-hard); }
 .hap-chip .dot.type-soft { background: var(--series-soft); }

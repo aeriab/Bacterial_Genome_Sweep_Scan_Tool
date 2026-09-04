@@ -79,7 +79,6 @@
   const geneListEl = document.getElementById('gene-list');
 
   const canvasWrapEl = document.querySelector('.plot-canvas-wrap');
-  const hapMarkersEl = document.getElementById('hap-markers');
   const hapPanelEl = document.getElementById('hap-panel');
   const hapPanelNoteEl = document.getElementById('hap-panel-note');
   const hapToggleBtn = document.getElementById('hap-toggle');
@@ -436,10 +435,6 @@
   // for pointer hit-testing: [{kind, x, y, w, h}] in CSS pixels.
   let liveOverlayRects = [];
 
-  // Plot geometry from the last live render, in CSS pixels, so the HTML
-  // haplotype-snapshot markers can be positioned over the canvas.
-  let plotGeom = null;
-
   function scheduleRender() {
     if (renderScheduled) return;
     renderScheduled = true;
@@ -478,7 +473,6 @@
     const { w, h, dpr } = resizeCanvasToDisplaySize();
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     liveOverlayRects = renderCore(w, h, currentOverlayOptions()) || [];
-    updateHapMarkers();
   }
 
   // Draws the full chart into whatever `ctx` currently points at, using a
@@ -615,14 +609,6 @@
     const overlayRects = exportOptions
       ? drawExportOverlays(colors, w, h, plotW, exportOptions)
       : [];
-
-    plotGeom = {
-      marginLeft: MARGIN.left,
-      plotW,
-      plotTop: MARGIN.top,
-      plotBottom: MARGIN.top + plotH,
-      xMin, xMax,
-    };
 
     updateInfoPanels(entry);
     return overlayRects;
@@ -1073,7 +1059,7 @@
       renderCore(w, h, exportOptions);
     } finally {
       ctx = liveCtx;
-      scheduleRender();   // restore live plot geometry (marker positions)
+      scheduleRender();   // repaint the live canvas at its own resolution
     }
 
     off.toBlob((blob) => {
@@ -1318,7 +1304,7 @@
   }
   // The plot canvas fills .plot-canvas-wrap, which shrinks/grows as the
   // haplotype panel below it opens, loads an image, or is collapsed. Re-render
-  // (and thus re-size the canvas bitmap + reposition markers) on any such change.
+  // (and thus re-size the canvas bitmap) on any such change.
   if (window.ResizeObserver && canvasWrapEl) {
     new ResizeObserver(() => scheduleRender()).observe(canvasWrapEl);
   }
@@ -1326,18 +1312,33 @@
   // ---------------------------------------------------------------------
   // Haplotype snapshots: a small curated set of pre-rendered haplotype
   // images per species (1/4, 1/2, 3/4 of the genome + the longest hard-run
-  // and soft-run windows). Markers sit over the plot at those x positions;
-  // the image itself shows in the panel below the plot so it never covers
-  // the scan. Absent-file => feature silently hidden for that species.
+  // and soft-run windows), reached from the "Haplotype snapshots" panel
+  // below the scan. Absent-file => feature silently hidden for that species.
   // ---------------------------------------------------------------------
   const HAP_TYPE_ORDER = { baseline: 0, hard: 1, soft: 2 };
 
+  // Re-run / re-sorted scan variants (e.g. "..._strain_filtered",
+  // "..._resorted") don't get their own rendered windows; fall back to the
+  // base species' snapshots, which are the same organism and genome.
+  const HAP_VARIANT_SUFFIX = /_(strain_filtered|resorted)$/;
+
+  async function fetchHapSites(name) {
+    const r = await fetch(`${DATA_DIR}/${name}_haplotype_sites.json`);
+    if (!r.ok) return null;
+    const data = await r.json();
+    if (!data || !Array.isArray(data.sites) || !data.sites.length) return null;
+    return data;
+  }
+
   async function loadHapSites(species) {
     try {
-      const r = await fetch(`${DATA_DIR}/${species}_haplotype_sites.json`);
-      if (!r.ok) return null;
-      const data = await r.json();
-      if (!data || !Array.isArray(data.sites) || !data.sites.length) return null;
+      let data = await fetchHapSites(species);
+      if (!data && HAP_VARIANT_SUFFIX.test(species)) {
+        const base = species.replace(HAP_VARIANT_SUFFIX, '');
+        data = await fetchHapSites(base);
+        if (data) data.fallbackFrom = base;
+      }
+      if (!data) return null;
       data.sites.sort((a, b) =>
         (HAP_TYPE_ORDER[a.type] - HAP_TYPE_ORDER[b.type]) || (a.x - b.x));
       return data;
@@ -1360,7 +1361,6 @@
 
     if (!state.hapSites) {
       hapPanelEl.hidden = true;
-      updateHapMarkers();
       return;
     }
     hapPanelEl.hidden = false;
@@ -1369,8 +1369,9 @@
     const nHard = sites.filter(s => s.type === 'hard').length;
     const nSoft = sites.filter(s => s.type === 'soft').length;
     hapPanelNoteEl.textContent =
-      `click a ▾ marker on the plot — ${sites.length} windows: ¼/½/¾ genome` +
-      (nHard ? `, ${nHard} hard-run` : '') + (nSoft ? `, ${nSoft} soft-run` : '');
+      `${sites.length} windows: ¼/½/¾ genome` +
+      (nHard ? `, ${nHard} hard-run` : '') + (nSoft ? `, ${nSoft} soft-run` : '') +
+      (state.hapSites.fallbackFrom ? ` — from the ${state.hapSites.pretty} dataset` : '');
 
     for (const s of sites) {
       const chip = document.createElement('button');
@@ -1389,8 +1390,6 @@
     try { collapsed = localStorage.getItem(HAP_COLLAPSE_KEY) === '1'; } catch (e) {}
     hapPanelEl.classList.toggle('is-collapsed', collapsed);
     hapToggleBtn.setAttribute('aria-expanded', String(!collapsed));
-
-    updateHapMarkers();
   }
 
   function selectHapSite(key) {
@@ -1431,28 +1430,6 @@
   hapToggleBtn.addEventListener('click', () => {
     setHapCollapsed(!hapPanelEl.classList.contains('is-collapsed'));
   });
-
-  function updateHapMarkers() {
-    hapMarkersEl.innerHTML = '';
-    if (!state.hapSites || !plotGeom || hapPanelEl.hidden) return;
-    const { marginLeft, plotW, plotTop, xMin, xMax } = plotGeom;
-    const span = xMax - xMin;
-    if (span <= 0) return;
-
-    for (const s of state.hapSites.sites) {
-      if (s.x < xMin || s.x > xMax) continue;
-      const px = marginLeft + ((s.x - xMin) / span) * plotW;
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = `hap-marker type-${s.type}` + (s.key === state.hapSelected ? ' is-active' : '');
-      btn.style.left = px + 'px';
-      btn.style.top = plotTop + 'px';   // pinned to the top edge of the plot, tip pointing down at the column
-      btn.title = `${hapSiteLabel(s)} — click to view the haplotype image at this base-pair location`;
-      btn.setAttribute('aria-label', btn.title);
-      btn.addEventListener('click', () => selectHapSite(s.key));
-      hapMarkersEl.appendChild(btn);
-    }
-  }
 
   // ---------------------------------------------------------------------
   // Boot

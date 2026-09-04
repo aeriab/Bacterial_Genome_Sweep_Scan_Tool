@@ -2,7 +2,7 @@
 """
 Generate a small, curated set of haplotype-window PNGs per species for the
 Bacterial Genome Sweep Scan Tool, plus a per-species JSON index the web app
-loads to place clickable markers on the scan.
+loads into the "Haplotype snapshots" panel below the scan.
 
 Per species, up to 9 windows are rendered:
   - 3 "baseline" windows at 1/4, 1/2, 3/4 of the genome (the tool's
