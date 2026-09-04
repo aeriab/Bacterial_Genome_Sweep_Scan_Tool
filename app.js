@@ -619,6 +619,7 @@
     plotGeom = {
       marginLeft: MARGIN.left,
       plotW,
+      plotTop: MARGIN.top,
       plotBottom: MARGIN.top + plotH,
       xMin, xMax,
     };
@@ -1368,7 +1369,7 @@
     const nHard = sites.filter(s => s.type === 'hard').length;
     const nSoft = sites.filter(s => s.type === 'soft').length;
     hapPanelNoteEl.textContent =
-      `${sites.length} windows — ¼/½/¾ genome` +
+      `click a ▾ marker on the plot — ${sites.length} windows: ¼/½/¾ genome` +
       (nHard ? `, ${nHard} hard-run` : '') + (nSoft ? `, ${nSoft} soft-run` : '');
 
     for (const s of sites) {
@@ -1434,7 +1435,7 @@
   function updateHapMarkers() {
     hapMarkersEl.innerHTML = '';
     if (!state.hapSites || !plotGeom || hapPanelEl.hidden) return;
-    const { marginLeft, plotW, plotBottom, xMin, xMax } = plotGeom;
+    const { marginLeft, plotW, plotTop, xMin, xMax } = plotGeom;
     const span = xMax - xMin;
     if (span <= 0) return;
 
@@ -1445,8 +1446,8 @@
       btn.type = 'button';
       btn.className = `hap-marker type-${s.type}` + (s.key === state.hapSelected ? ' is-active' : '');
       btn.style.left = px + 'px';
-      btn.style.top = (plotBottom + 22) + 'px';   // in the strip below the x-axis tick labels
-      btn.title = `${hapSiteLabel(s)} — view haplotype image`;
+      btn.style.top = plotTop + 'px';   // pinned to the top edge of the plot, tip pointing down at the column
+      btn.title = `${hapSiteLabel(s)} — click to view the haplotype image at this base-pair location`;
       btn.setAttribute('aria-label', btn.title);
       btn.addEventListener('click', () => selectHapSite(s.key));
       hapMarkersEl.appendChild(btn);

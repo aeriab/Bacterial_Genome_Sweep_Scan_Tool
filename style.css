@@ -449,40 +449,49 @@ button#export-image-btn:hover { background: var(--gridline); }
 /* ------------------------------------------------------------------ */
 /* Haplotype-snapshot markers (over the plot) + panel (below it)      */
 /* ------------------------------------------------------------------ */
+/* The markers are HTML elements layered over the <canvas>, never drawn into
+   it, so they are automatically absent from the canvas-only PNG export. */
 .hap-markers {
   position: absolute;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
 }
+/* Downward-pointing triangle pinned inside the plot at the top edge, tip
+   aimed at the base-pair column that has a cached haplotype image. */
 .hap-marker {
   position: absolute;
   transform: translateX(-50%);
   width: 0;
   height: 0;
   padding: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 9px solid var(--text-muted);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 12px solid var(--text-muted);
   background: none;
   cursor: pointer;
   pointer-events: auto;
-  opacity: 0.85;
+  opacity: 0.9;
+  filter: drop-shadow(0 1px 1.5px rgba(0,0,0,0.35));
 }
 .hap-marker::after {           /* larger invisible hit target */
   content: "";
   position: absolute;
-  left: -9px; right: -9px; top: -4px; bottom: -10px;
+  left: -10px; right: -10px; top: -14px; bottom: -8px;
 }
 .hap-marker:hover,
-.hap-marker:focus-visible { opacity: 1; filter: brightness(1.15); outline: none; }
-.hap-marker.type-hard { border-bottom-color: var(--series-hard); }
-.hap-marker.type-soft { border-bottom-color: var(--series-soft); }
-.hap-marker.type-baseline { border-bottom-color: var(--text-secondary); }
+.hap-marker:focus-visible {
+  opacity: 1;
+  filter: brightness(1.15) drop-shadow(0 1px 1.5px rgba(0,0,0,0.4));
+  outline: none;
+}
+.hap-marker.type-hard { border-top-color: var(--series-hard); }
+.hap-marker.type-soft { border-top-color: var(--series-soft); }
+.hap-marker.type-baseline { border-top-color: var(--text-secondary); }
 .hap-marker.is-active {
-  border-left-width: 8px;
-  border-right-width: 8px;
-  border-bottom-width: 12px;
+  border-left-width: 9px;
+  border-right-width: 9px;
+  border-top-width: 15px;
   opacity: 1;
 }
 
@@ -607,77 +616,3 @@ button#export-image-btn:hover { background: var(--gridline); }
   white-space: nowrap;
 }
 .tooltip.hidden { display: none; }
-
-/* ------------------------------------------------------------------ */
-/* Top-bar link + standalone haplotype-image page                     */
-/* ------------------------------------------------------------------ */
-.topbar-link {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--series-soft);
-  text-decoration: none;
-  white-space: nowrap;
-  padding: 4px 2px;
-}
-.topbar-link:hover { text-decoration: underline; }
-
-body.hap-body { height: auto; overflow: auto; }
-body.hap-body .topbar h1 { white-space: normal; }
-
-main.hap-page {
-  display: block;
-  flex: none;
-  min-height: 0;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 28px 22px 80px;
-}
-.hap-page h2 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 0 6px;
-}
-.hap-page p.lead {
-  color: var(--text-secondary);
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0 0 28px;
-  max-width: 760px;
-}
-.hap-figure {
-  margin: 0 0 40px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-1);
-  padding: 16px;
-}
-.hap-figure img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 4px;
-}
-.hap-figure figcaption {
-  margin-top: 10px;
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.55;
-}
-.hap-figure h3 {
-  font-size: 15px;
-  font-weight: 600;
-  margin: 0 0 10px;
-}
-.hap-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-}
-.hap-back {
-  display: inline-block;
-  margin-bottom: 22px;
-  font-size: 13px;
-  color: var(--series-soft);
-  text-decoration: none;
-}
-.hap-back:hover { text-decoration: underline; }
