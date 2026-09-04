@@ -1317,28 +1317,12 @@
   // ---------------------------------------------------------------------
   const HAP_TYPE_ORDER = { baseline: 0, hard: 1, soft: 2 };
 
-  // Re-run / re-sorted scan variants (e.g. "..._strain_filtered",
-  // "..._resorted") don't get their own rendered windows; fall back to the
-  // base species' snapshots, which are the same organism and genome.
-  const HAP_VARIANT_SUFFIX = /_(strain_filtered|resorted)$/;
-
-  async function fetchHapSites(name) {
-    const r = await fetch(`${DATA_DIR}/${name}_haplotype_sites.json`);
-    if (!r.ok) return null;
-    const data = await r.json();
-    if (!data || !Array.isArray(data.sites) || !data.sites.length) return null;
-    return data;
-  }
-
   async function loadHapSites(species) {
     try {
-      let data = await fetchHapSites(species);
-      if (!data && HAP_VARIANT_SUFFIX.test(species)) {
-        const base = species.replace(HAP_VARIANT_SUFFIX, '');
-        data = await fetchHapSites(base);
-        if (data) data.fallbackFrom = base;
-      }
-      if (!data) return null;
+      const r = await fetch(`${DATA_DIR}/${species}_haplotype_sites.json`);
+      if (!r.ok) return null;
+      const data = await r.json();
+      if (!data || !Array.isArray(data.sites) || !data.sites.length) return null;
       data.sites.sort((a, b) =>
         (HAP_TYPE_ORDER[a.type] - HAP_TYPE_ORDER[b.type]) || (a.x - b.x));
       return data;
@@ -1368,10 +1352,12 @@
     const sites = state.hapSites.sites;
     const nHard = sites.filter(s => s.type === 'hard').length;
     const nSoft = sites.filter(s => s.type === 'soft').length;
+    const nBase = sites.length - nHard - nSoft;
     hapPanelNoteEl.textContent =
-      `${sites.length} windows: ¼/½/¾ genome` +
-      (nHard ? `, ${nHard} hard-run` : '') + (nSoft ? `, ${nSoft} soft-run` : '') +
-      (state.hapSites.fallbackFrom ? ` — from the ${state.hapSites.pretty} dataset` : '');
+      `${sites.length} windows` +
+      (nBase ? ` · ${nBase} neutral` : '') +
+      (nHard ? ` · ${nHard} hard-sweep run${nHard === 1 ? '' : 's'}` : '') +
+      (nSoft ? ` · ${nSoft} soft-sweep run${nSoft === 1 ? '' : 's'}` : '');
 
     for (const s of sites) {
       const chip = document.createElement('button');
@@ -1407,7 +1393,7 @@
     hapImageLinkEl.href = site.image;
     hapImageEl.alt = `${state.hapSites.pretty} haplotypes at ${loc} (${site.label})`;
     hapCaptionEl.textContent =
-      `${state.hapSites.pretty} — ${site.label}. ${loc}. CNN call here: ${site.call_here}. ` +
+      `${state.hapSites.pretty} — ${site.label}. ${loc}. Pooled call here: ${site.call_here}. ` +
       `${state.hapSites.target_samples} genomes × ${state.hapSites.window_h} sites. ` +
       `Left: allele state. Right: mutation type.`;
     hapFigureEl.hidden = false;
