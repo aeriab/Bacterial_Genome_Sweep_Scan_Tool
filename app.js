@@ -19,6 +19,7 @@
     hardThreshold: 20,
     annotateSoft: false,
     softThreshold: 20,
+    showPeaks: false,
     species: null,
     viewport: null, // {xMin, xMax} in continuous genome coordinate for the current species
     // Drag positions for the two PNG-export overlays, each {fx, fy} as a
@@ -34,6 +35,11 @@
   const runsCache = new Map();      // "species|binSize|label|threshold" -> [{startIdx,endIdx,xStart,xEnd,length}]
 
   let speciesIndex = [];            // [{species, n_windows, n_contigs, x_max}]
+
+  // Parsed data/peaks.json: { species -> [{peak, contigNum, startBp, endBp, kind, text, color}] }.
+  // Curated H12 sweep peaks, built by build_peaks_json.py. Loaded once at boot;
+  // {} if the file is missing.
+  let peaksData = {};
 
   // species -> [{id, contigNum, startBp, endBp, text, color}]
   const geneAnnotations = loadGeneAnnotations();
@@ -59,6 +65,9 @@
   const hardThresholdInput = document.getElementById('hard-threshold');
   const annotateSoftCb = document.getElementById('annotate-soft');
   const softThresholdInput = document.getElementById('soft-threshold');
+  const showPeaksCb = document.getElementById('show-peaks');
+  const peakCountNoteEl = document.getElementById('peak-count-note');
+  const legendPeakEl = document.getElementById('legend-peak');
 
   const resetViewBtn = document.getElementById('reset-view-btn');
   const exportImageBtn = document.getElementById('export-image-btn');
@@ -284,6 +293,22 @@
   async function loadSpeciesIndex() {
     const resp = await fetch(`${DATA_DIR}/species_index.json`);
     speciesIndex = await resp.json();
+  }
+
+  async function loadPeaks() {
+    try {
+      const r = await fetch(`${DATA_DIR}/peaks.json`);
+      if (!r.ok) return {};
+      const data = await r.json();
+      return (data && typeof data === 'object') ? data : {};
+    } catch (e) {
+      console.warn('Could not load curated peaks:', e);
+      return {};
+    }
+  }
+
+  function getPeaksFor(species) {
+    return (species && peaksData[species]) || [];
   }
 
   async function loadSpeciesData(species) {
@@ -526,8 +551,14 @@
       drawRuns(runs, colors.bandSoft, colors.bandSoftEdge, xMin, xMax, xToPx, plotH);
     }
 
-    // --- user gene/region annotations ---
-    const genes = getGeneAnnotationsFor(state.species)
+    // --- curated H12 peak bands + user gene/region annotations ---
+    // Peaks carry the same {contigNum, startBp, endBp, text, color} shape as
+    // user annotations, so both go through geneAnnotationPixels / drawGeneLabel.
+    const bandSpecs = [
+      ...(state.showPeaks ? getPeaksFor(state.species) : []),
+      ...getGeneAnnotationsFor(state.species),
+    ];
+    const genes = bandSpecs
       .map(a => geneAnnotationPixels(a, entry, xToPx, xMin, xMax))
       .filter(Boolean);
     for (const g of genes) {
@@ -698,6 +729,9 @@
     ];
     if (state.annotateHard) items.push({ text: 'Hard-run region', swatchFill: colors.bandHard, swatchStroke: colors.bandHardEdge });
     if (state.annotateSoft) items.push({ text: 'Soft-run region', swatchFill: colors.bandSoft, swatchStroke: colors.bandSoftEdge });
+    if (state.showPeaks && getPeaksFor(state.species).length) {
+      items.push({ text: 'Curated H12 peak', swatchFill: hexToRgba('#c72d2c', 0.16), swatchStroke: hexToRgba('#c72d2c', 0.7) });
+    }
 
     ctx.font = '11px system-ui, sans-serif';
     const padX = 9, padY = 7, lineH = 16, swatchSize = 10, swatchGap = 7;
@@ -939,6 +973,7 @@
       dropdownEl.classList.add('hidden');
       populateGeneContigSelect(entry);
       renderGeneList();
+      setPeakControlsState();
       state.hapSites = await loadHapSites(species);
       state.hapSelected = null;
       renderHapPanel();
@@ -1011,6 +1046,19 @@
     topbarLegendEl.classList.toggle('swap-run-order', state.annotateSoft && !state.annotateHard);
   }
 
+  // Reflects the curated-peak toggle + current species into the sidebar note,
+  // the checkbox enabled state, and the topbar legend chip.
+  function setPeakControlsState() {
+    const n = getPeaksFor(state.species).length;
+    showPeaksCb.disabled = n === 0;
+    if (!n) {
+      peakCountNoteEl.textContent = state.species ? 'No curated peaks for this species.' : '';
+    } else {
+      peakCountNoteEl.textContent = `${n} curated peak${n === 1 ? '' : 's'}`;
+    }
+    if (legendPeakEl) legendPeakEl.classList.toggle('hidden', !(state.showPeaks && n));
+  }
+
   annotateHardCb.addEventListener('change', () => { state.annotateHard = annotateHardCb.checked; setLegendRunVisibility(); scheduleRender(); });
   annotateSoftCb.addEventListener('change', () => { state.annotateSoft = annotateSoftCb.checked; setLegendRunVisibility(); scheduleRender(); });
   hardThresholdInput.addEventListener('change', () => {
@@ -1021,6 +1069,11 @@
   softThresholdInput.addEventListener('change', () => {
     state.softThreshold = Math.max(2, Math.round(+softThresholdInput.value) || 2);
     softThresholdInput.value = state.softThreshold;
+    scheduleRender();
+  });
+  showPeaksCb.addEventListener('change', () => {
+    state.showPeaks = showPeaksCb.checked;
+    setPeakControlsState();
     scheduleRender();
   });
 
@@ -1088,7 +1141,9 @@
   hardThresholdInput.value = state.hardThreshold;
   annotateSoftCb.checked = state.annotateSoft;
   softThresholdInput.value = state.softThreshold;
+  showPeaksCb.checked = state.showPeaks;
   setLegendRunVisibility();
+  setPeakControlsState();
 
   // ---------------------------------------------------------------------
   // Zoom / pan
@@ -1283,6 +1338,13 @@
       `P_Neutral=${entry.pNeutral[best].toFixed(3)}  P_Hard=${entry.pHard[best].toFixed(3)}  P_Soft=${entry.pSoft[best].toFixed(3)}`,
       `pooled (${state.binSize}w): -log10(P_N)=${pooled.y[best].toFixed(2)}, class=${labelName(pooled.colorCode[best])}`,
     ];
+    if (state.showPeaks) {
+      for (const p of getPeaksFor(state.species)) {
+        if (p.contigNum === contig.contig_num && bpLocal >= p.startBp && bpLocal <= p.endBp) {
+          lines.push(`▸ ${p.text} (${formatBp(p.startBp)}–${formatBp(p.endBp)})`);
+        }
+      }
+    }
     for (const line of lines) {
       const div = document.createElement('div');
       div.textContent = line;
@@ -1421,9 +1483,14 @@
   // Boot
   // ---------------------------------------------------------------------
   (async function init() {
-    await loadSpeciesIndex();
+    const [, peaks] = await Promise.all([loadSpeciesIndex(), loadPeaks()]);
+    peaksData = peaks;
     if (!speciesIndex.length) return;
     const params = new URLSearchParams(location.search);
+    if (params.get('peaks') === '1') {
+      state.showPeaks = true;
+      showPeaksCb.checked = true;
+    }
     const want = params.get('species');
     const start = (want && speciesIndex.some(s => s.species === want))
       ? want : speciesIndex[0].species;

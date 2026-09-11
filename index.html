@@ -15,6 +15,7 @@
     <div class="legend-item"><span class="swatch" style="background:#4aa3df"></span> Soft sweep</div>
     <div class="legend-item hidden" id="legend-hard-run"><span class="swatch band hard"></span> Hard-run region</div>
     <div class="legend-item hidden" id="legend-soft-run"><span class="swatch band soft"></span> Soft-run region</div>
+    <div class="legend-item hidden" id="legend-peak"><span class="swatch band peak"></span> Curated H12 peak</div>
   </div>
   <div class="species-picker">
     <input id="species-search" type="text" placeholder="Search species..." autocomplete="off">
@@ -48,6 +49,14 @@
       <div class="sub-control">
         <label for="soft-threshold">≥ <input id="soft-threshold" type="number" min="2" max="500" value="20"> consecutive soft calls in a row</label>
       </div>
+    </section>
+
+    <section class="control-group">
+      <label class="checkbox-row">
+        <input id="show-peaks" type="checkbox">
+        Show curated H12 peaks
+      </label>
+      <div class="sub-control" id="peak-count-note"></div>
     </section>
 
     <section class="control-group gene-annotation-group">

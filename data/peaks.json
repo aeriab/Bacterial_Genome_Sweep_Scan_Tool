@@ -1,0 +1,457 @@
+{
+ "Alistipes_finegoldii_56071": [
+  {
+   "peak": 2,
+   "contigNum": "002",
+   "startBp": 93486,
+   "endBp": 98682,
+   "kind": "soft",
+   "text": "Peak 2 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 3,
+   "contigNum": "005",
+   "startBp": 40443,
+   "endBp": 50303,
+   "kind": "hard",
+   "text": "Peak 3 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 4,
+   "contigNum": "010",
+   "startBp": 35679,
+   "endBp": 42709,
+   "kind": "soft",
+   "text": "Peak 4 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 5,
+   "contigNum": "011",
+   "startBp": 11597,
+   "endBp": 16981,
+   "kind": "hard",
+   "text": "Peak 5 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 6,
+   "contigNum": "011",
+   "startBp": 41110,
+   "endBp": 44863,
+   "kind": "soft",
+   "text": "Peak 6 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 7,
+   "contigNum": "011",
+   "startBp": 105492,
+   "endBp": 111503,
+   "kind": "hard",
+   "text": "Peak 7 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 9,
+   "contigNum": "025",
+   "startBp": 80394,
+   "endBp": 88136,
+   "kind": "soft",
+   "text": "Peak 9 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 10,
+   "contigNum": "032",
+   "startBp": 38573,
+   "endBp": 43266,
+   "kind": "hard",
+   "text": "Peak 10 \u00b7 hard",
+   "color": "#c72d2c"
+  }
+ ],
+ "Alistipes_putredinis_61533": [
+  {
+   "peak": 1,
+   "contigNum": "001",
+   "startBp": 560524,
+   "endBp": 576131,
+   "kind": "soft",
+   "text": "Peak 1 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 2,
+   "contigNum": "001",
+   "startBp": 658735,
+   "endBp": 668011,
+   "kind": "soft",
+   "text": "Peak 2 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 3,
+   "contigNum": "004",
+   "startBp": 16379,
+   "endBp": 26502,
+   "kind": "soft",
+   "text": "Peak 3 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 4,
+   "contigNum": "004",
+   "startBp": 168650,
+   "endBp": 181322,
+   "kind": "hard",
+   "text": "Peak 4 \u00b7 hard",
+   "color": "#c72d2c"
+  }
+ ],
+ "Bacteroides_cellulosilyticus_58046": [
+  {
+   "peak": 2,
+   "contigNum": "003",
+   "startBp": 21632,
+   "endBp": 56068,
+   "kind": "soft",
+   "text": "Peak 2 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 3,
+   "contigNum": "004",
+   "startBp": 573141,
+   "endBp": 593299,
+   "kind": "hard",
+   "text": "Peak 3 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 4,
+   "contigNum": "005",
+   "startBp": 659460,
+   "endBp": 688466,
+   "kind": "soft",
+   "text": "Peak 4 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 5,
+   "contigNum": "005",
+   "startBp": 831092,
+   "endBp": 869810,
+   "kind": "soft",
+   "text": "Peak 5 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 6,
+   "contigNum": "005",
+   "startBp": 1088606,
+   "endBp": 1122667,
+   "kind": "soft",
+   "text": "Peak 6 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 7,
+   "contigNum": "005",
+   "startBp": 1238863,
+   "endBp": 1265068,
+   "kind": "hard",
+   "text": "Peak 7 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 9,
+   "contigNum": "005",
+   "startBp": 1680746,
+   "endBp": 1710255,
+   "kind": "soft",
+   "text": "Peak 9 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 10,
+   "contigNum": "006",
+   "startBp": 391256,
+   "endBp": 415502,
+   "kind": "hard",
+   "text": "Peak 10 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 11,
+   "contigNum": "006",
+   "startBp": 632625,
+   "endBp": 663244,
+   "kind": "soft",
+   "text": "Peak 11 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 12,
+   "contigNum": "006",
+   "startBp": 781618,
+   "endBp": 806623,
+   "kind": "soft",
+   "text": "Peak 12 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 13,
+   "contigNum": "006",
+   "startBp": 1125384,
+   "endBp": 1140347,
+   "kind": "soft",
+   "text": "Peak 13 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 14,
+   "contigNum": "007",
+   "startBp": 561108,
+   "endBp": 585631,
+   "kind": "soft",
+   "text": "Peak 14 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 15,
+   "contigNum": "010",
+   "startBp": 253990,
+   "endBp": 293183,
+   "kind": "soft",
+   "text": "Peak 15 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 16,
+   "contigNum": "010",
+   "startBp": 516205,
+   "endBp": 534980,
+   "kind": "soft",
+   "text": "Peak 16 \u00b7 soft",
+   "color": "#1c5eb0"
+  }
+ ],
+ "Bacteroides_thetaiotaomicron_56941": [
+  {
+   "peak": 1,
+   "contigNum": "001",
+   "startBp": 43623,
+   "endBp": 61648,
+   "kind": "hard",
+   "text": "Peak 1 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 4,
+   "contigNum": "004",
+   "startBp": 473253,
+   "endBp": 487067,
+   "kind": "hard",
+   "text": "Peak 4 \u00b7 hard",
+   "color": "#c72d2c"
+  }
+ ],
+ "Bacteroides_uniformis_57318": [
+  {
+   "peak": 1,
+   "contigNum": "026",
+   "startBp": 1086,
+   "endBp": 15351,
+   "kind": "hard",
+   "text": "Peak 1 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 2,
+   "contigNum": "030",
+   "startBp": 269559,
+   "endBp": 298121,
+   "kind": "soft",
+   "text": "Peak 2 \u00b7 soft",
+   "color": "#1c5eb0"
+  }
+ ],
+ "Bacteroides_vulgatus_57955": [
+  {
+   "peak": 2,
+   "contigNum": "001",
+   "startBp": 2553455,
+   "endBp": 2604819,
+   "kind": "hard",
+   "text": "Peak 2 \u00b7 hard",
+   "color": "#c72d2c"
+  }
+ ],
+ "Parabacteroides_distasonis_56985": [
+  {
+   "peak": 1,
+   "contigNum": "001",
+   "startBp": 83217,
+   "endBp": 121083,
+   "kind": "soft",
+   "text": "Peak 1 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 2,
+   "contigNum": "002",
+   "startBp": 723876,
+   "endBp": 742758,
+   "kind": "soft",
+   "text": "Peak 2 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 5,
+   "contigNum": "002",
+   "startBp": 1227488,
+   "endBp": 1241885,
+   "kind": "soft",
+   "text": "Peak 5 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 6,
+   "contigNum": "002",
+   "startBp": 1512677,
+   "endBp": 1526842,
+   "kind": "hard",
+   "text": "Peak 6 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 7,
+   "contigNum": "002",
+   "startBp": 1601086,
+   "endBp": 1617407,
+   "kind": "soft",
+   "text": "Peak 7 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 8,
+   "contigNum": "003",
+   "startBp": 37437,
+   "endBp": 51057,
+   "kind": "soft",
+   "text": "Peak 8 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 9,
+   "contigNum": "003",
+   "startBp": 310074,
+   "endBp": 328703,
+   "kind": "soft",
+   "text": "Peak 9 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 10,
+   "contigNum": "004",
+   "startBp": 261861,
+   "endBp": 274984,
+   "kind": "hard",
+   "text": "Peak 10 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 11,
+   "contigNum": "004",
+   "startBp": 298078,
+   "endBp": 317865,
+   "kind": "soft",
+   "text": "Peak 11 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 12,
+   "contigNum": "004",
+   "startBp": 355053,
+   "endBp": 371497,
+   "kind": "soft",
+   "text": "Peak 12 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 13,
+   "contigNum": "005",
+   "startBp": 119030,
+   "endBp": 136232,
+   "kind": "soft",
+   "text": "Peak 13 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 14,
+   "contigNum": "007",
+   "startBp": 11135,
+   "endBp": 37260,
+   "kind": "hard",
+   "text": "Peak 14 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 15,
+   "contigNum": "008",
+   "startBp": 152803,
+   "endBp": 167235,
+   "kind": "soft",
+   "text": "Peak 15 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 16,
+   "contigNum": "008",
+   "startBp": 233756,
+   "endBp": 247482,
+   "kind": "hard",
+   "text": "Peak 16 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 17,
+   "contigNum": "009",
+   "startBp": 137523,
+   "endBp": 155399,
+   "kind": "soft",
+   "text": "Peak 17 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 18,
+   "contigNum": "010",
+   "startBp": 2517,
+   "endBp": 26520,
+   "kind": "soft",
+   "text": "Peak 18 \u00b7 soft",
+   "color": "#1c5eb0"
+  },
+  {
+   "peak": 19,
+   "contigNum": "011",
+   "startBp": 33755,
+   "endBp": 55303,
+   "kind": "hard",
+   "text": "Peak 19 \u00b7 hard",
+   "color": "#c72d2c"
+  },
+  {
+   "peak": 20,
+   "contigNum": "012",
+   "startBp": 80790,
+   "endBp": 96546,
+   "kind": "soft",
+   "text": "Peak 20 \u00b7 soft",
+   "color": "#1c5eb0"
+  }
+ ]
+}
