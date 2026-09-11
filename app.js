@@ -9,10 +9,12 @@
   const DATA_DIR = 'data';
   const LABEL_NEUTRAL = 0, LABEL_HARD = 1, LABEL_SOFT = 2;
   const GENE_ANNOTATIONS_KEY = 'genomeScanBrowser.geneAnnotations.v1';
-  // Band color for curated H12 peaks — kept distinct from the CNN hard/soft
-  // red/blue. Also written into data/peaks.json by build_peaks_json.py; forced
-  // here too so the rendered band never depends on a stale JSON.
-  const PEAK_COLOR = '#e8710a';
+  // Band colors for curated H12 peaks, by sweep type — deliberately neon and
+  // well clear of the CNN hard/soft red/blue. Also written into data/peaks.json
+  // by build_peaks_json.py; forced here too so a stale JSON can't override them.
+  const PEAK_COLOR_HARD = '#ff6a00';   // neon orange
+  const PEAK_COLOR_SOFT = '#b026ff';   // neon purple
+  const peakColor = (kind) => (kind === 'soft' ? PEAK_COLOR_SOFT : PEAK_COLOR_HARD);
 
   // ---------------------------------------------------------------------
   // Persistent UI state (survives species switches; only viewport resets).
@@ -71,7 +73,8 @@
   const softThresholdInput = document.getElementById('soft-threshold');
   const showPeaksCb = document.getElementById('show-peaks');
   const peakCountNoteEl = document.getElementById('peak-count-note');
-  const legendPeakEl = document.getElementById('legend-peak');
+  const legendPeakHardEl = document.getElementById('legend-peak-hard');
+  const legendPeakSoftEl = document.getElementById('legend-peak-soft');
 
   const resetViewBtn = document.getElementById('reset-view-btn');
   const exportImageBtn = document.getElementById('export-image-btn');
@@ -559,7 +562,7 @@
     // Peaks carry the same {contigNum, startBp, endBp, text, color} shape as
     // user annotations, so both go through geneAnnotationPixels / drawGeneLabel.
     const bandSpecs = [
-      ...(state.showPeaks ? getPeaksFor(state.species).map(p => ({ ...p, color: PEAK_COLOR })) : []),
+      ...(state.showPeaks ? getPeaksFor(state.species).map(p => ({ ...p, color: peakColor(p.kind) })) : []),
       ...getGeneAnnotationsFor(state.species),
     ];
     const genes = bandSpecs
@@ -733,8 +736,14 @@
     ];
     if (state.annotateHard) items.push({ text: 'Hard-run region', swatchFill: colors.bandHard, swatchStroke: colors.bandHardEdge });
     if (state.annotateSoft) items.push({ text: 'Soft-run region', swatchFill: colors.bandSoft, swatchStroke: colors.bandSoftEdge });
-    if (state.showPeaks && getPeaksFor(state.species).length) {
-      items.push({ text: 'Curated H12 peak', swatchFill: hexToRgba(PEAK_COLOR, 0.16), swatchStroke: hexToRgba(PEAK_COLOR, 0.7) });
+    if (state.showPeaks) {
+      const peaks = getPeaksFor(state.species);
+      if (peaks.some(p => p.kind === 'hard')) {
+        items.push({ text: 'H12 peak (hard)', swatchFill: hexToRgba(PEAK_COLOR_HARD, 0.16), swatchStroke: hexToRgba(PEAK_COLOR_HARD, 0.7) });
+      }
+      if (peaks.some(p => p.kind === 'soft')) {
+        items.push({ text: 'H12 peak (soft)', swatchFill: hexToRgba(PEAK_COLOR_SOFT, 0.16), swatchStroke: hexToRgba(PEAK_COLOR_SOFT, 0.7) });
+      }
     }
 
     ctx.font = '11px system-ui, sans-serif';
@@ -1053,14 +1062,17 @@
   // Reflects the curated-peak toggle + current species into the sidebar note,
   // the checkbox enabled state, and the topbar legend chip.
   function setPeakControlsState() {
-    const n = getPeaksFor(state.species).length;
+    const peaks = getPeaksFor(state.species);
+    const n = peaks.length;
     showPeaksCb.disabled = n === 0;
     if (!n) {
       peakCountNoteEl.textContent = state.species ? 'No curated peaks for this species.' : '';
     } else {
       peakCountNoteEl.textContent = `${n} curated peak${n === 1 ? '' : 's'}`;
     }
-    if (legendPeakEl) legendPeakEl.classList.toggle('hidden', !(state.showPeaks && n));
+    const on = state.showPeaks && n > 0;
+    if (legendPeakHardEl) legendPeakHardEl.classList.toggle('hidden', !(on && peaks.some(p => p.kind === 'hard')));
+    if (legendPeakSoftEl) legendPeakSoftEl.classList.toggle('hidden', !(on && peaks.some(p => p.kind === 'soft')));
   }
 
   annotateHardCb.addEventListener('change', () => { state.annotateHard = annotateHardCb.checked; setLegendRunVisibility(); scheduleRender(); });

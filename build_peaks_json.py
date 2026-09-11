@@ -29,10 +29,10 @@ DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 SRC_TSV = os.path.join(DATA_DIR, "H12_Peaks", "cropped_s4.tsv")
 OUT_JSON = os.path.join(DATA_DIR, "peaks.json")
 
-# One distinct band color for every curated peak. Deliberately NOT the red/blue
-# of the CNN hard/soft dots -- an amber that stays legible over both -- since the
-# hard/soft split is already carried in each peak's label and tooltip.
-PEAK_COLOR = "#e8710a"
+# Band colors by sweep type -- neon, and deliberately NOT the red/blue of the
+# CNN hard/soft dots so the two layers stay easy to tell apart.
+COLOR_HARD = "#ff6a00"   # neon orange
+COLOR_SOFT = "#b026ff"   # neon purple
 
 _manifest_cache = {}
 
@@ -112,7 +112,7 @@ def main():
                 "endBp": end_bp,
                 "kind": kind,
                 "text": f"Peak {peak_no} · {kind}",
-                "color": PEAK_COLOR,
+                "color": COLOR_HARD if is_hard else COLOR_SOFT,
             })
 
     out = {}
