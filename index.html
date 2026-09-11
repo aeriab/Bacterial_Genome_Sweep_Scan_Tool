@@ -13,8 +13,8 @@
     <div class="legend-item"><span class="swatch" style="background:#8f979e"></span> Neutral</div>
     <div class="legend-item"><span class="swatch" style="background:#e2445c"></span> Hard sweep</div>
     <div class="legend-item"><span class="swatch" style="background:#4aa3df"></span> Soft sweep</div>
-    <div class="legend-item hidden" id="legend-hard-run"><span class="swatch band hard"></span> Hard-run region</div>
-    <div class="legend-item hidden" id="legend-soft-run"><span class="swatch band soft"></span> Soft-run region</div>
+    <div class="legend-item hidden" id="legend-hard-run"><span class="swatch band hard"></span> Hard-sweep region</div>
+    <div class="legend-item hidden" id="legend-soft-run"><span class="swatch band soft"></span> Soft-sweep region</div>
     <div class="legend-item hidden" id="legend-peak-hard"><span class="swatch band peak-hard"></span> H12 peak (hard)</div>
     <div class="legend-item hidden" id="legend-peak-soft"><span class="swatch band peak-soft"></span> H12 peak (soft)</div>
   </div>
@@ -34,22 +34,13 @@
 
     <section class="control-group">
       <label class="checkbox-row">
-        <input id="annotate-hard" type="checkbox">
-        Highlight hard-sweep regions
+        <input id="annotate-sweeps" type="checkbox">
+        Highlight sweep regions
       </label>
       <div class="sub-control">
-        <label for="hard-threshold">≥ <input id="hard-threshold" type="number" min="2" max="500" value="20"> consecutive hard calls in a row</label>
+        <label for="sweep-threshold">≥ <input id="sweep-threshold" type="number" min="2" max="500" value="20"> consecutive sweep calls in a row</label>
       </div>
-    </section>
-
-    <section class="control-group">
-      <label class="checkbox-row">
-        <input id="annotate-soft" type="checkbox">
-        Highlight soft-sweep regions
-      </label>
-      <div class="sub-control">
-        <label for="soft-threshold">≥ <input id="soft-threshold" type="number" min="2" max="500" value="20"> consecutive soft calls in a row</label>
-      </div>
+      <div class="sub-control">Each region is called hard or soft by the majority call in its middle 50%.</div>
     </section>
 
     <section class="control-group">

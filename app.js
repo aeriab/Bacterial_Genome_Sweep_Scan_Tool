@@ -21,10 +21,8 @@
   // ---------------------------------------------------------------------
   const state = {
     binSize: 30,
-    annotateHard: false,
-    hardThreshold: 20,
-    annotateSoft: false,
-    softThreshold: 20,
+    annotateSweeps: false,
+    sweepThreshold: 20,
     showPeaks: false,
     species: null,
     viewport: null, // {xMin, xMax} in continuous genome coordinate for the current species
@@ -38,7 +36,7 @@
 
   const speciesCache = new Map();   // species -> {manifest, position(Float64Array), pNeutral, pHard, pSoft, label(Uint8Array)}
   const pooledCache = new Map();    // "species|binSize" -> {y(Float32Array), colorCode(Uint8Array), yMax}
-  const runsCache = new Map();      // "species|binSize|label|threshold" -> [{startIdx,endIdx,xStart,xEnd,length}]
+  const runsCache = new Map();      // "species|binSize|threshold" -> [{startIdx,endIdx,xStart,xEnd,length,kind}]
 
   let speciesIndex = [];            // [{species, n_windows, n_contigs, x_max}]
 
@@ -67,10 +65,8 @@
   const poolValueLabel = document.getElementById('pool-value');
   const poolPluralLabel = document.getElementById('pool-plural');
 
-  const annotateHardCb = document.getElementById('annotate-hard');
-  const hardThresholdInput = document.getElementById('hard-threshold');
-  const annotateSoftCb = document.getElementById('annotate-soft');
-  const softThresholdInput = document.getElementById('soft-threshold');
+  const annotateSweepsCb = document.getElementById('annotate-sweeps');
+  const sweepThresholdInput = document.getElementById('sweep-threshold');
   const showPeaksCb = document.getElementById('show-peaks');
   const peakCountNoteEl = document.getElementById('peak-count-note');
   const legendPeakHardEl = document.getElementById('legend-peak-hard');
@@ -409,39 +405,53 @@
     return result;
   }
 
-  // Runs are defined over the same pooled colorCode that determines each
-  // dot's on-screen color (getPooled), not the raw per-window CNN label —
-  // otherwise the highlighted bands wouldn't correspond to what's actually
-  // plotted (raw single-window calls are noisy and don't line up with the
-  // smoothed/pooled signal a user reads as "a run of hard/soft dots").
-  function getRuns(species, targetLabel, threshold) {
-    const key = `${species}|${state.binSize}|${targetLabel}|${threshold}`;
+  // A "sweep region" is one maximal run of >= `threshold` consecutive pooled
+  // windows whose call is non-neutral (hard OR soft), then classified as hard
+  // or soft by the majority call among the middle 50% of the run (first and
+  // last quarter of the run dropped). Ties -> hard. Runs are defined over the
+  // pooled colorCode that also colors each dot (getPooled), not the raw noisy
+  // per-window CNN label, so the bands line up with the plotted signal.
+  function classifyRun(pooled, start, endExclusive) {
+    const runLen = endExclusive - start;
+    const q = Math.floor(runLen / 4);           // drop first/last quarter
+    let hard = 0, soft = 0;
+    for (let i = start + q; i < endExclusive - q; i++) {
+      if (pooled.colorCode[i] === LABEL_HARD) hard++;
+      else if (pooled.colorCode[i] === LABEL_SOFT) soft++;
+    }
+    return hard >= soft ? 'hard' : 'soft';
+  }
+
+  function getSweepRuns(species, threshold) {
+    const key = `${species}|${state.binSize}|${threshold}`;
     if (runsCache.has(key)) return runsCache.get(key);
 
     const entry = speciesCache.get(species);
     const pooled = getPooled(species);
     const runs = [];
+    const pushRun = (start, endExclusive) => {
+      const runLen = endExclusive - start;
+      if (runLen < threshold) return;
+      runs.push({
+        startIdx: start,
+        endIdx: endExclusive - 1,
+        xStart: entry.position[start],
+        xEnd: entry.position[endExclusive - 1],
+        length: runLen,
+        kind: classifyRun(pooled, start, endExclusive),
+      });
+    };
     for (const c of entry.manifest.contigs) {
       let runStart = -1;
       for (let i = c.start_index; i < c.end_index; i++) {
-        if (pooled.colorCode[i] === targetLabel) {
+        if (pooled.colorCode[i] !== LABEL_NEUTRAL) {
           if (runStart === -1) runStart = i;
-        } else {
-          if (runStart !== -1) {
-            const runLen = i - runStart;
-            if (runLen >= threshold) {
-              runs.push({ startIdx: runStart, endIdx: i - 1, xStart: entry.position[runStart], xEnd: entry.position[i - 1], length: runLen });
-            }
-            runStart = -1;
-          }
+        } else if (runStart !== -1) {
+          pushRun(runStart, i);
+          runStart = -1;
         }
       }
-      if (runStart !== -1) {
-        const runLen = c.end_index - runStart;
-        if (runLen >= threshold) {
-          runs.push({ startIdx: runStart, endIdx: c.end_index - 1, xStart: entry.position[runStart], xEnd: entry.position[c.end_index - 1], length: runLen });
-        }
-      }
+      if (runStart !== -1) pushRun(runStart, c.end_index);
     }
     runsCache.set(key, runs);
     return runs;
@@ -549,13 +559,10 @@
     });
 
     // --- annotation bands ---
-    if (state.annotateHard) {
-      const runs = getRuns(state.species, LABEL_HARD, state.hardThreshold);
-      drawRuns(runs, colors.bandHard, colors.bandHardEdge, xMin, xMax, xToPx, plotH);
-    }
-    if (state.annotateSoft) {
-      const runs = getRuns(state.species, LABEL_SOFT, state.softThreshold);
-      drawRuns(runs, colors.bandSoft, colors.bandSoftEdge, xMin, xMax, xToPx, plotH);
+    if (state.annotateSweeps) {
+      const runs = getSweepRuns(state.species, state.sweepThreshold);
+      drawRuns(runs.filter(r => r.kind === 'hard'), colors.bandHard, colors.bandHardEdge, xMin, xMax, xToPx, plotH);
+      drawRuns(runs.filter(r => r.kind === 'soft'), colors.bandSoft, colors.bandSoftEdge, xMin, xMax, xToPx, plotH);
     }
 
     // --- curated H12 peak bands + user gene/region annotations ---
@@ -700,8 +707,7 @@
   // the flat PNG and can't tell the checkbox was off).
   function measureExportCaptionBox() {
     const lines = [`Pooled: ${state.binSize} window${state.binSize === 1 ? '' : 's'}`];
-    if (state.annotateHard) lines.push(`Hard-sweep region: ≥ ${state.hardThreshold} consecutive hard calls`);
-    if (state.annotateSoft) lines.push(`Soft-sweep region: ≥ ${state.softThreshold} consecutive soft calls`);
+    if (state.annotateSweeps) lines.push(`Sweep region: ≥ ${state.sweepThreshold} consecutive sweep calls (hard/soft by majority of middle 50%)`);
 
     ctx.font = '11px system-ui, sans-serif';
     const padX = 9, padY = 7, lineH = 15;
@@ -734,8 +740,11 @@
       { text: 'Hard sweep', swatchFill: colors.hard },
       { text: 'Soft sweep', swatchFill: colors.soft },
     ];
-    if (state.annotateHard) items.push({ text: 'Hard-run region', swatchFill: colors.bandHard, swatchStroke: colors.bandHardEdge });
-    if (state.annotateSoft) items.push({ text: 'Soft-run region', swatchFill: colors.bandSoft, swatchStroke: colors.bandSoftEdge });
+    if (state.annotateSweeps && state.species && speciesCache.has(state.species)) {
+      const runs = getSweepRuns(state.species, state.sweepThreshold);
+      if (runs.some(r => r.kind === 'hard')) items.push({ text: 'Hard-sweep region', swatchFill: colors.bandHard, swatchStroke: colors.bandHardEdge });
+      if (runs.some(r => r.kind === 'soft')) items.push({ text: 'Soft-sweep region', swatchFill: colors.bandSoft, swatchStroke: colors.bandSoftEdge });
+    }
     if (state.showPeaks) {
       const peaks = getPeaksFor(state.species);
       if (peaks.some(p => p.kind === 'hard')) {
@@ -987,6 +996,7 @@
       populateGeneContigSelect(entry);
       renderGeneList();
       setPeakControlsState();
+      setLegendRunVisibility();
       state.hapSites = await loadHapSites(species);
       state.hapSelected = null;
       renderHapPanel();
@@ -1044,19 +1054,28 @@
     poolNumber.value = v;
     poolValueLabel.textContent = v;
     poolPluralLabel.textContent = v === 1 ? '' : 's';
+    setLegendRunVisibility();   // pooling changes which runs (and their hard/soft split) exist
     scheduleRender();
   }
   poolSlider.addEventListener('input', () => setBinSize(+poolSlider.value));
   poolNumber.addEventListener('change', () => setBinSize(+poolNumber.value));
 
+  // The topbar's hard/soft-sweep-region chips show only for the classes that
+  // are actually on the plot right now: sweep highlighting on, and at least
+  // one run classified that way for this species at this pooling.
   function setLegendRunVisibility() {
-    legendHardRunEl.classList.toggle('hidden', !state.annotateHard);
-    legendSoftRunEl.classList.toggle('hidden', !state.annotateSoft);
-    // Only-soft-on is the one case with an awkward gap (the reserved-but-
-    // hidden hard-run slot would sit between "Soft sweep" and "Soft-run
-    // region"), so swap the pair's order then; any time hard-run is on,
-    // switch back to the normal Hard-run-then-Soft-run order.
-    topbarLegendEl.classList.toggle('swap-run-order', state.annotateSoft && !state.annotateHard);
+    let hasHard = false, hasSoft = false;
+    if (state.annotateSweeps && state.species && speciesCache.has(state.species)) {
+      const runs = getSweepRuns(state.species, state.sweepThreshold);
+      hasHard = runs.some(r => r.kind === 'hard');
+      hasSoft = runs.some(r => r.kind === 'soft');
+    }
+    legendHardRunEl.classList.toggle('hidden', !hasHard);
+    legendSoftRunEl.classList.toggle('hidden', !hasSoft);
+    // Only-soft-shown is the one case with an awkward gap (the hidden hard-run
+    // slot would sit between "Soft sweep" and "Soft-sweep region"), so swap the
+    // pair's order then.
+    topbarLegendEl.classList.toggle('swap-run-order', hasSoft && !hasHard);
   }
 
   // Reflects the curated-peak toggle + current species into the sidebar note,
@@ -1075,16 +1094,11 @@
     if (legendPeakSoftEl) legendPeakSoftEl.classList.toggle('hidden', !(on && peaks.some(p => p.kind === 'soft')));
   }
 
-  annotateHardCb.addEventListener('change', () => { state.annotateHard = annotateHardCb.checked; setLegendRunVisibility(); scheduleRender(); });
-  annotateSoftCb.addEventListener('change', () => { state.annotateSoft = annotateSoftCb.checked; setLegendRunVisibility(); scheduleRender(); });
-  hardThresholdInput.addEventListener('change', () => {
-    state.hardThreshold = Math.max(2, Math.round(+hardThresholdInput.value) || 2);
-    hardThresholdInput.value = state.hardThreshold;
-    scheduleRender();
-  });
-  softThresholdInput.addEventListener('change', () => {
-    state.softThreshold = Math.max(2, Math.round(+softThresholdInput.value) || 2);
-    softThresholdInput.value = state.softThreshold;
+  annotateSweepsCb.addEventListener('change', () => { state.annotateSweeps = annotateSweepsCb.checked; setLegendRunVisibility(); scheduleRender(); });
+  sweepThresholdInput.addEventListener('change', () => {
+    state.sweepThreshold = Math.max(2, Math.round(+sweepThresholdInput.value) || 2);
+    sweepThresholdInput.value = state.sweepThreshold;
+    setLegendRunVisibility();
     scheduleRender();
   });
   showPeaksCb.addEventListener('change', () => {
@@ -1153,10 +1167,8 @@
 
   // Initialize control DOM from state defaults.
   setBinSize(state.binSize);
-  annotateHardCb.checked = state.annotateHard;
-  hardThresholdInput.value = state.hardThreshold;
-  annotateSoftCb.checked = state.annotateSoft;
-  softThresholdInput.value = state.softThreshold;
+  annotateSweepsCb.checked = state.annotateSweeps;
+  sweepThresholdInput.value = state.sweepThreshold;
   showPeaksCb.checked = state.showPeaks;
   setLegendRunVisibility();
   setPeakControlsState();
@@ -1354,6 +1366,11 @@
       `P_Neutral=${entry.pNeutral[best].toFixed(3)}  P_Hard=${entry.pHard[best].toFixed(3)}  P_Soft=${entry.pSoft[best].toFixed(3)}`,
       `pooled (${state.binSize}w): -log10(P_N)=${pooled.y[best].toFixed(2)}, class=${labelName(pooled.colorCode[best])}`,
     ];
+    if (state.annotateSweeps) {
+      const run = getSweepRuns(state.species, state.sweepThreshold)
+        .find(r => best >= r.startIdx && best <= r.endIdx);
+      if (run) lines.push(`▸ ${run.kind === 'hard' ? 'Hard' : 'Soft'}-sweep region (${run.length} windows)`);
+    }
     if (state.showPeaks) {
       for (const p of getPeaksFor(state.species)) {
         if (p.contigNum === contig.contig_num && bpLocal >= p.startBp && bpLocal <= p.endBp) {
