@@ -422,7 +422,7 @@ button#export-image-btn:hover { background: var(--gridline); }
 }
 .swatch.band.hard { background: var(--band-hard); border: 1.5px solid var(--band-hard-edge); }
 .swatch.band.soft { background: var(--band-soft); border: 1.5px solid var(--band-soft-edge); }
-.swatch.band.peak { background: rgba(199, 45, 44, 0.16); border: 1.5px solid rgba(199, 45, 44, 0.70); }
+.swatch.band.peak { background: rgba(232, 113, 10, 0.16); border: 1.5px solid rgba(232, 113, 10, 0.70); }
 
 .plot-area {
   flex: 1;

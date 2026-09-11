@@ -29,9 +29,10 @@ DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 SRC_TSV = os.path.join(DATA_DIR, "H12_Peaks", "cropped_s4.tsv")
 OUT_JSON = os.path.join(DATA_DIR, "peaks.json")
 
-# Match the web tool's --series-hard / --series-soft (style.css, light theme).
-COLOR_HARD = "#c72d2c"
-COLOR_SOFT = "#1c5eb0"
+# One distinct band color for every curated peak. Deliberately NOT the red/blue
+# of the CNN hard/soft dots -- an amber that stays legible over both -- since the
+# hard/soft split is already carried in each peak's label and tooltip.
+PEAK_COLOR = "#e8710a"
 
 _manifest_cache = {}
 
@@ -111,7 +112,7 @@ def main():
                 "endBp": end_bp,
                 "kind": kind,
                 "text": f"Peak {peak_no} · {kind}",
-                "color": COLOR_HARD if is_hard else COLOR_SOFT,
+                "color": PEAK_COLOR,
             })
 
     out = {}

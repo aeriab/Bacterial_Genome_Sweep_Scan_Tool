@@ -9,6 +9,10 @@
   const DATA_DIR = 'data';
   const LABEL_NEUTRAL = 0, LABEL_HARD = 1, LABEL_SOFT = 2;
   const GENE_ANNOTATIONS_KEY = 'genomeScanBrowser.geneAnnotations.v1';
+  // Band color for curated H12 peaks — kept distinct from the CNN hard/soft
+  // red/blue. Also written into data/peaks.json by build_peaks_json.py; forced
+  // here too so the rendered band never depends on a stale JSON.
+  const PEAK_COLOR = '#e8710a';
 
   // ---------------------------------------------------------------------
   // Persistent UI state (survives species switches; only viewport resets).
@@ -555,7 +559,7 @@
     // Peaks carry the same {contigNum, startBp, endBp, text, color} shape as
     // user annotations, so both go through geneAnnotationPixels / drawGeneLabel.
     const bandSpecs = [
-      ...(state.showPeaks ? getPeaksFor(state.species) : []),
+      ...(state.showPeaks ? getPeaksFor(state.species).map(p => ({ ...p, color: PEAK_COLOR })) : []),
       ...getGeneAnnotationsFor(state.species),
     ];
     const genes = bandSpecs
@@ -730,7 +734,7 @@
     if (state.annotateHard) items.push({ text: 'Hard-run region', swatchFill: colors.bandHard, swatchStroke: colors.bandHardEdge });
     if (state.annotateSoft) items.push({ text: 'Soft-run region', swatchFill: colors.bandSoft, swatchStroke: colors.bandSoftEdge });
     if (state.showPeaks && getPeaksFor(state.species).length) {
-      items.push({ text: 'Curated H12 peak', swatchFill: hexToRgba('#c72d2c', 0.16), swatchStroke: hexToRgba('#c72d2c', 0.7) });
+      items.push({ text: 'Curated H12 peak', swatchFill: hexToRgba(PEAK_COLOR, 0.16), swatchStroke: hexToRgba(PEAK_COLOR, 0.7) });
     }
 
     ctx.font = '11px system-ui, sans-serif';
