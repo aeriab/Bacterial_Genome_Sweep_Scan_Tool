@@ -6,4 +6,4 @@ Access the tool here: https://aeriab.github.io/Bacterial_Genome_Sweep_Scan_Tool
 
 
 This work is a continuation on this paper where we develop a new machine learning model which is able to classify selective sweeps in ancient human DNA: 
-[https://www.pnas.org/doi/10.1073/pnas.2528672123](url)
+https://www.pnas.org/doi/10.1073/pnas.2528672123
