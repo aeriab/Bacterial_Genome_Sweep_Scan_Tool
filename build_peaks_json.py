@@ -27,6 +27,9 @@ from collections import defaultdict
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 SRC_TSV = os.path.join(DATA_DIR, "H12_Peaks", "cropped_s4.tsv")
+# Same columns plus an optional `label` (the band's text). Drosophila: the three strongest DGRP H12 peaks
+# (Garud et al. 2015 PLoS Genet, all soft), gene spans in Release 5 / dm3 bp like the scan.
+EXTRA_TSVS = [os.path.join(DATA_DIR, "H12_Peaks", "drosophila_known_sweeps.tsv")]
 OUT_JSON = os.path.join(DATA_DIR, "peaks.json")
 
 # Band colors by sweep type -- neon, and deliberately NOT the red/blue of the
@@ -67,53 +70,55 @@ def main():
     problems = []
     n_rows = 0
 
-    with open(SRC_TSV, newline="") as f:
-        reader = csv.DictReader(f, delimiter="\t")
-        for row in reader:
-            species = row["species"].strip()
-            if not species:
-                continue
-            n_rows += 1
+    rows = []
+    for path in [SRC_TSV] + [p for p in EXTRA_TSVS if os.path.isfile(p)]:
+        with open(path, newline="") as f:
+            rows.extend(csv.DictReader(f, delimiter="\t"))
+    for row in rows:
+        species = row["species"].strip()
+        if not species:
+            continue
+        n_rows += 1
 
-            peak_no = int(float(row["peak"]))
-            label_num = int(float(row["contig_num_LABEL_in_webtool"]))
-            contig_num = f"{label_num:03d}"
-            start_bp = int(float(row["left_coord"]))
-            end_bp = int(float(row["right_coord"]))
-            is_hard = parse_bool(row["is_hard"])
-            kind = "hard" if is_hard else "soft"
+        peak_no = int(float(row["peak"]))
+        label_num = int(float(row["contig_num_LABEL_in_webtool"]))
+        contig_num = f"{label_num:03d}"
+        start_bp = int(float(row["left_coord"]))
+        end_bp = int(float(row["right_coord"]))
+        is_hard = parse_bool(row["is_hard"])
+        kind = "hard" if is_hard else "soft"
 
-            where = f"{species} peak {peak_no} (contig {contig_num}, acc {row['accession']})"
+        where = f"{species} peak {peak_no} (contig {contig_num}, acc {row['accession']})"
 
-            lengths = load_manifest(species)
-            if lengths is None:
-                problems.append(f"{where}: no manifest data/{species}_manifest.json")
-                continue
-            if contig_num not in lengths:
-                problems.append(
-                    f"{where}: contig {contig_num} not in manifest "
-                    f"(has {', '.join(sorted(lengths))})"
-                )
-                continue
-            if not (0 <= start_bp < end_bp):
-                problems.append(f"{where}: bad coords {start_bp}-{end_bp}")
-                continue
-            if end_bp > lengths[contig_num]:
-                problems.append(
-                    f"{where}: region {start_bp}-{end_bp} overruns contig "
-                    f"{contig_num} length {lengths[contig_num]}"
-                )
-                continue
+        lengths = load_manifest(species)
+        if lengths is None:
+            problems.append(f"{where}: no manifest data/{species}_manifest.json")
+            continue
+        if contig_num not in lengths:
+            problems.append(
+                f"{where}: contig {contig_num} not in manifest "
+                f"(has {', '.join(sorted(lengths))})"
+            )
+            continue
+        if not (0 <= start_bp < end_bp):
+            problems.append(f"{where}: bad coords {start_bp}-{end_bp}")
+            continue
+        if end_bp > lengths[contig_num]:
+            problems.append(
+                f"{where}: region {start_bp}-{end_bp} overruns contig "
+                f"{contig_num} length {lengths[contig_num]}"
+            )
+            continue
 
-            peaks_by_species[species].append({
-                "peak": peak_no,
-                "contigNum": contig_num,
-                "startBp": start_bp,
-                "endBp": end_bp,
-                "kind": kind,
-                "text": f"Peak {peak_no} · {kind}",
-                "color": COLOR_HARD if is_hard else COLOR_SOFT,
-            })
+        peaks_by_species[species].append({
+            "peak": peak_no,
+            "contigNum": contig_num,
+            "startBp": start_bp,
+            "endBp": end_bp,
+            "kind": kind,
+            "text": (row.get("label") or "").strip() or f"Peak {peak_no} · {kind}",
+            "color": COLOR_HARD if is_hard else COLOR_SOFT,
+        })
 
     out = {}
     for species in sorted(peaks_by_species):

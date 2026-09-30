@@ -73,6 +73,14 @@ def export_species(species_dir, out_dir):
         print(f"  SKIP {species}: no prediction files found")
         return None
 
+    # Optional contig_labels.tsv (columns contig_num, label): display names such as "Chr2L" for the
+    # Drosophila chromosome arms; the web app falls back to "contig NNN" without it.
+    labels_path = os.path.join(species_dir, "contig_labels.tsv")
+    contig_labels = {}
+    if os.path.isfile(labels_path):
+        ldf = pd.read_csv(labels_path, sep="\t", dtype={"contig_num": str})
+        contig_labels = {f"{int(k):03d}": v for k, v in zip(ldf["contig_num"], ldf["label"])}
+
     positions = []
     p_neutral = []
     p_hard = []
@@ -132,6 +140,8 @@ def export_species(species_dir, out_dir):
             "x_start": x_start,
             "x_end": x_end,
         })
+        if f"{num:03d}" in contig_labels:
+            contig_meta[-1]["label"] = str(contig_labels[f"{num:03d}"])
 
         current_x_offset = x_end + 1.0
 

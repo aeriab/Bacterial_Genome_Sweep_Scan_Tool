@@ -104,6 +104,14 @@
   // ---------------------------------------------------------------------
   // Formatting helpers
   // ---------------------------------------------------------------------
+  // Contig display name: the manifest's optional per-contig `label` (e.g. "Chr2L" for
+  // Drosophila chromosome arms), else "contig NNN" as for the bacterial assemblies.
+  function contigTitle(contigNum, species) {
+    const entry = speciesCache.get(species || state.species);
+    const c = entry && entry.manifest.contigs.find(x => x.contig_num === contigNum);
+    return c && c.label ? c.label : `contig ${contigNum}`;
+  }
+
   function prettySpeciesName(key) {
     // "Bacteroides_ovatus_58035" -> "Bacteroides ovatus (58035)"
     const m = key.match(/^(.*)_(\d+)$/);
@@ -193,7 +201,7 @@
     for (const c of entry.manifest.contigs) {
       const opt = document.createElement('option');
       opt.value = c.contig_num;
-      opt.textContent = `contig ${c.contig_num} (${formatBp(c.x_end - c.x_start)})`;
+      opt.textContent = `${c.label || `contig ${c.contig_num}`} (${formatBp(c.x_end - c.x_start)})`;
       geneContigSelect.appendChild(opt);
     }
   }
@@ -209,7 +217,7 @@
       sw.style.background = a.color;
       const label = document.createElement('span');
       label.className = 'gene-label';
-      label.textContent = `${a.text} — contig ${a.contigNum}: ${formatBpExact(a.startBp)}–${formatBpExact(a.endBp)}`;
+      label.textContent = `${a.text} — ${contigTitle(a.contigNum)}: ${formatBpExact(a.startBp)}–${formatBpExact(a.endBp)}`;
       label.title = label.textContent;
       const delBtn = document.createElement('button');
       delBtn.textContent = '×';
@@ -252,7 +260,7 @@
     const contig = entry.manifest.contigs.find(c => c.contig_num === contigNum);
     const contigLen = contig ? contig.x_end - contig.x_start : Infinity;
     if (contig && endBp > contigLen) {
-      showGeneError(`End bp exceeds contig ${contigNum}'s length (~${Math.round(contigLen).toLocaleString()} bp).`);
+      showGeneError(`End bp exceeds ${contigTitle(contigNum)}'s length (~${Math.round(contigLen).toLocaleString()} bp).`);
       return;
     }
 
@@ -920,7 +928,7 @@
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = colors.textSecondary;
-        const label = segW > 90 ? `contig ${c.contig_num}` : c.contig_num;
+        const label = c.label ? c.label : (segW > 90 ? `contig ${c.contig_num}` : c.contig_num);
         ctx.fillText(label, (segX0 + segX1) / 2, MARGIN.top / 2 + 2);
       }
       if (segX0 > MARGIN.left + 1) {
@@ -1361,7 +1369,7 @@
     const rect = canvas.parentElement.getBoundingClientRect();
     tooltipEl.innerHTML = '';
     const lines = [
-      `contig ${contig.contig_num} @ ${formatBpExact(bpLocal)}`,
+      `${contig.label || `contig ${contig.contig_num}`} @ ${formatBpExact(bpLocal)}`,
       `raw call: ${labelName(entry.label[best])}`,
       `P_Neutral=${entry.pNeutral[best].toFixed(3)}  P_Hard=${entry.pHard[best].toFixed(3)}  P_Soft=${entry.pSoft[best].toFixed(3)}`,
       `pooled (${state.binSize}w): -log10(P_N)=${pooled.y[best].toFixed(2)}, class=${labelName(pooled.colorCode[best])}`,
@@ -1482,7 +1490,7 @@
       chip.classList.toggle('is-active', chip.dataset.key === key);
     }
 
-    const loc = (state.hapSites.sites.some(s => s.contig !== site.contig) ? `contig ${site.contig} · ` : '') +
+    const loc = (state.hapSites.sites.some(s => s.contig !== site.contig) ? `${contigTitle(site.contig)} · ` : '') +
       `${(site.bp_lo / 1e6).toFixed(3)}–${(site.bp_hi / 1e6).toFixed(3)} Mb`;
     hapImageEl.src = site.image;
     hapImageLinkEl.href = site.image;
