@@ -108,6 +108,12 @@
     "x_max": 1888316.0
   },
   {
+    "species": "Drosophila_melanogaster_DGRP",
+    "n_windows": 356311,
+    "n_contigs": 4,
+    "x_max": 90373236.0
+  },
+  {
     "species": "Eubacterium_eligens_61678",
     "n_windows": 122116,
     "n_contigs": 2,
