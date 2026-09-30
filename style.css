@@ -523,6 +523,7 @@ button#export-image-btn:hover { background: var(--gridline); }
 .hap-chip .dot.type-hard { background: var(--series-hard); }
 .hap-chip .dot.type-soft { background: var(--series-soft); }
 .hap-chip .dot.type-baseline { background: var(--text-secondary); }
+.hap-chip .dot.type-known { background: #b026ff; }   /* curated known sweep, the H12-peak soft color */
 
 .hap-figure-inline {
   margin: 0;

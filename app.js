@@ -1418,7 +1418,7 @@
   // and soft-run windows), reached from the "Haplotype snapshots" panel
   // below the scan. Absent-file => feature silently hidden for that species.
   // ---------------------------------------------------------------------
-  const HAP_TYPE_ORDER = { baseline: 0, hard: 1, soft: 2 };
+  const HAP_TYPE_ORDER = { baseline: 0, hard: 1, soft: 2, known: 3 };
 
   async function loadHapSites(species) {
     try {
@@ -1435,7 +1435,7 @@
   }
 
   function hapSiteLabel(s) {
-    if (s.type === 'baseline') return s.label;
+    if (s.type === 'baseline' || s.type === 'known') return s.label;
     const mb = (s.bp_lo / 1e6).toFixed(2);
     return `${s.type === 'hard' ? 'Hard' : 'Soft'} run · ${mb} Mb`;
   }
@@ -1455,12 +1455,14 @@
     const sites = state.hapSites.sites;
     const nHard = sites.filter(s => s.type === 'hard').length;
     const nSoft = sites.filter(s => s.type === 'soft').length;
-    const nBase = sites.length - nHard - nSoft;
+    const nKnown = sites.filter(s => s.type === 'known').length;
+    const nBase = sites.length - nHard - nSoft - nKnown;
     hapPanelNoteEl.textContent =
       `${sites.length} windows` +
       (nBase ? ` · ${nBase} neutral` : '') +
       (nHard ? ` · ${nHard} hard-sweep run${nHard === 1 ? '' : 's'}` : '') +
-      (nSoft ? ` · ${nSoft} soft-sweep run${nSoft === 1 ? '' : 's'}` : '');
+      (nSoft ? ` · ${nSoft} soft-sweep run${nSoft === 1 ? '' : 's'}` : '') +
+      (nKnown ? ` · ${nKnown} known sweep${nKnown === 1 ? '' : 's'}` : '');
 
     for (const s of sites) {
       const chip = document.createElement('button');
