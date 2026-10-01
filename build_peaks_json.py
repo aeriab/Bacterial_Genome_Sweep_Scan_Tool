@@ -27,8 +27,11 @@ from collections import defaultdict
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 SRC_TSV = os.path.join(DATA_DIR, "H12_Peaks", "cropped_s4.tsv")
-# Same columns plus an optional `label` (the band's text). Drosophila: the three strongest DGRP H12 peaks
-# (Garud et al. 2015 PLoS Genet, all soft), gene spans in Release 5 / dm3 bp like the scan.
+# Same columns plus an optional `label` (the band's text). Drosophila: the known sweeps at Ace (Mutero 1994,
+# Menozzi 2004, Karasov 2010), Cyp6g1 (Daborn 2002, Schmidt 2010) and CHKov1 (Aminetzach 2005, Magwire 2011),
+# all soft; gene spans in Release 5 / dm3 bp like the scan (NCBI Gene, annotation release 5.57).
+# Fezzik (fiz, X:14,800,367-14,803,741; Saminadin-Peter 2012, Glaser-Schmitt & Parsch 2018) has no row:
+# the scan covers the autosomal arms only, and a row on a contig missing from the manifest is skipped.
 EXTRA_TSVS = [os.path.join(DATA_DIR, "H12_Peaks", "drosophila_known_sweeps.tsv")]
 OUT_JSON = os.path.join(DATA_DIR, "peaks.json")
 

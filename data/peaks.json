@@ -294,10 +294,10 @@
   {
    "peak": 3,
    "contigNum": "002",
-   "startBp": 8073910,
-   "endBp": 8075667,
+   "startBp": 8073172,
+   "endBp": 8075936,
    "kind": "soft",
-   "text": "Cyp6g1 (Garud 2015 H12 peak, soft)",
+   "text": "Cyp6g1 \u00b7 DDT resistance (Daborn 2002; Schmidt 2010)",
    "color": "#b026ff"
   },
   {
@@ -306,7 +306,7 @@
    "startBp": 9048673,
    "endBp": 9085239,
    "kind": "soft",
-   "text": "Ace (Garud 2015 H12 peak, soft)",
+   "text": "Ace \u00b7 pesticide resistance (Mutero 1994; Menozzi 2004; Karasov 2010)",
    "color": "#b026ff"
   },
   {
@@ -315,7 +315,7 @@
    "startBp": 21148878,
    "endBp": 21155038,
    "kind": "soft",
-   "text": "CHKov1 (Garud 2015 H12 peak, soft)",
+   "text": "CHKov1 \u00b7 pesticide / sigma virus resistance (Aminetzach 2005; Magwire 2011)",
    "color": "#b026ff"
   }
  ],
@@ -323,10 +323,10 @@
   {
    "peak": 3,
    "contigNum": "002",
-   "startBp": 8073910,
-   "endBp": 8075667,
+   "startBp": 8073172,
+   "endBp": 8075936,
    "kind": "soft",
-   "text": "Cyp6g1 (Garud 2015 H12 peak, soft)",
+   "text": "Cyp6g1 \u00b7 DDT resistance (Daborn 2002; Schmidt 2010)",
    "color": "#b026ff"
   },
   {
@@ -335,7 +335,7 @@
    "startBp": 9048673,
    "endBp": 9085239,
    "kind": "soft",
-   "text": "Ace (Garud 2015 H12 peak, soft)",
+   "text": "Ace \u00b7 pesticide resistance (Mutero 1994; Menozzi 2004; Karasov 2010)",
    "color": "#b026ff"
   },
   {
@@ -344,7 +344,7 @@
    "startBp": 21148878,
    "endBp": 21155038,
    "kind": "soft",
-   "text": "CHKov1 (Garud 2015 H12 peak, soft)",
+   "text": "CHKov1 \u00b7 pesticide / sigma virus resistance (Aminetzach 2005; Magwire 2011)",
    "color": "#b026ff"
   }
  ],
