@@ -290,7 +290,36 @@
    "color": "#ff6a00"
   }
  ],
- "Drosophila_melanogaster_DGRP": [
+ "Drosophila_melanogaster_DGRP_epoch13": [
+  {
+   "peak": 3,
+   "contigNum": "002",
+   "startBp": 8073910,
+   "endBp": 8075667,
+   "kind": "soft",
+   "text": "Cyp6g1 (Garud 2015 H12 peak, soft)",
+   "color": "#b026ff"
+  },
+  {
+   "peak": 1,
+   "contigNum": "004",
+   "startBp": 9048673,
+   "endBp": 9085239,
+   "kind": "soft",
+   "text": "Ace (Garud 2015 H12 peak, soft)",
+   "color": "#b026ff"
+  },
+  {
+   "peak": 2,
+   "contigNum": "004",
+   "startBp": 21148878,
+   "endBp": 21155038,
+   "kind": "soft",
+   "text": "CHKov1 (Garud 2015 H12 peak, soft)",
+   "color": "#b026ff"
+  }
+ ],
+ "Drosophila_melanogaster_DGRP_epoch30": [
   {
    "peak": 3,
    "contigNum": "002",

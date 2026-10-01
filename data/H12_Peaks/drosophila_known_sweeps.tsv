@@ -1,4 +1,7 @@
 species	peak	is_hard	left_coord	right_coord	accession	contig_num_LABEL_in_webtool	label
-Drosophila_melanogaster_DGRP	1	False	9048673	9085239	Ace	4	Ace (Garud 2015 H12 peak, soft)
-Drosophila_melanogaster_DGRP	2	False	21148878	21155038	CHKov1	4	CHKov1 (Garud 2015 H12 peak, soft)
-Drosophila_melanogaster_DGRP	3	False	8073910	8075667	Cyp6g1	2	Cyp6g1 (Garud 2015 H12 peak, soft)
+Drosophila_melanogaster_DGRP_epoch13	1	False	9048673	9085239	Ace	4	Ace (Garud 2015 H12 peak, soft)
+Drosophila_melanogaster_DGRP_epoch13	2	False	21148878	21155038	CHKov1	4	CHKov1 (Garud 2015 H12 peak, soft)
+Drosophila_melanogaster_DGRP_epoch13	3	False	8073910	8075667	Cyp6g1	2	Cyp6g1 (Garud 2015 H12 peak, soft)
+Drosophila_melanogaster_DGRP_epoch30	1	False	9048673	9085239	Ace	4	Ace (Garud 2015 H12 peak, soft)
+Drosophila_melanogaster_DGRP_epoch30	2	False	21148878	21155038	CHKov1	4	CHKov1 (Garud 2015 H12 peak, soft)
+Drosophila_melanogaster_DGRP_epoch30	3	False	8073910	8075667	Cyp6g1	2	Cyp6g1 (Garud 2015 H12 peak, soft)
