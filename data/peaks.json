@@ -317,6 +317,15 @@
    "kind": "soft",
    "text": "CHKov1 \u00b7 pesticide / sigma virus resistance (Aminetzach 2005; Magwire 2011)",
    "color": "#b026ff"
+  },
+  {
+   "peak": 4,
+   "contigNum": "005",
+   "startBp": 14800367,
+   "endBp": 14803741,
+   "kind": "hard",
+   "text": "Fezzik (fiz) \u00b7 enhancer sweep reported in European populations (Saminadin-Peter 2012; Glaser-Schmitt & Parsch 2018)",
+   "color": "#ff6a00"
   }
  ],
  "Drosophila_melanogaster_DGRP_epoch30": [
@@ -346,6 +355,15 @@
    "kind": "soft",
    "text": "CHKov1 \u00b7 pesticide / sigma virus resistance (Aminetzach 2005; Magwire 2011)",
    "color": "#b026ff"
+  },
+  {
+   "peak": 4,
+   "contigNum": "005",
+   "startBp": 14800367,
+   "endBp": 14803741,
+   "kind": "hard",
+   "text": "Fezzik (fiz) \u00b7 enhancer sweep reported in European populations (Saminadin-Peter 2012; Glaser-Schmitt & Parsch 2018)",
+   "color": "#ff6a00"
   }
  ],
  "Parabacteroides_distasonis_56985": [

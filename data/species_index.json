@@ -109,15 +109,15 @@
   },
   {
     "species": "Drosophila_melanogaster_DGRP_epoch13",
-    "n_windows": 356311,
-    "n_contigs": 4,
-    "x_max": 90373236.0
+    "n_windows": 477614,
+    "n_contigs": 5,
+    "x_max": 114358034.0
   },
   {
     "species": "Drosophila_melanogaster_DGRP_epoch30",
-    "n_windows": 356311,
-    "n_contigs": 4,
-    "x_max": 90373236.0
+    "n_windows": 477614,
+    "n_contigs": 5,
+    "x_max": 114358034.0
   },
   {
     "species": "Eubacterium_eligens_61678",

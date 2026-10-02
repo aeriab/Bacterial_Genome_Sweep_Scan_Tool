@@ -2,6 +2,8 @@ species	peak	is_hard	left_coord	right_coord	accession	contig_num_LABEL_in_webtoo
 Drosophila_melanogaster_DGRP_epoch13	1	False	9048673	9085239	Ace	4	Ace · pesticide resistance (Mutero 1994; Menozzi 2004; Karasov 2010)
 Drosophila_melanogaster_DGRP_epoch13	2	False	21148878	21155038	CHKov1	4	CHKov1 · pesticide / sigma virus resistance (Aminetzach 2005; Magwire 2011)
 Drosophila_melanogaster_DGRP_epoch13	3	False	8073172	8075936	Cyp6g1	2	Cyp6g1 · DDT resistance (Daborn 2002; Schmidt 2010)
+Drosophila_melanogaster_DGRP_epoch13	4	True	14800367	14803741	Fezzik	5	Fezzik (fiz) · enhancer sweep reported in European populations (Saminadin-Peter 2012; Glaser-Schmitt & Parsch 2018)
 Drosophila_melanogaster_DGRP_epoch30	1	False	9048673	9085239	Ace	4	Ace · pesticide resistance (Mutero 1994; Menozzi 2004; Karasov 2010)
 Drosophila_melanogaster_DGRP_epoch30	2	False	21148878	21155038	CHKov1	4	CHKov1 · pesticide / sigma virus resistance (Aminetzach 2005; Magwire 2011)
 Drosophila_melanogaster_DGRP_epoch30	3	False	8073172	8075936	Cyp6g1	2	Cyp6g1 · DDT resistance (Daborn 2002; Schmidt 2010)
+Drosophila_melanogaster_DGRP_epoch30	4	True	14800367	14803741	Fezzik	5	Fezzik (fiz) · enhancer sweep reported in European populations (Saminadin-Peter 2012; Glaser-Schmitt & Parsch 2018)
