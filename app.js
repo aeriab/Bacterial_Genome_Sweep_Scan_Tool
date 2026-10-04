@@ -9,6 +9,9 @@
   const DATA_DIR = 'data';
   const LABEL_NEUTRAL = 0, LABEL_HARD = 1, LABEL_SOFT = 2;
   const GENE_ANNOTATIONS_KEY = 'genomeScanBrowser.geneAnnotations.v1';
+  // Species whose default (literature) annotations from data/known_sweep_annotations.json have already been copied
+  // into the viewer's own annotations: they are seeded once, so renames and deletions stick.
+  const KNOWN_SEEDED_KEY = 'genomeScanBrowser.knownSweepsSeeded.v1';
   // Band colors for curated H12 peaks, by sweep type — deliberately neon and
   // well clear of the CNN hard/soft red/blue. Also written into data/peaks.json
   // by build_peaks_json.py; forced here too so a stale JSON can't override them.
@@ -89,6 +92,7 @@
   const geneAddBtn = document.getElementById('gene-add-btn');
   const geneErrorEl = document.getElementById('gene-error');
   const geneListEl = document.getElementById('gene-list');
+  const knownRestoreBtn = document.getElementById('known-restore-btn');
 
   const canvasWrapEl = document.querySelector('.plot-canvas-wrap');
   const hapPanelEl = document.getElementById('hap-panel');
@@ -114,6 +118,9 @@
 
   function prettySpeciesName(key) {
     // "Bacteroides_ovatus_58035" -> "Bacteroides ovatus (58035)"
+    // "Drosophila_melanogaster_ChrX" -> "Drosophila melanogaster (ChrX)" (a model trained for one chromosome arm)
+    const c = key.match(/^(.*)_(Chr[0-9A-Za-z]+)$/);
+    if (c) return `${c[1].replace(/_/g, ' ')} (${c[2]})`;
     const m = key.match(/^(.*)_(\d+)$/);
     if (!m) return key.replace(/_/g, ' ');
     return `${m[1].replace(/_/g, ' ')} (${m[2]})`;
@@ -178,6 +185,42 @@
     }
   }
 
+  // Default annotations per species (known sweeps from the literature, labelled hard / soft / unknown), built by
+  // DrosophilaColorCNN/PerChrom/known_sweeps/export_annotations.py. Loaded once at boot.
+  let knownAnnotations = {};
+
+  function loadSeeded() {
+    try { return new Set(JSON.parse(localStorage.getItem(KNOWN_SEEDED_KEY) || '[]')); } catch (e) { return new Set(); }
+  }
+
+  function markSeeded(species) {
+    try {
+      const s = loadSeeded(); s.add(species);
+      localStorage.setItem(KNOWN_SEEDED_KEY, JSON.stringify([...s]));
+    } catch (e) { /* storage unavailable: defaults simply reappear next visit */ }
+  }
+
+  // Copy the species' default annotations into its annotation list (first visit, or restore=true to bring back
+  // any that were deleted; existing ones, renamed or not, are left alone).
+  function seedKnownAnnotations(species, restore = false) {
+    const defaults = knownAnnotations[species];
+    if (!defaults || !defaults.length) return;
+    if (!restore && loadSeeded().has(species)) return;
+    const list = geneAnnotations.get(species) || [];
+    const have = new Set(list.map(a => a.id));
+    for (const d of defaults) if (!have.has(d.id)) list.push({ ...d });
+    geneAnnotations.set(species, list);
+    saveGeneAnnotations();
+    markSeeded(species);
+  }
+
+  function renameGeneAnnotation(species, id, text) {
+    const a = (geneAnnotations.get(species) || []).find(x => x.id === id);
+    if (!a) return;
+    a.text = text;
+    saveGeneAnnotations();
+  }
+
   function getGeneAnnotationsFor(species) {
     return geneAnnotations.get(species) || [];
   }
@@ -218,7 +261,36 @@
       const label = document.createElement('span');
       label.className = 'gene-label';
       label.textContent = `${a.text} — ${contigTitle(a.contigNum)}: ${formatBpExact(a.startBp)}–${formatBpExact(a.endBp)}`;
-      label.title = label.textContent;
+      label.title = a.note ? `${label.textContent}\n${a.note}` : label.textContent;
+      const editBtn = document.createElement('button');
+      editBtn.textContent = '✎';
+      editBtn.title = 'Rename annotation';
+      editBtn.addEventListener('click', () => {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'gene-rename';
+        input.maxLength = 60;
+        input.value = a.text;
+        let done = false;
+        const finish = (save) => {
+          if (done) return;
+          done = true;
+          const t = input.value.trim();
+          if (save && t) {
+            renameGeneAnnotation(state.species, a.id, t);
+            scheduleRender();
+          }
+          renderGeneList();
+        };
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') finish(true);
+          else if (e.key === 'Escape') finish(false);
+        });
+        input.addEventListener('blur', () => finish(true));
+        row.replaceChild(input, label);
+        input.focus();
+        input.select();
+      });
       const delBtn = document.createElement('button');
       delBtn.textContent = '×';
       delBtn.title = 'Remove annotation';
@@ -229,10 +301,27 @@
       });
       row.appendChild(sw);
       row.appendChild(label);
+      row.appendChild(editBtn);
       row.appendChild(delBtn);
       geneListEl.appendChild(row);
     }
+    const defaults = state.species ? knownAnnotations[state.species] : null;
+    if (defaults && defaults.length) {
+      const have = new Set(list.map(a => a.id));
+      const missing = defaults.filter(d => !have.has(d.id)).length;
+      knownRestoreBtn.classList.toggle('hidden', missing === 0);
+      knownRestoreBtn.textContent = `Restore ${missing} deleted known sweep${missing === 1 ? '' : 's'}`;
+    } else {
+      knownRestoreBtn.classList.add('hidden');
+    }
   }
+
+  knownRestoreBtn.addEventListener('click', () => {
+    if (!state.species) return;
+    seedKnownAnnotations(state.species, true);
+    renderGeneList();
+    scheduleRender();
+  });
 
   function showGeneError(msg) {
     geneErrorEl.textContent = msg;
@@ -314,6 +403,18 @@
       return (data && typeof data === 'object') ? data : {};
     } catch (e) {
       console.warn('Could not load curated peaks:', e);
+      return {};
+    }
+  }
+
+  async function loadKnownAnnotations() {
+    try {
+      const r = await fetch(`${DATA_DIR}/known_sweep_annotations.json`);
+      if (!r.ok) return {};
+      const data = await r.json();
+      return (data && typeof data === 'object') ? data : {};
+    } catch (e) {
+      console.warn('Could not load known-sweep annotations:', e);
       return {};
     }
   }
@@ -1002,6 +1103,7 @@
       searchInput.value = prettySpeciesName(species);
       dropdownEl.classList.add('hidden');
       populateGeneContigSelect(entry);
+      seedKnownAnnotations(species);
       renderGeneList();
       setPeakControlsState();
       setLegendRunVisibility();
@@ -1526,8 +1628,9 @@
   // Boot
   // ---------------------------------------------------------------------
   (async function init() {
-    const [, peaks] = await Promise.all([loadSpeciesIndex(), loadPeaks()]);
+    const [, peaks, known] = await Promise.all([loadSpeciesIndex(), loadPeaks(), loadKnownAnnotations()]);
     peaksData = peaks;
+    knownAnnotations = known;
     if (!speciesIndex.length) return;
     const params = new URLSearchParams(location.search);
     if (params.get('peaks') === '1') {

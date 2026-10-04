@@ -324,6 +324,18 @@ main {
   padding: 2px 4px;
 }
 .gene-list-item button:hover { color: var(--series-hard); }
+.gene-list-item .gene-rename {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  padding: 1px 4px;
+}
+button.known-restore {
+  margin-top: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+button.known-restore.hidden { display: none; }
 
 button#reset-view-btn {
   padding: 8px 10px;

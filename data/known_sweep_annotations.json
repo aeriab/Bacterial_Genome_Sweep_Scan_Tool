@@ -1,0 +1,294 @@
+{
+ "Drosophila_melanogaster_DGRP_epoch13": [
+  {
+   "id": "known_kuz TE",
+   "contigNum": "001",
+   "startBp": 13550139,
+   "endBp": 13639411,
+   "text": "kuz (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol"
+  },
+  {
+   "id": "known_ref(2)P",
+   "contigNum": "001",
+   "startBp": 19542468,
+   "endBp": 19545548,
+   "text": "ref(2)P (hard)",
+   "color": "#ff6a00",
+   "note": "Europe / worldwide. Bangham, Kim, Webster & Jiggins 2007 Proc R Soc B; Wayne et al. 1996 MBE"
+  },
+  {
+   "id": "known_Cyp6g1",
+   "contigNum": "002",
+   "startBp": 8073172,
+   "endBp": 8075936,
+   "text": "Cyp6g1 (soft)",
+   "color": "#b026ff",
+   "note": "worldwide incl. North America (DGRP). Daborn et al. 2002 Science; Catania et al. 2004 Mol Ecol; Schmidt et al. 2010 PLoS Genet; Garud et al. 2015"
+  },
+  {
+   "id": "known_Bari-Jheh",
+   "contigNum": "002",
+   "startBp": 14740939,
+   "endBp": 14749583,
+   "text": "Bari-Jheh (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol; Gonzalez, Macpherson & Petrov 2009 MBE; Guio et al. 2014 Mol Ecol"
+  },
+  {
+   "id": "known_Rdl",
+   "contigNum": "003",
+   "startBp": 9138938,
+   "endBp": 9175249,
+   "text": "Rdl (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide (resistant strains). ffrench-Constant et al. 1993 Nature; Remnant et al. 2013 PNAS"
+  },
+  {
+   "id": "known_MtnA",
+   "contigNum": "004",
+   "startBp": 5609129,
+   "endBp": 5610092,
+   "text": "MtnA (unknown)",
+   "color": "#9acd00",
+   "note": "Europe (Netherlands); clinal worldwide. Catalan et al. 2016 PLoS Genet; Glaser-Schmitt et al. 2019 Genes"
+  },
+  {
+   "id": "known_Desat2",
+   "contigNum": "004",
+   "startBp": 8261970,
+   "endBp": 8263579,
+   "text": "Desat2 (unknown)",
+   "color": "#9acd00",
+   "note": "cosmopolitan (non-African). Takahashi, Tsaur, Coyne & Wu 2001 PNAS; Greenberg et al. 2003 Science"
+  },
+  {
+   "id": "known_Ace",
+   "contigNum": "004",
+   "startBp": 9048673,
+   "endBp": 9085239,
+   "text": "Ace (soft)",
+   "color": "#b026ff",
+   "note": "worldwide incl. North America (DGRP). Mutero et al. 1994 PNAS; Menozzi et al. 2004 Insect Mol Biol; Karasov, Messer & Petrov 2010 PLoS Genet; Garud et al. 2015 PLoS Genet; Garud, Messer & Petrov 2021 PLoS Genet"
+  },
+  {
+   "id": "known_CHKov1",
+   "contigNum": "004",
+   "startBp": 21148878,
+   "endBp": 21155038,
+   "text": "CHKov1 (soft)",
+   "color": "#b026ff",
+   "note": "worldwide incl. North America (DGRP). Aminetzach, Macpherson & Petrov 2005 Science; Magwire et al. 2011 PLoS Genet; Garud et al. 2015"
+  },
+  {
+   "id": "known_wapl / polyhomeotic",
+   "contigNum": "005",
+   "startBp": 2009760,
+   "endBp": 2053016,
+   "text": "wapl/ph (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (Zimbabwe) and Europe. Beisswanger, Stephan & De Lorenzo 2006 Genetics; Beisswanger & Stephan 2008 PNAS; Voigt et al. 2015 Genetics"
+  },
+  {
+   "id": "known_unc-119 region (cold tolerance QTL)",
+   "contigNum": "005",
+   "startBp": 7089000,
+   "endBp": 7212999,
+   "text": "unc-119 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Wilches, Voigt, Duchen, Laurent & Stephan 2014 G3"
+  },
+  {
+   "id": "known_Kmn1 / CG11699 TE",
+   "contigNum": "005",
+   "startBp": 11464654,
+   "endBp": 11466475,
+   "text": "Kmn1 (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol; Mateo, Ullastres & Gonzalez 2014 PLoS Genet (xenobiotic resistance)"
+  },
+  {
+   "id": "known_Fezzik",
+   "contigNum": "005",
+   "startBp": 14800367,
+   "endBp": 14803741,
+   "text": "Fezzik (hard)",
+   "color": "#ff6a00",
+   "note": "Europe (Netherlands); signal also in North America (DGRP). Saminadin-Peter et al. 2012 MBE; Glaser-Schmitt & Parsch 2018 Mol Ecol; Harris & Garud 2023 MBE"
+  },
+  {
+   "id": "known_Flotillin-2",
+   "contigNum": "005",
+   "startBp": 14810552,
+   "endBp": 14829908,
+   "text": "Flotillin-2 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Werzner, Pavlidis, Ometto, Stephan & Laurent 2013 PLoS ONE"
+  },
+  {
+   "id": "known_HDAC6",
+   "contigNum": "005",
+   "startBp": 15227343,
+   "endBp": 15234393,
+   "text": "HDAC6 (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (ancestral range). Svetec, Pavlidis & Stephan 2009 MBE"
+  },
+  {
+   "id": "known_CG16700 (cold tolerance QTL)",
+   "contigNum": "005",
+   "startBp": 16985887,
+   "endBp": 16992521,
+   "text": "CG16700 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Svetec et al. 2011 Mol Ecol (Identification of X-linked QTL affecting cold tolerance ... selective sweep analysis)"
+  }
+ ],
+ "Drosophila_melanogaster_DGRP_epoch30": [
+  {
+   "id": "known_kuz TE",
+   "contigNum": "001",
+   "startBp": 13550139,
+   "endBp": 13639411,
+   "text": "kuz (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol"
+  },
+  {
+   "id": "known_ref(2)P",
+   "contigNum": "001",
+   "startBp": 19542468,
+   "endBp": 19545548,
+   "text": "ref(2)P (hard)",
+   "color": "#ff6a00",
+   "note": "Europe / worldwide. Bangham, Kim, Webster & Jiggins 2007 Proc R Soc B; Wayne et al. 1996 MBE"
+  },
+  {
+   "id": "known_Cyp6g1",
+   "contigNum": "002",
+   "startBp": 8073172,
+   "endBp": 8075936,
+   "text": "Cyp6g1 (soft)",
+   "color": "#b026ff",
+   "note": "worldwide incl. North America (DGRP). Daborn et al. 2002 Science; Catania et al. 2004 Mol Ecol; Schmidt et al. 2010 PLoS Genet; Garud et al. 2015"
+  },
+  {
+   "id": "known_Bari-Jheh",
+   "contigNum": "002",
+   "startBp": 14740939,
+   "endBp": 14749583,
+   "text": "Bari-Jheh (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol; Gonzalez, Macpherson & Petrov 2009 MBE; Guio et al. 2014 Mol Ecol"
+  },
+  {
+   "id": "known_Rdl",
+   "contigNum": "003",
+   "startBp": 9138938,
+   "endBp": 9175249,
+   "text": "Rdl (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide (resistant strains). ffrench-Constant et al. 1993 Nature; Remnant et al. 2013 PNAS"
+  },
+  {
+   "id": "known_MtnA",
+   "contigNum": "004",
+   "startBp": 5609129,
+   "endBp": 5610092,
+   "text": "MtnA (unknown)",
+   "color": "#9acd00",
+   "note": "Europe (Netherlands); clinal worldwide. Catalan et al. 2016 PLoS Genet; Glaser-Schmitt et al. 2019 Genes"
+  },
+  {
+   "id": "known_Desat2",
+   "contigNum": "004",
+   "startBp": 8261970,
+   "endBp": 8263579,
+   "text": "Desat2 (unknown)",
+   "color": "#9acd00",
+   "note": "cosmopolitan (non-African). Takahashi, Tsaur, Coyne & Wu 2001 PNAS; Greenberg et al. 2003 Science"
+  },
+  {
+   "id": "known_Ace",
+   "contigNum": "004",
+   "startBp": 9048673,
+   "endBp": 9085239,
+   "text": "Ace (soft)",
+   "color": "#b026ff",
+   "note": "worldwide incl. North America (DGRP). Mutero et al. 1994 PNAS; Menozzi et al. 2004 Insect Mol Biol; Karasov, Messer & Petrov 2010 PLoS Genet; Garud et al. 2015 PLoS Genet; Garud, Messer & Petrov 2021 PLoS Genet"
+  },
+  {
+   "id": "known_CHKov1",
+   "contigNum": "004",
+   "startBp": 21148878,
+   "endBp": 21155038,
+   "text": "CHKov1 (soft)",
+   "color": "#b026ff",
+   "note": "worldwide incl. North America (DGRP). Aminetzach, Macpherson & Petrov 2005 Science; Magwire et al. 2011 PLoS Genet; Garud et al. 2015"
+  },
+  {
+   "id": "known_wapl / polyhomeotic",
+   "contigNum": "005",
+   "startBp": 2009760,
+   "endBp": 2053016,
+   "text": "wapl/ph (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (Zimbabwe) and Europe. Beisswanger, Stephan & De Lorenzo 2006 Genetics; Beisswanger & Stephan 2008 PNAS; Voigt et al. 2015 Genetics"
+  },
+  {
+   "id": "known_unc-119 region (cold tolerance QTL)",
+   "contigNum": "005",
+   "startBp": 7089000,
+   "endBp": 7212999,
+   "text": "unc-119 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Wilches, Voigt, Duchen, Laurent & Stephan 2014 G3"
+  },
+  {
+   "id": "known_Kmn1 / CG11699 TE",
+   "contigNum": "005",
+   "startBp": 11464654,
+   "endBp": 11466475,
+   "text": "Kmn1 (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol; Mateo, Ullastres & Gonzalez 2014 PLoS Genet (xenobiotic resistance)"
+  },
+  {
+   "id": "known_Fezzik",
+   "contigNum": "005",
+   "startBp": 14800367,
+   "endBp": 14803741,
+   "text": "Fezzik (hard)",
+   "color": "#ff6a00",
+   "note": "Europe (Netherlands); signal also in North America (DGRP). Saminadin-Peter et al. 2012 MBE; Glaser-Schmitt & Parsch 2018 Mol Ecol; Harris & Garud 2023 MBE"
+  },
+  {
+   "id": "known_Flotillin-2",
+   "contigNum": "005",
+   "startBp": 14810552,
+   "endBp": 14829908,
+   "text": "Flotillin-2 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Werzner, Pavlidis, Ometto, Stephan & Laurent 2013 PLoS ONE"
+  },
+  {
+   "id": "known_HDAC6",
+   "contigNum": "005",
+   "startBp": 15227343,
+   "endBp": 15234393,
+   "text": "HDAC6 (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (ancestral range). Svetec, Pavlidis & Stephan 2009 MBE"
+  },
+  {
+   "id": "known_CG16700 (cold tolerance QTL)",
+   "contigNum": "005",
+   "startBp": 16985887,
+   "endBp": 16992521,
+   "text": "CG16700 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Svetec et al. 2011 Mol Ecol (Identification of X-linked QTL affecting cold tolerance ... selective sweep analysis)"
+  }
+ ]
+}
