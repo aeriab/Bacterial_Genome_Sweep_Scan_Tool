@@ -297,7 +297,7 @@
    "startBp": 8073172,
    "endBp": 8075936,
    "kind": "soft",
-   "text": "Cyp6g1 \u00b7 DDT resistance (Daborn 2002; Schmidt 2010)",
+   "text": "Cyp6g1",
    "color": "#b026ff"
   },
   {
@@ -306,7 +306,7 @@
    "startBp": 9048673,
    "endBp": 9085239,
    "kind": "soft",
-   "text": "Ace \u00b7 pesticide resistance (Mutero 1994; Menozzi 2004; Karasov 2010)",
+   "text": "Ace",
    "color": "#b026ff"
   },
   {
@@ -315,7 +315,7 @@
    "startBp": 21148878,
    "endBp": 21155038,
    "kind": "soft",
-   "text": "CHKov1 \u00b7 pesticide / sigma virus resistance (Aminetzach 2005; Magwire 2011)",
+   "text": "CHKov1",
    "color": "#b026ff"
   },
   {
@@ -324,7 +324,7 @@
    "startBp": 14800367,
    "endBp": 14803741,
    "kind": "hard",
-   "text": "Fezzik (fiz) \u00b7 enhancer sweep reported in European populations (Saminadin-Peter 2012; Glaser-Schmitt & Parsch 2018)",
+   "text": "Fezzik",
    "color": "#ff6a00"
   }
  ],
@@ -335,7 +335,7 @@
    "startBp": 8073172,
    "endBp": 8075936,
    "kind": "soft",
-   "text": "Cyp6g1 \u00b7 DDT resistance (Daborn 2002; Schmidt 2010)",
+   "text": "Cyp6g1",
    "color": "#b026ff"
   },
   {
@@ -344,7 +344,7 @@
    "startBp": 9048673,
    "endBp": 9085239,
    "kind": "soft",
-   "text": "Ace \u00b7 pesticide resistance (Mutero 1994; Menozzi 2004; Karasov 2010)",
+   "text": "Ace",
    "color": "#b026ff"
   },
   {
@@ -353,7 +353,7 @@
    "startBp": 21148878,
    "endBp": 21155038,
    "kind": "soft",
-   "text": "CHKov1 \u00b7 pesticide / sigma virus resistance (Aminetzach 2005; Magwire 2011)",
+   "text": "CHKov1",
    "color": "#b026ff"
   },
   {
@@ -362,7 +362,7 @@
    "startBp": 14800367,
    "endBp": 14803741,
    "kind": "hard",
-   "text": "Fezzik (fiz) \u00b7 enhancer sweep reported in European populations (Saminadin-Peter 2012; Glaser-Schmitt & Parsch 2018)",
+   "text": "Fezzik",
    "color": "#ff6a00"
   }
  ],
