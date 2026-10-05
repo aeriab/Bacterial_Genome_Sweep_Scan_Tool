@@ -108,6 +108,18 @@
     "x_max": 1888316.0
   },
   {
+    "species": "Drosophila_melanogaster_ChrX",
+    "n_windows": 53798,
+    "n_contigs": 1,
+    "x_max": 21274007.0
+  },
+  {
+    "species": "Drosophila_melanogaster_DGRP_SGV",
+    "n_windows": 477614,
+    "n_contigs": 5,
+    "x_max": 114358034.0
+  },
+  {
     "species": "Drosophila_melanogaster_DGRP_epoch13",
     "n_windows": 477614,
     "n_contigs": 5,

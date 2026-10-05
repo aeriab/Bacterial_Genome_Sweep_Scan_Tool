@@ -9,9 +9,16 @@
   const DATA_DIR = 'data';
   const LABEL_NEUTRAL = 0, LABEL_HARD = 1, LABEL_SOFT = 2;
   const GENE_ANNOTATIONS_KEY = 'genomeScanBrowser.geneAnnotations.v1';
-  // Species whose default (literature) annotations from data/known_sweep_annotations.json have already been copied
-  // into the viewer's own annotations: they are seeded once, so renames and deletions stick.
-  const KNOWN_SEEDED_KEY = 'genomeScanBrowser.knownSweepsSeeded.v1';
+  // Default (literature) annotations from data/known_sweep_annotations.json already copied into the viewer's own
+  // annotations, per species, by id: each is seeded once, so renames and deletions stick while loci added to the
+  // defaults later still appear. v1 stored only species names (all 16 original loci seeded at once).
+  const KNOWN_SEEDED_KEY = 'genomeScanBrowser.knownSweepsSeeded.v2';
+  const KNOWN_SEEDED_KEY_V1 = 'genomeScanBrowser.knownSweepsSeeded.v1';
+  const KNOWN_V1_IDS = ['kuz TE', 'ref(2)P', 'Cyp6g1', 'Bari-Jheh', 'Rdl', 'MtnA', 'Desat2', 'Ace', 'CHKov1',
+    'wapl / polyhomeotic', 'unc-119 region (cold tolerance QTL)', 'Kmn1 / CG11699 TE', 'Fezzik', 'Flotillin-2', 'HDAC6',
+    'CG16700 (cold tolerance QTL)'].map(n => `known_${n}`);
+  // Default annotations replaced by a corrected one: dropped from the viewer's list unless renamed (id -> old text).
+  const KNOWN_RETIRED = { 'known_ref(2)P': 'ref(2)P (hard)' };
   // Band colors for curated H12 peaks, by sweep type — deliberately neon and
   // well clear of the CNN hard/soft red/blue. Also written into data/peaks.json
   // by build_peaks_json.py; forced here too so a stale JSON can't override them.
@@ -190,28 +197,44 @@
   let knownAnnotations = {};
 
   function loadSeeded() {
-    try { return new Set(JSON.parse(localStorage.getItem(KNOWN_SEEDED_KEY) || '[]')); } catch (e) { return new Set(); }
+    let m = {};
+    try { m = JSON.parse(localStorage.getItem(KNOWN_SEEDED_KEY) || '{}') || {}; } catch (e) { m = {}; }
+    try {
+      for (const sp of JSON.parse(localStorage.getItem(KNOWN_SEEDED_KEY_V1) || '[]')) {
+        if (!m[sp]) m[sp] = KNOWN_V1_IDS.slice();
+      }
+    } catch (e) { /* no v1 record */ }
+    return m;
   }
 
-  function markSeeded(species) {
+  function markSeeded(species, ids) {
     try {
-      const s = loadSeeded(); s.add(species);
-      localStorage.setItem(KNOWN_SEEDED_KEY, JSON.stringify([...s]));
+      const m = loadSeeded();
+      m[species] = [...new Set([...(m[species] || []), ...ids])];
+      localStorage.setItem(KNOWN_SEEDED_KEY, JSON.stringify(m));
     } catch (e) { /* storage unavailable: defaults simply reappear next visit */ }
   }
 
-  // Copy the species' default annotations into its annotation list (first visit, or restore=true to bring back
-  // any that were deleted; existing ones, renamed or not, are left alone).
+  // Copy the species' default annotations not yet seeded into its annotation list (restore=true also brings back
+  // any that were deleted; existing ones, renamed or not, are left alone). Retired defaults still carrying their
+  // original text are removed.
   function seedKnownAnnotations(species, restore = false) {
     const defaults = knownAnnotations[species];
     if (!defaults || !defaults.length) return;
-    if (!restore && loadSeeded().has(species)) return;
-    const list = geneAnnotations.get(species) || [];
+    const seeded = new Set(loadSeeded()[species] || []);
+    let list = geneAnnotations.get(species) || [];
+    const before = list.length;
+    list = list.filter(a => !(a.id in KNOWN_RETIRED && a.text === KNOWN_RETIRED[a.id]));
+    let changed = list.length !== before;
     const have = new Set(list.map(a => a.id));
-    for (const d of defaults) if (!have.has(d.id)) list.push({ ...d });
+    for (const d of defaults) {
+      if (have.has(d.id) || (!restore && seeded.has(d.id))) continue;
+      list.push({ ...d }); changed = true;
+    }
+    if (!changed && defaults.every(d => seeded.has(d.id))) return;
     geneAnnotations.set(species, list);
     saveGeneAnnotations();
-    markSeeded(species);
+    markSeeded(species, defaults.map(d => d.id));
   }
 
   function renameGeneAnnotation(species, id, text) {

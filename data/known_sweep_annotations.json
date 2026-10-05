@@ -1,5 +1,160 @@
 {
- "Drosophila_melanogaster_DGRP_epoch13": [
+ "Drosophila_melanogaster_ChrX": [
+  {
+   "id": "known_wapl / polyhomeotic",
+   "contigNum": "001",
+   "startBp": 2009760,
+   "endBp": 2053016,
+   "text": "wapl/ph (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (Zimbabwe) and Europe. Beisswanger, Stephan & De Lorenzo 2006 Genetics; Beisswanger & Stephan 2008 PNAS; Voigt et al. 2015 Genetics"
+  },
+  {
+   "id": "known_Notch downstream (CG18508 / Fcp3C)",
+   "contigNum": "001",
+   "startBp": 3066301,
+   "endBp": 3068507,
+   "text": "N downstream (unknown)",
+   "color": "#9acd00",
+   "note": "non-African. Bauer DuMont & Aquadro 2005 Genetics"
+  },
+  {
+   "id": "known_unc-119 region (cold tolerance QTL)",
+   "contigNum": "001",
+   "startBp": 7089000,
+   "endBp": 7212999,
+   "text": "unc-119 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Wilches, Voigt, Duchen, Laurent & Stephan 2014 G3"
+  },
+  {
+   "id": "known_Kmn1 / CG11699 TE",
+   "contigNum": "001",
+   "startBp": 11464654,
+   "endBp": 11466475,
+   "text": "Kmn1 (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol; Mateo, Ullastres & Gonzalez 2014 PLoS Genet (xenobiotic resistance)"
+  },
+  {
+   "id": "known_Fezzik",
+   "contigNum": "001",
+   "startBp": 14800367,
+   "endBp": 14803741,
+   "text": "Fezzik (hard)",
+   "color": "#ff6a00",
+   "note": "Europe (Netherlands); signal also in North America (DGRP). Saminadin-Peter et al. 2012 MBE; Glaser-Schmitt & Parsch 2018 Mol Ecol; Harris & Garud 2023 MBE"
+  },
+  {
+   "id": "known_Flotillin-2",
+   "contigNum": "001",
+   "startBp": 14810552,
+   "endBp": 14829908,
+   "text": "Flotillin-2 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Werzner, Pavlidis, Ometto, Stephan & Laurent 2013 PLoS ONE"
+  },
+  {
+   "id": "known_HDAC6",
+   "contigNum": "001",
+   "startBp": 15227343,
+   "endBp": 15234393,
+   "text": "HDAC6 (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (ancestral range). Svetec, Pavlidis & Stephan 2009 MBE"
+  },
+  {
+   "id": "known_para (kdr)",
+   "contigNum": "001",
+   "startBp": 16349060,
+   "endBp": 16427129,
+   "text": "para (unknown)",
+   "color": "#9acd00",
+   "note": "resistant strains. Pittendrigh et al. 1997 Insect Mol Biol; Kaduskar et al. 2022 Nat Commun"
+  },
+  {
+   "id": "known_CG16700 (cold tolerance QTL)",
+   "contigNum": "001",
+   "startBp": 16985887,
+   "endBp": 16992521,
+   "text": "CG16700 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Svetec et al. 2011 Mol Ecol (Identification of X-linked QTL affecting cold tolerance ... selective sweep analysis)"
+  },
+  {
+   "id": "known_phantom region",
+   "contigNum": "001",
+   "startBp": 18579799,
+   "endBp": 18582466,
+   "text": "phm (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Orengo & Aguade 2004 Genetics; Orengo & Aguade 2007 MBE"
+  },
+  {
+   "id": "known_Sdic",
+   "contigNum": "001",
+   "startBp": 20068250,
+   "endBp": 20096094,
+   "text": "Sdic (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Nurminsky, Nurminskaya, De Aguiar & Hartl 1998 Nature"
+  }
+ ],
+ "Drosophila_melanogaster_DGRP_SGV": [
+  {
+   "id": "known_timeless (ls-tim)",
+   "contigNum": "001",
+   "startBp": 3493986,
+   "endBp": 3508119,
+   "text": "tim (unknown)",
+   "color": "#9acd00",
+   "note": "Europe (from southern Italy). Tauber et al. 2007 Science; Sandrelli et al. 2007 Science"
+  },
+  {
+   "id": "known_H12 peak 46",
+   "contigNum": "001",
+   "startBp": 4148854,
+   "endBp": 4181449,
+   "text": "H12 #46 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #46 (H12 0.048, H2/H1 0.57). Garud et al. 2015 ABC Bayes factor soft/hard = 192.25. Genes: CG2955, Or24a. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 36",
+   "contigNum": "001",
+   "startBp": 8293775,
+   "endBp": 8328523,
+   "text": "H12 #36 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #36 (H12 0.051, H2/H1 0.51). Garud et al. 2015 ABC Bayes factor soft/hard = 124.5. Genes: Scgalpha, wol, CR43752, CG7818, CG7830, CG7806, CG7787, mtsh, CG7810, CG14275, CG7840, CG7781, Btk29A. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 7",
+   "contigNum": "001",
+   "startBp": 8838239,
+   "endBp": 8977912,
+   "text": "H12 #7 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #7 (H12 0.098, H2/H1 0.50). Garud et al. 2015 ABC Bayes factor soft/hard = >22. Genes: CG32986, CG32988, CG32987, CG32983, CG9483, CG42713, CG9510, Tsp29Fb, CG9515, Tsp29Fa, CG31886, CG32985, CG32984, CG18088, CG9541, CG13101, C1GalTA, CG9525, CG34398. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 27",
+   "contigNum": "001",
+   "startBp": 9533192,
+   "endBp": 9548268,
+   "text": "H12 #27 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #27 (H12 0.054, H2/H1 0.41). Garud et al. 2015 ABC Bayes factor soft/hard = 29.176470588235286. Genes: CG13113, CG13114, CG17855, Cpr30B, Oatp30B, jp. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Ge-1",
+   "contigNum": "001",
+   "startBp": 11095150,
+   "endBp": 11100888,
+   "text": "Ge-1 (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Cao, Magwire, Bayer & Jiggins 2016 PLoS Pathog"
+  },
   {
    "id": "known_kuz TE",
    "contigNum": "001",
@@ -10,13 +165,130 @@
    "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol"
   },
   {
-   "id": "known_ref(2)P",
+   "id": "known_H12 peak 4",
+   "contigNum": "001",
+   "startBp": 14259362,
+   "endBp": 14299060,
+   "text": "H12 #4 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #4 (H12 0.122, H2/H1 0.28). Garud et al. 2015 ABC Bayes factor soft/hard = >151. Genes: CG32971, CR43639, CR43640, wb. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 34",
+   "contigNum": "001",
+   "startBp": 14840204,
+   "endBp": 14892944,
+   "text": "H12 #34 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #34 (H12 0.051, H2/H1 0.44). Garud et al. 2015 ABC Bayes factor soft/hard = 225.5. Genes: CG42682, CR43805, CG15279, CG15278, CG4480, Mst35Bb, Mst35Ba. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 10",
+   "contigNum": "001",
+   "startBp": 17905347,
+   "endBp": 18149619,
+   "text": "H12 #10 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #10 (H12 0.078, H2/H1 0.20). Garud et al. 2015 ABC Bayes factor soft/hard = 40.78571428571428. Genes: CR43274, CG43271, CG5681, CG31742, CG42634, CG42635, CG5693, CG31740, elfless, CG42659, ninaD, CG31741, Arr1, CG15153, CG5755, CG15152, CG31785, Socs36E, rdo, CG5674, btv, CG5758, kel. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 16",
+   "contigNum": "001",
+   "startBp": 18150953,
+   "endBp": 18263163,
+   "text": "H12 #16 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #16 (H12 0.066, H2/H1 0.26). Garud et al. 2015 ABC Bayes factor soft/hard = 109.83333333333329. Genes: Socs36E, CG7200, CG15155, CG5783, CG7180, CR43413, CG31802, CG31788, CR43408, CG17681, CG43406, CG42750. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Segregation Distorter (RanGAP)",
+   "contigNum": "001",
+   "startBp": 19441959,
+   "endBp": 19447317,
+   "text": "Sd/RanGAP (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (SD chromosomes). Presgraves, Gerard, Cherukuri & Lyttle 2009 Genetics"
+  },
+  {
+   "id": "known_ref(2)P v2",
    "contigNum": "001",
    "startBp": 19542468,
    "endBp": 19545548,
-   "text": "ref(2)P (hard)",
-   "color": "#ff6a00",
+   "text": "ref(2)P (soft)",
+   "color": "#b026ff",
    "note": "Europe / worldwide. Bangham, Kim, Webster & Jiggins 2007 Proc R Soc B; Wayne et al. 1996 MBE"
+  },
+  {
+   "id": "known_H12 peak 23",
+   "contigNum": "001",
+   "startBp": 20013150,
+   "endBp": 20111508,
+   "text": "H12 #23 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #23 (H12 0.056, H2/H1 0.42). Garud et al. 2015 ABC Bayes factor soft/hard = 498. Genes: CG10659, lok, vls, barr, fok, pr, CG10721, nesd, mRpS18B, Taf13, CG10747, CG13970, CG43861, bwa, Kua, CG10730, neb, sNPF. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 12",
+   "contigNum": "002",
+   "startBp": 1982987,
+   "endBp": 2232677,
+   "text": "H12 #12 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #12 (H12 0.074, H2/H1 0.42). Garud et al. 2015 ABC Bayes factor soft/hard = 67.66666666666667. Genes: tRNA:K2:42Ae, tRNA:R2:42Ad, CG14589, tRNA:N5:42Ah, tRNA:N5:42Ag, tRNA:N5:42Af, CR43904, tRNA:CR30316, tRNA:R2:42Ac, tRNA:N5:42Aa, tRNA:N5:42Ab, tRNA:K2:42Ad, tRNA:K2:42Ab, tRNA:K2:42Ac, tRNA:N5:42Ac, tRNA:K2:42Aa, tRNA:I:42A, tRNA:R2:42Ab, Cyp6w1, tRNA:R2:42Aa, tRNA:N5:42Ae, tRNA:N5:42Ad, CG8343, CG11211, CG30432 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 42",
+   "contigNum": "002",
+   "startBp": 2331841,
+   "endBp": 2483131,
+   "text": "H12 #42 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #42 (H12 0.049, H2/H1 0.69). Garud et al. 2015 ABC Bayes factor soft/hard = >957. Genes: CR43905, jing. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 6",
+   "contigNum": "002",
+   "startBp": 5489549,
+   "endBp": 5705769,
+   "text": "H12 #6 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #6 (H12 0.099, H2/H1 0.54). Garud et al. 2015 ABC Bayes factor soft/hard = >227. Genes: CG30339, CG12926, CG30000, CG30005, mir-307a, mir-307b, tRNA:M3:46A, Uba1, CG30002, CG1773, CG10459, CG1690, CheA46a, lectin-46Ca, CG1902, sqa, dap, CG1648, CG1688, CG1698, trpl, lectin-46Cb, Mmp2. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 22",
+   "contigNum": "002",
+   "startBp": 5707191,
+   "endBp": 5808430,
+   "text": "H12 #22 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #22 (H12 0.058, H2/H1 0.51). Garud et al. 2015 ABC Bayes factor soft/hard = 155. Genes: dila, CG30001, CG34033, Orc6, CG1665, CG1663, CG1599, Lsm11, CG1667, CG1671, CG12744, cbx, CG30010, Ntmt, CG18446, CG12923, CG30008, CG1513, CG1441, Fmrf, CG1648, hebe, CG1516, Prosalpha7, CG12140 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 43",
+   "contigNum": "002",
+   "startBp": 6087671,
+   "endBp": 6125491,
+   "text": "H12 #43 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #43 (H12 0.049, H2/H1 0.26). Garud et al. 2015 ABC Bayes factor soft/hard = 226. Genes: CG12912, Hr46. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 15",
+   "contigNum": "002",
+   "startBp": 6182723,
+   "endBp": 6221969,
+   "text": "H12 #15 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #15 (H12 0.069, H2/H1 0.53). Garud et al. 2015 ABC Bayes factor soft/hard = 130. Genes: CG34222, Obp46a, Ndg, CG12909, JhI-1, CAP, CG42732. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Cyp12d1",
+   "contigNum": "002",
+   "startBp": 7004730,
+   "endBp": 7013152,
+   "text": "Cyp12d1 (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide (CNV). Schmidt et al. 2010 PLoS Genet; Good et al. 2014 Genome Biol Evol"
   },
   {
    "id": "known_Cyp6g1",
@@ -28,6 +300,24 @@
    "note": "worldwide incl. North America (DGRP). Daborn et al. 2002 Science; Catania et al. 2004 Mol Ecol; Schmidt et al. 2010 PLoS Genet; Garud et al. 2015"
   },
   {
+   "id": "known_H12 peak 45",
+   "contigNum": "002",
+   "startBp": 10118647,
+   "endBp": 10172071,
+   "text": "H12 #45 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #45 (H12 0.048, H2/H1 0.47). Garud et al. 2015 ABC Bayes factor soft/hard = 102. Genes: mir-1016, opa1-like, CG8503, Mdr50, CG8494, beta4GalNAcTA, CG8531, CG8547, conv, Ih, CG8485, Hsc70-5, SelD. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 30",
+   "contigNum": "002",
+   "startBp": 13579934,
+   "endBp": 13591158,
+   "text": "H12 #30 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #30 (H12 0.053, H2/H1 0.44). Garud et al. 2015 ABC Bayes factor soft/hard = >536. Genes: snoRNA:U27:54Eb, snoRNA:U27:54Ea, snoRNA:U29:54Ed, snoRNA:snR38:54Eb, snoRNA:U29:54Eb, snoRNA:U76:54Eb, snoRNA:U29:54Ec, snoRNA:U31:54Eb, snoRNA:U31:54Ec, snoRNA:U31:54Ed, snoRNA:snR38:54Ec, rdgBbeta, Uhg1, snoRNA:Me18S-A28a, snoRNA:Me28S-G3081a, snoRNA:Me28S-A1666a, snoRNA:Me28S-A3407a, snoRNA:Me28S-G3277a, CG6424, swi2. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
    "id": "known_Bari-Jheh",
    "contigNum": "002",
    "startBp": 14740939,
@@ -35,6 +325,105 @@
    "text": "Bari-Jheh (unknown)",
    "color": "#9acd00",
    "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol; Gonzalez, Macpherson & Petrov 2009 MBE; Guio et al. 2014 Mol Ecol"
+  },
+  {
+   "id": "known_H12 peak 20",
+   "contigNum": "002",
+   "startBp": 18054633,
+   "endBp": 18111988,
+   "text": "H12 #20 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #20 (H12 0.060, H2/H1 0.46). Garud et al. 2015 ABC Bayes factor soft/hard = >233. Genes: CG30279, CG3045, CG11170, CG6758, CG11275, Vps35, snoRNA:Or-CD1, CG3264, CG3290, CG3292, CG11291, CG30278, Oatp58Dc, Oatp58Da, Oatp58Db, a, MED16, ari-2, Swim. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 26",
+   "contigNum": "002",
+   "startBp": 18714742,
+   "endBp": 18728140,
+   "text": "H12 #26 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #26 (H12 0.054, H2/H1 0.54). Garud et al. 2015 ABC Bayes factor soft/hard = >244. Genes: CG30265, CG12490, CG30272, CG9825, CG42284. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 25",
+   "contigNum": "002",
+   "startBp": 18766062,
+   "endBp": 18789065,
+   "text": "H12 #25 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #25 (H12 0.054, H2/H1 0.38). Garud et al. 2015 ABC Bayes factor soft/hard = 265. Genes: asrij, CG3499, CG3501, PIP5K59B, CG3700, MED23, nahoda, Gmer. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 11",
+   "contigNum": "002",
+   "startBp": 19741997,
+   "endBp": 19782159,
+   "text": "H12 #11 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #11 (H12 0.077, H2/H1 0.29). Garud et al. 2015 ABC Bayes factor soft/hard = 143. Genes: TBPH, Thiolase, CG5569, CG4585, wibg, PHDP, CG4882, TM4SF, Dcp1, DNA-ligI, Upf3, bgcn, CG5597, ken. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_methuselah",
+   "contigNum": "003",
+   "startBp": 343378,
+   "endBp": 346957,
+   "text": "mth (unknown)",
+   "color": "#9acd00",
+   "note": "North America (clinal). Schmidt, Duvernell & Eanes 2000 PNAS; Duvernell, Schmidt & Eanes 2003 Mol Ecol"
+  },
+  {
+   "id": "known_nerfin-1 TE",
+   "contigNum": "003",
+   "startBp": 909112,
+   "endBp": 912319,
+   "text": "nerfin-1 TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_rho TE",
+   "contigNum": "003",
+   "startBp": 1463811,
+   "endBp": 1468944,
+   "text": "rho TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 49",
+   "contigNum": "003",
+   "startBp": 2225398,
+   "endBp": 2253562,
+   "text": "H12 #49 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #49 (H12 0.048, H2/H1 0.61). Garud et al. 2015 ABC Bayes factor soft/hard = 84.33333333333331. Genes: osm-1, ACXD, CG9018, CG32305, CG1275, CG32301. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 31",
+   "contigNum": "003",
+   "startBp": 3355891,
+   "endBp": 3388165,
+   "text": "H12 #31 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #31 (H12 0.052, H2/H1 0.29). Garud et al. 2015 ABC Bayes factor soft/hard = 63.5909090909091. Genes: Drs, YT521-B, CG12012, CG12014, kst, CG12010. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Jon65Aiv TE",
+   "contigNum": "003",
+   "startBp": 6032255,
+   "endBp": 6033235,
+   "text": "Jon65Aiv TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_pastrel",
+   "contigNum": "003",
+   "startBp": 7350375,
+   "endBp": 7353363,
+   "text": "pst (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Magwire et al. 2012 PLoS Genet; Cao et al. 2016"
   },
   {
    "id": "known_Rdl",
@@ -46,6 +435,24 @@
    "note": "worldwide (resistant strains). ffrench-Constant et al. 1993 Nature; Remnant et al. 2013 PNAS"
   },
   {
+   "id": "known_Sod",
+   "contigNum": "003",
+   "startBp": 11105381,
+   "endBp": 11106840,
+   "text": "Sod (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Hudson, Bailey, Hernandez & Kreitman 1994 Genetics"
+  },
+  {
+   "id": "known_AGO2 TE",
+   "contigNum": "003",
+   "startBp": 15547213,
+   "endBp": 15554142,
+   "text": "AGO2 TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
    "id": "known_MtnA",
    "contigNum": "004",
    "startBp": 5609129,
@@ -53,6 +460,51 @@
    "text": "MtnA (unknown)",
    "color": "#9acd00",
    "note": "Europe (Netherlands); clinal worldwide. Catalan et al. 2016 PLoS Genet; Glaser-Schmitt et al. 2019 Genes"
+  },
+  {
+   "id": "known_H12 peak 50",
+   "contigNum": "004",
+   "startBp": 5761854,
+   "endBp": 5891343,
+   "text": "H12 #50 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #50 (H12 0.048, H2/H1 0.46). Garud et al. 2015 ABC Bayes factor soft/hard = 979.5. Genes: Art4, CG5359, Gr85a, Spn85F, CG3909, mtTFB2, Npc2d, Npc2e, Fancl, CG11722, CG3925, CG12811, CR33629, CG33631, CG33630, Npc2c, Mical, CG31407, Glut4EF. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 39",
+   "contigNum": "004",
+   "startBp": 6496925,
+   "endBp": 6565448,
+   "text": "H12 #39 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #39 (H12 0.050, H2/H1 0.29). Garud et al. 2015 ABC Bayes factor soft/hard = 135.25. Genes: CG6465, CG31278, CG14684, CG14689, CG31373, CG14683, CG31467, pug, CG31391, CG4073, tomboy20, CG14688, Skeletor, Takr86C. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 13",
+   "contigNum": "004",
+   "startBp": 6711552,
+   "endBp": 6789665,
+   "text": "H12 #13 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #13 (H12 0.073, H2/H1 0.22). Garud et al. 2015 ABC Bayes factor soft/hard = 204.66666666666669. Genes: Adk3, Tengl4, CG4674, CG6621. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 5",
+   "contigNum": "004",
+   "startBp": 7414456,
+   "endBp": 7746544,
+   "text": "H12 #5 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #5 (H12 0.109, H2/H1 0.25). Garud et al. 2015 ABC Bayes factor soft/hard = >244. Genes: CG6791, CG14711, CG18764, CG14710, CG6808, CG6813, Elp1, CG14715, CG18476, CG18765, Fer3, CG6908, Ho, Taf12, CG6830, CG6834, I-t, CG14717, CG14718, CG14720, mus309, CG14721, CG43062, CG6923, CG17360 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 17",
+   "contigNum": "004",
+   "startBp": 7747647,
+   "endBp": 7929594,
+   "text": "H12 #17 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #17 (H12 0.061, H2/H1 0.39). Garud et al. 2015 ABC Bayes factor soft/hard = 152.6. Genes: CG14731, CG31211, Hsp70Aa, CG3281, CG12201, CG18347, CG12213, aur, Hsp70Ab, Tango9, CG10005, CG3397, CG18547, CG12224, Tk, Ect3, CG3532, KLHL18, Spt3, CG3313, ssp5, CG31358, CG42505, CG42504, CG14739 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
   },
   {
    "id": "known_Desat2",
@@ -64,6 +516,15 @@
    "note": "cosmopolitan (non-African). Takahashi, Tsaur, Coyne & Wu 2001 PNAS; Greenberg et al. 2003 Science"
   },
   {
+   "id": "known_H12 peak 37",
+   "contigNum": "004",
+   "startBp": 8333340,
+   "endBp": 8562798,
+   "text": "H12 #37 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #37 (H12 0.050, H2/H1 0.39). Garud et al. 2015 ABC Bayes factor soft/hard = 500. Genes: Hsp70Bb, Hsp70Bc, hug, mir-284, Vha55, CG18530, CG18616, CG11608, CG11598, CG6753, CG11600, CG6234, CG6225, CG43630, CG6188, CG14395, Cyp313a4, CG31347, Su(fu), kar, CG14394, Past1, CG12279, CG14391, Men .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
    "id": "known_Ace",
    "contigNum": "004",
    "startBp": 9048673,
@@ -71,6 +532,132 @@
    "text": "Ace (soft)",
    "color": "#b026ff",
    "note": "worldwide incl. North America (DGRP). Mutero et al. 1994 PNAS; Menozzi et al. 2004 Insect Mol Biol; Karasov, Messer & Petrov 2010 PLoS Genet; Garud et al. 2015 PLoS Genet; Garud, Messer & Petrov 2021 PLoS Genet"
+  },
+  {
+   "id": "known_rdx TE",
+   "contigNum": "004",
+   "startBp": 9792783,
+   "endBp": 9857779,
+   "text": "rdx TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 28",
+   "contigNum": "004",
+   "startBp": 11027121,
+   "endBp": 11108680,
+   "text": "H12 #28 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #28 (H12 0.053, H2/H1 0.34). Garud et al. 2015 ABC Bayes factor soft/hard = 168.8. Genes: CG6654, CG4203, CG4210, Spn88Eb, Spn5, CG12241, CG31344, CR43471, Caf1, Rpb7, Art3, mRpS10, CG34316, CG6499, Hsc70-4, CG42404, Su(var)3-9, Set, eIF-2gamma, CG4334, MRG15, Cp190, CG4338, l(3)neo43, CG14864 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_sra TE",
+   "contigNum": "004",
+   "startBp": 12012721,
+   "endBp": 12023306,
+   "text": "sra TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 44",
+   "contigNum": "004",
+   "startBp": 13195146,
+   "endBp": 13304663,
+   "text": "H12 #44 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #44 (H12 0.049, H2/H1 0.60). Garud et al. 2015 ABC Bayes factor soft/hard = 684. Genes: lute, sds22, CREG, CG43196, CG5863, CG42823, CG42798, CG17283, CG34279, CG34280, CG5860, CG42824, CG42834, CG42835, CG5866, CG33333, CG14332, CG42821, CG42822, CG14331, Eh, CG14330, Brf, Sur-8, CG5873 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 48",
+   "contigNum": "004",
+   "startBp": 14452752,
+   "endBp": 14607381,
+   "text": "H12 #48 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #48 (H12 0.048, H2/H1 0.52). Garud et al. 2015 ABC Bayes factor soft/hard = >983. Genes: tRNA:CR31228, CstF-64, CG31231, CG31230, Cpsf73, Gos28, CG31229, CG7706, CG7708, CG7705, CG34282, CG14300, CG34283, CG14302, CG7715, CG7714, gwl, CG7718, CG31224, Muc91C, CG7702, VAChT, CG14301, CG14299, Mekk1 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 32",
+   "contigNum": "004",
+   "startBp": 15273936,
+   "endBp": 15415377,
+   "text": "H12 #32 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #32 (H12 0.051, H2/H1 0.55). Garud et al. 2015 ABC Bayes factor soft/hard = 87.5. Genes: CG6255, CG15025, snoRNA:Me18S-A1374, CG31221, Dys. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 47",
+   "contigNum": "004",
+   "startBp": 15416317,
+   "endBp": 15528841,
+   "text": "H12 #47 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #47 (H12 0.048, H2/H1 0.59). Garud et al. 2015 ABC Bayes factor soft/hard = 60.16666666666664. Genes: Cpr92A, CG7333, CG7342, CG17752, CG16727, CG34138, CG31220, CG31219, CG6195, Nup58, Vha13, ort, tRNA:V3b:92Ba, CG7432, CG6231, CG17751, Naam, CG6184, CG16718, Dys. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 35",
+   "contigNum": "004",
+   "startBp": 15570025,
+   "endBp": 15993345,
+   "text": "H12 #35 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #35 (H12 0.051, H2/H1 0.61). Garud et al. 2015 ABC Bayes factor soft/hard = >81. Genes: CR43488, CG11391, CG11453, CG11407, CG11659, tRNA:V3b:92Bb, tRNA:CR31215, tRNA:CR31471, CG31459, CG4686, CG11447, CG4572, Ire1, Pk92B, CG17186, Arc42, CG4733, Surf6, CG4465, Xport, RhoGAP92B, CG42508, mira, CR43282, CG4459 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 9",
+   "contigNum": "004",
+   "startBp": 16823903,
+   "endBp": 16997106,
+   "text": "H12 #9 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #9 (H12 0.079, H2/H1 0.31). Garud et al. 2015 ABC Bayes factor soft/hard = 104. Genes: CG10827, CG17278, Rlip, CG7079, CG31207, CG31189, CG12278, CG17279, Mvl, Cortactin, dmrt93B, CG7056, r-l, RhoGAP93B, rtet, CG5745, sec15, Obp93a, ppan, CG17282, slmb, CG5793, CG7009, Ubpy, CG5802 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 8",
+   "contigNum": "004",
+   "startBp": 17518429,
+   "endBp": 17635617,
+   "text": "H12 #8 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #8 (H12 0.081, H2/H1 0.25). Garud et al. 2015 ABC Bayes factor soft/hard = 189. Genes: CG42870, CG42869, Sfp93F, CR43096, CG5849, CG31233, CG31343, CG34034, CG31198, burs, CG42335, tsl, CG6800, RpI12, mir-4969, mir-999, CG31176, GABA-B-R2, CASK. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 40",
+   "contigNum": "004",
+   "startBp": 17842971,
+   "endBp": 17899239,
+   "text": "H12 #40 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #40 (H12 0.050, H2/H1 0.55). Garud et al. 2015 ABC Bayes factor soft/hard = 651. Genes: CG6455, Cchl, ND42, CG13409, mRpL35, CG6028, BG4, scaRNA:mgU5-38, pit, CG6015, CG6439, how. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 24",
+   "contigNum": "004",
+   "startBp": 17900909,
+   "endBp": 17938668,
+   "text": "H12 #24 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #24 (H12 0.055, H2/H1 0.58). Garud et al. 2015 ABC Bayes factor soft/hard = 235.5. Genes: CG5791, CG13407, CG5778, CG13408, how. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 19",
+   "contigNum": "004",
+   "startBp": 18114847,
+   "endBp": 18185495,
+   "text": "H12 #19 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #19 (H12 0.060, H2/H1 0.50). Garud et al. 2015 ABC Bayes factor soft/hard = 375. Genes: mir-1010, CR43696, CR43697, CG7084, CG5386, CG33721, CG7080, CG13862, CG5391, CG5388, rdhB, CG34377, sar1, SKIP. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 33",
+   "contigNum": "004",
+   "startBp": 18542540,
+   "endBp": 18608604,
+   "text": "H12 #33 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #33 (H12 0.051, H2/H1 0.27). Garud et al. 2015 ABC Bayes factor soft/hard = 15.40476190476191. Genes: Irp-1A, Takl2, CG17618, CG6982, CG4813, HP1c, rumi, CG6985, CG31139, CG17141, vret, CG43092, CG43091, CG13841, CG4721, CG4723, CG4725, mir-4953, CG43095, CR43654, CG43094, Dcr-1, CG7023, wge, CG43093 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
   },
   {
    "id": "known_CHKov1",
@@ -82,6 +669,69 @@
    "note": "worldwide incl. North America (DGRP). Aminetzach, Macpherson & Petrov 2005 Science; Magwire et al. 2011 PLoS Genet; Garud et al. 2015"
   },
   {
+   "id": "known_CG34353 TE",
+   "contigNum": "004",
+   "startBp": 23593688,
+   "endBp": 23731565,
+   "text": "CG34353 TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 21",
+   "contigNum": "004",
+   "startBp": 24241937,
+   "endBp": 24625912,
+   "text": "H12 #21 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #21 (H12 0.059, H2/H1 0.58). Garud et al. 2015 ABC Bayes factor soft/hard = 592. Genes: CG1894, CG31051, CG12413, fkh, snoRNA:Psi28S-3305b, snoRNA:Psi28S-3405d, snoRNA:Psi28S-3405a, snoRNA:Psi28S-3305a, snoRNA:Psi28S-3405b, snoRNA:Psi28S-3405c, CG43440, Noa36, snoRNA:Psi28S-3305c, CG9986, CG31050, CG14062, CG9988, CG9989, CG33346, AR-2, CG9997, CG14061, CG12558, CG34295, Ppn .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 18",
+   "contigNum": "004",
+   "startBp": 26016366,
+   "endBp": 26044781,
+   "text": "H12 #18 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #18 (H12 0.060, H2/H1 0.51). Garud et al. 2015 ABC Bayes factor soft/hard = 309. Genes: CG9747, snoRNA:Psi18S-1377e, snoRNA:Psi18S-1377d, snoRNA:Psi18S-1377c, snoRNA:Psi18S-1377b, snoRNA:Psi28S-2626, CG9743, snoRNA:Psi28S-2149, snoRNA:Psi18S-1377a, CG15531, CecB, Cec-Psi1, CecA2, Anp, CecA1, CecC, Cec2, RpS7. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 41",
+   "contigNum": "004",
+   "startBp": 26220830,
+   "endBp": 26304059,
+   "text": "H12 #41 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #41 (H12 0.049, H2/H1 0.56). Garud et al. 2015 ABC Bayes factor soft/hard = >983. Genes: CG15533, mRpS18C, CG2218, CG15536, CG15535, CG15534, Osi23, CDase, CG2224, spdo, PH4alphaEFB, CG42740, CG2217, CG15537, aralar1. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 14",
+   "contigNum": "004",
+   "startBp": 26306832,
+   "endBp": 26505650,
+   "text": "H12 #14 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #14 (H12 0.072, H2/H1 0.65). Garud et al. 2015 ABC Bayes factor soft/hard = >458. Genes: CG31371, PH4alphaNE1, PH4alphaMP, Jon99Fi, PH4alphaSG2, Jon99Fii, mir-4908, CG31524, CG9698, PH4alphaNE2, CG15539, CG34041, PH4alphaSG1, CG34155, CG9702, Rpt6R, CG31019, CG2246, CG31016, PH4alphaNE3, CG31021, CG2267, CG31013, PH4alphaPV, CG34432 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 29",
+   "contigNum": "004",
+   "startBp": 26901747,
+   "endBp": 26983861,
+   "text": "H12 #29 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #29 (H12 0.053, H2/H1 0.54). Garud et al. 2015 ABC Bayes factor soft/hard = 393. Genes: CG11318, CG15553, Prosalpha3T, CG15554, CG15556, CR43458, Sox100B, CG11317, Gycbeta100B. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 38",
+   "contigNum": "004",
+   "startBp": 26985171,
+   "endBp": 27253111,
+   "text": "H12 #38 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #38 (H12 0.050, H2/H1 0.47). Garud et al. 2015 ABC Bayes factor soft/hard = 184. Genes: bnk, CG1544, CG15561, mir-4949, RNaseP:RNA, CG1746, CG1542, zwilch, CG15564, CG15563, mRpL32, spn-F, CG1750, CG15555, CG3669, CG18672, CG18673, CG11340, gskt, Gcn2, CG31002, CG31204, stops, Gycbeta100B, CG12054 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
    "id": "known_wapl / polyhomeotic",
    "contigNum": "005",
    "startBp": 2009760,
@@ -89,6 +739,15 @@
    "text": "wapl/ph (unknown)",
    "color": "#9acd00",
    "note": "Africa (Zimbabwe) and Europe. Beisswanger, Stephan & De Lorenzo 2006 Genetics; Beisswanger & Stephan 2008 PNAS; Voigt et al. 2015 Genetics"
+  },
+  {
+   "id": "known_Notch downstream (CG18508 / Fcp3C)",
+   "contigNum": "005",
+   "startBp": 3066301,
+   "endBp": 3068507,
+   "text": "N downstream (unknown)",
+   "color": "#9acd00",
+   "note": "non-African. Bauer DuMont & Aquadro 2005 Genetics"
   },
   {
    "id": "known_unc-119 region (cold tolerance QTL)",
@@ -136,6 +795,15 @@
    "note": "Africa (ancestral range). Svetec, Pavlidis & Stephan 2009 MBE"
   },
   {
+   "id": "known_para (kdr)",
+   "contigNum": "005",
+   "startBp": 16349060,
+   "endBp": 16427129,
+   "text": "para (unknown)",
+   "color": "#9acd00",
+   "note": "resistant strains. Pittendrigh et al. 1997 Insect Mol Biol; Kaduskar et al. 2022 Nat Commun"
+  },
+  {
    "id": "known_CG16700 (cold tolerance QTL)",
    "contigNum": "005",
    "startBp": 16985887,
@@ -143,10 +811,813 @@
    "text": "CG16700 (unknown)",
    "color": "#9acd00",
    "note": "Europe. Svetec et al. 2011 Mol Ecol (Identification of X-linked QTL affecting cold tolerance ... selective sweep analysis)"
+  },
+  {
+   "id": "known_phantom region",
+   "contigNum": "005",
+   "startBp": 18579799,
+   "endBp": 18582466,
+   "text": "phm (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Orengo & Aguade 2004 Genetics; Orengo & Aguade 2007 MBE"
+  },
+  {
+   "id": "known_Sdic",
+   "contigNum": "005",
+   "startBp": 20068250,
+   "endBp": 20096094,
+   "text": "Sdic (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Nurminsky, Nurminskaya, De Aguiar & Hartl 1998 Nature"
+  }
+ ],
+ "Drosophila_melanogaster_DGRP_epoch13": [
+  {
+   "id": "known_timeless (ls-tim)",
+   "contigNum": "001",
+   "startBp": 3493986,
+   "endBp": 3508119,
+   "text": "tim (unknown)",
+   "color": "#9acd00",
+   "note": "Europe (from southern Italy). Tauber et al. 2007 Science; Sandrelli et al. 2007 Science"
+  },
+  {
+   "id": "known_H12 peak 46",
+   "contigNum": "001",
+   "startBp": 4148854,
+   "endBp": 4181449,
+   "text": "H12 #46 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #46 (H12 0.048, H2/H1 0.57). Garud et al. 2015 ABC Bayes factor soft/hard = 192.25. Genes: CG2955, Or24a. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 36",
+   "contigNum": "001",
+   "startBp": 8293775,
+   "endBp": 8328523,
+   "text": "H12 #36 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #36 (H12 0.051, H2/H1 0.51). Garud et al. 2015 ABC Bayes factor soft/hard = 124.5. Genes: Scgalpha, wol, CR43752, CG7818, CG7830, CG7806, CG7787, mtsh, CG7810, CG14275, CG7840, CG7781, Btk29A. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 7",
+   "contigNum": "001",
+   "startBp": 8838239,
+   "endBp": 8977912,
+   "text": "H12 #7 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #7 (H12 0.098, H2/H1 0.50). Garud et al. 2015 ABC Bayes factor soft/hard = >22. Genes: CG32986, CG32988, CG32987, CG32983, CG9483, CG42713, CG9510, Tsp29Fb, CG9515, Tsp29Fa, CG31886, CG32985, CG32984, CG18088, CG9541, CG13101, C1GalTA, CG9525, CG34398. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 27",
+   "contigNum": "001",
+   "startBp": 9533192,
+   "endBp": 9548268,
+   "text": "H12 #27 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #27 (H12 0.054, H2/H1 0.41). Garud et al. 2015 ABC Bayes factor soft/hard = 29.176470588235286. Genes: CG13113, CG13114, CG17855, Cpr30B, Oatp30B, jp. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Ge-1",
+   "contigNum": "001",
+   "startBp": 11095150,
+   "endBp": 11100888,
+   "text": "Ge-1 (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Cao, Magwire, Bayer & Jiggins 2016 PLoS Pathog"
+  },
+  {
+   "id": "known_kuz TE",
+   "contigNum": "001",
+   "startBp": 13550139,
+   "endBp": 13639411,
+   "text": "kuz (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 4",
+   "contigNum": "001",
+   "startBp": 14259362,
+   "endBp": 14299060,
+   "text": "H12 #4 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #4 (H12 0.122, H2/H1 0.28). Garud et al. 2015 ABC Bayes factor soft/hard = >151. Genes: CG32971, CR43639, CR43640, wb. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 34",
+   "contigNum": "001",
+   "startBp": 14840204,
+   "endBp": 14892944,
+   "text": "H12 #34 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #34 (H12 0.051, H2/H1 0.44). Garud et al. 2015 ABC Bayes factor soft/hard = 225.5. Genes: CG42682, CR43805, CG15279, CG15278, CG4480, Mst35Bb, Mst35Ba. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 10",
+   "contigNum": "001",
+   "startBp": 17905347,
+   "endBp": 18149619,
+   "text": "H12 #10 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #10 (H12 0.078, H2/H1 0.20). Garud et al. 2015 ABC Bayes factor soft/hard = 40.78571428571428. Genes: CR43274, CG43271, CG5681, CG31742, CG42634, CG42635, CG5693, CG31740, elfless, CG42659, ninaD, CG31741, Arr1, CG15153, CG5755, CG15152, CG31785, Socs36E, rdo, CG5674, btv, CG5758, kel. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 16",
+   "contigNum": "001",
+   "startBp": 18150953,
+   "endBp": 18263163,
+   "text": "H12 #16 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #16 (H12 0.066, H2/H1 0.26). Garud et al. 2015 ABC Bayes factor soft/hard = 109.83333333333329. Genes: Socs36E, CG7200, CG15155, CG5783, CG7180, CR43413, CG31802, CG31788, CR43408, CG17681, CG43406, CG42750. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Segregation Distorter (RanGAP)",
+   "contigNum": "001",
+   "startBp": 19441959,
+   "endBp": 19447317,
+   "text": "Sd/RanGAP (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (SD chromosomes). Presgraves, Gerard, Cherukuri & Lyttle 2009 Genetics"
+  },
+  {
+   "id": "known_ref(2)P v2",
+   "contigNum": "001",
+   "startBp": 19542468,
+   "endBp": 19545548,
+   "text": "ref(2)P (soft)",
+   "color": "#b026ff",
+   "note": "Europe / worldwide. Bangham, Kim, Webster & Jiggins 2007 Proc R Soc B; Wayne et al. 1996 MBE"
+  },
+  {
+   "id": "known_H12 peak 23",
+   "contigNum": "001",
+   "startBp": 20013150,
+   "endBp": 20111508,
+   "text": "H12 #23 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #23 (H12 0.056, H2/H1 0.42). Garud et al. 2015 ABC Bayes factor soft/hard = 498. Genes: CG10659, lok, vls, barr, fok, pr, CG10721, nesd, mRpS18B, Taf13, CG10747, CG13970, CG43861, bwa, Kua, CG10730, neb, sNPF. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 12",
+   "contigNum": "002",
+   "startBp": 1982987,
+   "endBp": 2232677,
+   "text": "H12 #12 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #12 (H12 0.074, H2/H1 0.42). Garud et al. 2015 ABC Bayes factor soft/hard = 67.66666666666667. Genes: tRNA:K2:42Ae, tRNA:R2:42Ad, CG14589, tRNA:N5:42Ah, tRNA:N5:42Ag, tRNA:N5:42Af, CR43904, tRNA:CR30316, tRNA:R2:42Ac, tRNA:N5:42Aa, tRNA:N5:42Ab, tRNA:K2:42Ad, tRNA:K2:42Ab, tRNA:K2:42Ac, tRNA:N5:42Ac, tRNA:K2:42Aa, tRNA:I:42A, tRNA:R2:42Ab, Cyp6w1, tRNA:R2:42Aa, tRNA:N5:42Ae, tRNA:N5:42Ad, CG8343, CG11211, CG30432 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 42",
+   "contigNum": "002",
+   "startBp": 2331841,
+   "endBp": 2483131,
+   "text": "H12 #42 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #42 (H12 0.049, H2/H1 0.69). Garud et al. 2015 ABC Bayes factor soft/hard = >957. Genes: CR43905, jing. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 6",
+   "contigNum": "002",
+   "startBp": 5489549,
+   "endBp": 5705769,
+   "text": "H12 #6 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #6 (H12 0.099, H2/H1 0.54). Garud et al. 2015 ABC Bayes factor soft/hard = >227. Genes: CG30339, CG12926, CG30000, CG30005, mir-307a, mir-307b, tRNA:M3:46A, Uba1, CG30002, CG1773, CG10459, CG1690, CheA46a, lectin-46Ca, CG1902, sqa, dap, CG1648, CG1688, CG1698, trpl, lectin-46Cb, Mmp2. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 22",
+   "contigNum": "002",
+   "startBp": 5707191,
+   "endBp": 5808430,
+   "text": "H12 #22 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #22 (H12 0.058, H2/H1 0.51). Garud et al. 2015 ABC Bayes factor soft/hard = 155. Genes: dila, CG30001, CG34033, Orc6, CG1665, CG1663, CG1599, Lsm11, CG1667, CG1671, CG12744, cbx, CG30010, Ntmt, CG18446, CG12923, CG30008, CG1513, CG1441, Fmrf, CG1648, hebe, CG1516, Prosalpha7, CG12140 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 43",
+   "contigNum": "002",
+   "startBp": 6087671,
+   "endBp": 6125491,
+   "text": "H12 #43 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #43 (H12 0.049, H2/H1 0.26). Garud et al. 2015 ABC Bayes factor soft/hard = 226. Genes: CG12912, Hr46. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 15",
+   "contigNum": "002",
+   "startBp": 6182723,
+   "endBp": 6221969,
+   "text": "H12 #15 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #15 (H12 0.069, H2/H1 0.53). Garud et al. 2015 ABC Bayes factor soft/hard = 130. Genes: CG34222, Obp46a, Ndg, CG12909, JhI-1, CAP, CG42732. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Cyp12d1",
+   "contigNum": "002",
+   "startBp": 7004730,
+   "endBp": 7013152,
+   "text": "Cyp12d1 (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide (CNV). Schmidt et al. 2010 PLoS Genet; Good et al. 2014 Genome Biol Evol"
+  },
+  {
+   "id": "known_Cyp6g1",
+   "contigNum": "002",
+   "startBp": 8073172,
+   "endBp": 8075936,
+   "text": "Cyp6g1 (soft)",
+   "color": "#b026ff",
+   "note": "worldwide incl. North America (DGRP). Daborn et al. 2002 Science; Catania et al. 2004 Mol Ecol; Schmidt et al. 2010 PLoS Genet; Garud et al. 2015"
+  },
+  {
+   "id": "known_H12 peak 45",
+   "contigNum": "002",
+   "startBp": 10118647,
+   "endBp": 10172071,
+   "text": "H12 #45 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #45 (H12 0.048, H2/H1 0.47). Garud et al. 2015 ABC Bayes factor soft/hard = 102. Genes: mir-1016, opa1-like, CG8503, Mdr50, CG8494, beta4GalNAcTA, CG8531, CG8547, conv, Ih, CG8485, Hsc70-5, SelD. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 30",
+   "contigNum": "002",
+   "startBp": 13579934,
+   "endBp": 13591158,
+   "text": "H12 #30 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #30 (H12 0.053, H2/H1 0.44). Garud et al. 2015 ABC Bayes factor soft/hard = >536. Genes: snoRNA:U27:54Eb, snoRNA:U27:54Ea, snoRNA:U29:54Ed, snoRNA:snR38:54Eb, snoRNA:U29:54Eb, snoRNA:U76:54Eb, snoRNA:U29:54Ec, snoRNA:U31:54Eb, snoRNA:U31:54Ec, snoRNA:U31:54Ed, snoRNA:snR38:54Ec, rdgBbeta, Uhg1, snoRNA:Me18S-A28a, snoRNA:Me28S-G3081a, snoRNA:Me28S-A1666a, snoRNA:Me28S-A3407a, snoRNA:Me28S-G3277a, CG6424, swi2. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Bari-Jheh",
+   "contigNum": "002",
+   "startBp": 14740939,
+   "endBp": 14749583,
+   "text": "Bari-Jheh (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol; Gonzalez, Macpherson & Petrov 2009 MBE; Guio et al. 2014 Mol Ecol"
+  },
+  {
+   "id": "known_H12 peak 20",
+   "contigNum": "002",
+   "startBp": 18054633,
+   "endBp": 18111988,
+   "text": "H12 #20 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #20 (H12 0.060, H2/H1 0.46). Garud et al. 2015 ABC Bayes factor soft/hard = >233. Genes: CG30279, CG3045, CG11170, CG6758, CG11275, Vps35, snoRNA:Or-CD1, CG3264, CG3290, CG3292, CG11291, CG30278, Oatp58Dc, Oatp58Da, Oatp58Db, a, MED16, ari-2, Swim. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 26",
+   "contigNum": "002",
+   "startBp": 18714742,
+   "endBp": 18728140,
+   "text": "H12 #26 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #26 (H12 0.054, H2/H1 0.54). Garud et al. 2015 ABC Bayes factor soft/hard = >244. Genes: CG30265, CG12490, CG30272, CG9825, CG42284. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 25",
+   "contigNum": "002",
+   "startBp": 18766062,
+   "endBp": 18789065,
+   "text": "H12 #25 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #25 (H12 0.054, H2/H1 0.38). Garud et al. 2015 ABC Bayes factor soft/hard = 265. Genes: asrij, CG3499, CG3501, PIP5K59B, CG3700, MED23, nahoda, Gmer. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 11",
+   "contigNum": "002",
+   "startBp": 19741997,
+   "endBp": 19782159,
+   "text": "H12 #11 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #11 (H12 0.077, H2/H1 0.29). Garud et al. 2015 ABC Bayes factor soft/hard = 143. Genes: TBPH, Thiolase, CG5569, CG4585, wibg, PHDP, CG4882, TM4SF, Dcp1, DNA-ligI, Upf3, bgcn, CG5597, ken. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_methuselah",
+   "contigNum": "003",
+   "startBp": 343378,
+   "endBp": 346957,
+   "text": "mth (unknown)",
+   "color": "#9acd00",
+   "note": "North America (clinal). Schmidt, Duvernell & Eanes 2000 PNAS; Duvernell, Schmidt & Eanes 2003 Mol Ecol"
+  },
+  {
+   "id": "known_nerfin-1 TE",
+   "contigNum": "003",
+   "startBp": 909112,
+   "endBp": 912319,
+   "text": "nerfin-1 TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_rho TE",
+   "contigNum": "003",
+   "startBp": 1463811,
+   "endBp": 1468944,
+   "text": "rho TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 49",
+   "contigNum": "003",
+   "startBp": 2225398,
+   "endBp": 2253562,
+   "text": "H12 #49 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #49 (H12 0.048, H2/H1 0.61). Garud et al. 2015 ABC Bayes factor soft/hard = 84.33333333333331. Genes: osm-1, ACXD, CG9018, CG32305, CG1275, CG32301. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 31",
+   "contigNum": "003",
+   "startBp": 3355891,
+   "endBp": 3388165,
+   "text": "H12 #31 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #31 (H12 0.052, H2/H1 0.29). Garud et al. 2015 ABC Bayes factor soft/hard = 63.5909090909091. Genes: Drs, YT521-B, CG12012, CG12014, kst, CG12010. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Jon65Aiv TE",
+   "contigNum": "003",
+   "startBp": 6032255,
+   "endBp": 6033235,
+   "text": "Jon65Aiv TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_pastrel",
+   "contigNum": "003",
+   "startBp": 7350375,
+   "endBp": 7353363,
+   "text": "pst (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Magwire et al. 2012 PLoS Genet; Cao et al. 2016"
+  },
+  {
+   "id": "known_Rdl",
+   "contigNum": "003",
+   "startBp": 9138938,
+   "endBp": 9175249,
+   "text": "Rdl (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide (resistant strains). ffrench-Constant et al. 1993 Nature; Remnant et al. 2013 PNAS"
+  },
+  {
+   "id": "known_Sod",
+   "contigNum": "003",
+   "startBp": 11105381,
+   "endBp": 11106840,
+   "text": "Sod (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Hudson, Bailey, Hernandez & Kreitman 1994 Genetics"
+  },
+  {
+   "id": "known_AGO2 TE",
+   "contigNum": "003",
+   "startBp": 15547213,
+   "endBp": 15554142,
+   "text": "AGO2 TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_MtnA",
+   "contigNum": "004",
+   "startBp": 5609129,
+   "endBp": 5610092,
+   "text": "MtnA (unknown)",
+   "color": "#9acd00",
+   "note": "Europe (Netherlands); clinal worldwide. Catalan et al. 2016 PLoS Genet; Glaser-Schmitt et al. 2019 Genes"
+  },
+  {
+   "id": "known_H12 peak 50",
+   "contigNum": "004",
+   "startBp": 5761854,
+   "endBp": 5891343,
+   "text": "H12 #50 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #50 (H12 0.048, H2/H1 0.46). Garud et al. 2015 ABC Bayes factor soft/hard = 979.5. Genes: Art4, CG5359, Gr85a, Spn85F, CG3909, mtTFB2, Npc2d, Npc2e, Fancl, CG11722, CG3925, CG12811, CR33629, CG33631, CG33630, Npc2c, Mical, CG31407, Glut4EF. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 39",
+   "contigNum": "004",
+   "startBp": 6496925,
+   "endBp": 6565448,
+   "text": "H12 #39 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #39 (H12 0.050, H2/H1 0.29). Garud et al. 2015 ABC Bayes factor soft/hard = 135.25. Genes: CG6465, CG31278, CG14684, CG14689, CG31373, CG14683, CG31467, pug, CG31391, CG4073, tomboy20, CG14688, Skeletor, Takr86C. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 13",
+   "contigNum": "004",
+   "startBp": 6711552,
+   "endBp": 6789665,
+   "text": "H12 #13 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #13 (H12 0.073, H2/H1 0.22). Garud et al. 2015 ABC Bayes factor soft/hard = 204.66666666666669. Genes: Adk3, Tengl4, CG4674, CG6621. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 5",
+   "contigNum": "004",
+   "startBp": 7414456,
+   "endBp": 7746544,
+   "text": "H12 #5 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #5 (H12 0.109, H2/H1 0.25). Garud et al. 2015 ABC Bayes factor soft/hard = >244. Genes: CG6791, CG14711, CG18764, CG14710, CG6808, CG6813, Elp1, CG14715, CG18476, CG18765, Fer3, CG6908, Ho, Taf12, CG6830, CG6834, I-t, CG14717, CG14718, CG14720, mus309, CG14721, CG43062, CG6923, CG17360 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 17",
+   "contigNum": "004",
+   "startBp": 7747647,
+   "endBp": 7929594,
+   "text": "H12 #17 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #17 (H12 0.061, H2/H1 0.39). Garud et al. 2015 ABC Bayes factor soft/hard = 152.6. Genes: CG14731, CG31211, Hsp70Aa, CG3281, CG12201, CG18347, CG12213, aur, Hsp70Ab, Tango9, CG10005, CG3397, CG18547, CG12224, Tk, Ect3, CG3532, KLHL18, Spt3, CG3313, ssp5, CG31358, CG42505, CG42504, CG14739 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Desat2",
+   "contigNum": "004",
+   "startBp": 8261970,
+   "endBp": 8263579,
+   "text": "Desat2 (unknown)",
+   "color": "#9acd00",
+   "note": "cosmopolitan (non-African). Takahashi, Tsaur, Coyne & Wu 2001 PNAS; Greenberg et al. 2003 Science"
+  },
+  {
+   "id": "known_H12 peak 37",
+   "contigNum": "004",
+   "startBp": 8333340,
+   "endBp": 8562798,
+   "text": "H12 #37 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #37 (H12 0.050, H2/H1 0.39). Garud et al. 2015 ABC Bayes factor soft/hard = 500. Genes: Hsp70Bb, Hsp70Bc, hug, mir-284, Vha55, CG18530, CG18616, CG11608, CG11598, CG6753, CG11600, CG6234, CG6225, CG43630, CG6188, CG14395, Cyp313a4, CG31347, Su(fu), kar, CG14394, Past1, CG12279, CG14391, Men .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Ace",
+   "contigNum": "004",
+   "startBp": 9048673,
+   "endBp": 9085239,
+   "text": "Ace (soft)",
+   "color": "#b026ff",
+   "note": "worldwide incl. North America (DGRP). Mutero et al. 1994 PNAS; Menozzi et al. 2004 Insect Mol Biol; Karasov, Messer & Petrov 2010 PLoS Genet; Garud et al. 2015 PLoS Genet; Garud, Messer & Petrov 2021 PLoS Genet"
+  },
+  {
+   "id": "known_rdx TE",
+   "contigNum": "004",
+   "startBp": 9792783,
+   "endBp": 9857779,
+   "text": "rdx TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 28",
+   "contigNum": "004",
+   "startBp": 11027121,
+   "endBp": 11108680,
+   "text": "H12 #28 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #28 (H12 0.053, H2/H1 0.34). Garud et al. 2015 ABC Bayes factor soft/hard = 168.8. Genes: CG6654, CG4203, CG4210, Spn88Eb, Spn5, CG12241, CG31344, CR43471, Caf1, Rpb7, Art3, mRpS10, CG34316, CG6499, Hsc70-4, CG42404, Su(var)3-9, Set, eIF-2gamma, CG4334, MRG15, Cp190, CG4338, l(3)neo43, CG14864 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_sra TE",
+   "contigNum": "004",
+   "startBp": 12012721,
+   "endBp": 12023306,
+   "text": "sra TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 44",
+   "contigNum": "004",
+   "startBp": 13195146,
+   "endBp": 13304663,
+   "text": "H12 #44 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #44 (H12 0.049, H2/H1 0.60). Garud et al. 2015 ABC Bayes factor soft/hard = 684. Genes: lute, sds22, CREG, CG43196, CG5863, CG42823, CG42798, CG17283, CG34279, CG34280, CG5860, CG42824, CG42834, CG42835, CG5866, CG33333, CG14332, CG42821, CG42822, CG14331, Eh, CG14330, Brf, Sur-8, CG5873 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 48",
+   "contigNum": "004",
+   "startBp": 14452752,
+   "endBp": 14607381,
+   "text": "H12 #48 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #48 (H12 0.048, H2/H1 0.52). Garud et al. 2015 ABC Bayes factor soft/hard = >983. Genes: tRNA:CR31228, CstF-64, CG31231, CG31230, Cpsf73, Gos28, CG31229, CG7706, CG7708, CG7705, CG34282, CG14300, CG34283, CG14302, CG7715, CG7714, gwl, CG7718, CG31224, Muc91C, CG7702, VAChT, CG14301, CG14299, Mekk1 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 32",
+   "contigNum": "004",
+   "startBp": 15273936,
+   "endBp": 15415377,
+   "text": "H12 #32 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #32 (H12 0.051, H2/H1 0.55). Garud et al. 2015 ABC Bayes factor soft/hard = 87.5. Genes: CG6255, CG15025, snoRNA:Me18S-A1374, CG31221, Dys. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 47",
+   "contigNum": "004",
+   "startBp": 15416317,
+   "endBp": 15528841,
+   "text": "H12 #47 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #47 (H12 0.048, H2/H1 0.59). Garud et al. 2015 ABC Bayes factor soft/hard = 60.16666666666664. Genes: Cpr92A, CG7333, CG7342, CG17752, CG16727, CG34138, CG31220, CG31219, CG6195, Nup58, Vha13, ort, tRNA:V3b:92Ba, CG7432, CG6231, CG17751, Naam, CG6184, CG16718, Dys. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 35",
+   "contigNum": "004",
+   "startBp": 15570025,
+   "endBp": 15993345,
+   "text": "H12 #35 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #35 (H12 0.051, H2/H1 0.61). Garud et al. 2015 ABC Bayes factor soft/hard = >81. Genes: CR43488, CG11391, CG11453, CG11407, CG11659, tRNA:V3b:92Bb, tRNA:CR31215, tRNA:CR31471, CG31459, CG4686, CG11447, CG4572, Ire1, Pk92B, CG17186, Arc42, CG4733, Surf6, CG4465, Xport, RhoGAP92B, CG42508, mira, CR43282, CG4459 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 9",
+   "contigNum": "004",
+   "startBp": 16823903,
+   "endBp": 16997106,
+   "text": "H12 #9 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #9 (H12 0.079, H2/H1 0.31). Garud et al. 2015 ABC Bayes factor soft/hard = 104. Genes: CG10827, CG17278, Rlip, CG7079, CG31207, CG31189, CG12278, CG17279, Mvl, Cortactin, dmrt93B, CG7056, r-l, RhoGAP93B, rtet, CG5745, sec15, Obp93a, ppan, CG17282, slmb, CG5793, CG7009, Ubpy, CG5802 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 8",
+   "contigNum": "004",
+   "startBp": 17518429,
+   "endBp": 17635617,
+   "text": "H12 #8 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #8 (H12 0.081, H2/H1 0.25). Garud et al. 2015 ABC Bayes factor soft/hard = 189. Genes: CG42870, CG42869, Sfp93F, CR43096, CG5849, CG31233, CG31343, CG34034, CG31198, burs, CG42335, tsl, CG6800, RpI12, mir-4969, mir-999, CG31176, GABA-B-R2, CASK. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 40",
+   "contigNum": "004",
+   "startBp": 17842971,
+   "endBp": 17899239,
+   "text": "H12 #40 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #40 (H12 0.050, H2/H1 0.55). Garud et al. 2015 ABC Bayes factor soft/hard = 651. Genes: CG6455, Cchl, ND42, CG13409, mRpL35, CG6028, BG4, scaRNA:mgU5-38, pit, CG6015, CG6439, how. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 24",
+   "contigNum": "004",
+   "startBp": 17900909,
+   "endBp": 17938668,
+   "text": "H12 #24 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #24 (H12 0.055, H2/H1 0.58). Garud et al. 2015 ABC Bayes factor soft/hard = 235.5. Genes: CG5791, CG13407, CG5778, CG13408, how. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 19",
+   "contigNum": "004",
+   "startBp": 18114847,
+   "endBp": 18185495,
+   "text": "H12 #19 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #19 (H12 0.060, H2/H1 0.50). Garud et al. 2015 ABC Bayes factor soft/hard = 375. Genes: mir-1010, CR43696, CR43697, CG7084, CG5386, CG33721, CG7080, CG13862, CG5391, CG5388, rdhB, CG34377, sar1, SKIP. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 33",
+   "contigNum": "004",
+   "startBp": 18542540,
+   "endBp": 18608604,
+   "text": "H12 #33 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #33 (H12 0.051, H2/H1 0.27). Garud et al. 2015 ABC Bayes factor soft/hard = 15.40476190476191. Genes: Irp-1A, Takl2, CG17618, CG6982, CG4813, HP1c, rumi, CG6985, CG31139, CG17141, vret, CG43092, CG43091, CG13841, CG4721, CG4723, CG4725, mir-4953, CG43095, CR43654, CG43094, Dcr-1, CG7023, wge, CG43093 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_CHKov1",
+   "contigNum": "004",
+   "startBp": 21148878,
+   "endBp": 21155038,
+   "text": "CHKov1 (soft)",
+   "color": "#b026ff",
+   "note": "worldwide incl. North America (DGRP). Aminetzach, Macpherson & Petrov 2005 Science; Magwire et al. 2011 PLoS Genet; Garud et al. 2015"
+  },
+  {
+   "id": "known_CG34353 TE",
+   "contigNum": "004",
+   "startBp": 23593688,
+   "endBp": 23731565,
+   "text": "CG34353 TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 21",
+   "contigNum": "004",
+   "startBp": 24241937,
+   "endBp": 24625912,
+   "text": "H12 #21 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #21 (H12 0.059, H2/H1 0.58). Garud et al. 2015 ABC Bayes factor soft/hard = 592. Genes: CG1894, CG31051, CG12413, fkh, snoRNA:Psi28S-3305b, snoRNA:Psi28S-3405d, snoRNA:Psi28S-3405a, snoRNA:Psi28S-3305a, snoRNA:Psi28S-3405b, snoRNA:Psi28S-3405c, CG43440, Noa36, snoRNA:Psi28S-3305c, CG9986, CG31050, CG14062, CG9988, CG9989, CG33346, AR-2, CG9997, CG14061, CG12558, CG34295, Ppn .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 18",
+   "contigNum": "004",
+   "startBp": 26016366,
+   "endBp": 26044781,
+   "text": "H12 #18 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #18 (H12 0.060, H2/H1 0.51). Garud et al. 2015 ABC Bayes factor soft/hard = 309. Genes: CG9747, snoRNA:Psi18S-1377e, snoRNA:Psi18S-1377d, snoRNA:Psi18S-1377c, snoRNA:Psi18S-1377b, snoRNA:Psi28S-2626, CG9743, snoRNA:Psi28S-2149, snoRNA:Psi18S-1377a, CG15531, CecB, Cec-Psi1, CecA2, Anp, CecA1, CecC, Cec2, RpS7. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 41",
+   "contigNum": "004",
+   "startBp": 26220830,
+   "endBp": 26304059,
+   "text": "H12 #41 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #41 (H12 0.049, H2/H1 0.56). Garud et al. 2015 ABC Bayes factor soft/hard = >983. Genes: CG15533, mRpS18C, CG2218, CG15536, CG15535, CG15534, Osi23, CDase, CG2224, spdo, PH4alphaEFB, CG42740, CG2217, CG15537, aralar1. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 14",
+   "contigNum": "004",
+   "startBp": 26306832,
+   "endBp": 26505650,
+   "text": "H12 #14 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #14 (H12 0.072, H2/H1 0.65). Garud et al. 2015 ABC Bayes factor soft/hard = >458. Genes: CG31371, PH4alphaNE1, PH4alphaMP, Jon99Fi, PH4alphaSG2, Jon99Fii, mir-4908, CG31524, CG9698, PH4alphaNE2, CG15539, CG34041, PH4alphaSG1, CG34155, CG9702, Rpt6R, CG31019, CG2246, CG31016, PH4alphaNE3, CG31021, CG2267, CG31013, PH4alphaPV, CG34432 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 29",
+   "contigNum": "004",
+   "startBp": 26901747,
+   "endBp": 26983861,
+   "text": "H12 #29 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #29 (H12 0.053, H2/H1 0.54). Garud et al. 2015 ABC Bayes factor soft/hard = 393. Genes: CG11318, CG15553, Prosalpha3T, CG15554, CG15556, CR43458, Sox100B, CG11317, Gycbeta100B. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 38",
+   "contigNum": "004",
+   "startBp": 26985171,
+   "endBp": 27253111,
+   "text": "H12 #38 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #38 (H12 0.050, H2/H1 0.47). Garud et al. 2015 ABC Bayes factor soft/hard = 184. Genes: bnk, CG1544, CG15561, mir-4949, RNaseP:RNA, CG1746, CG1542, zwilch, CG15564, CG15563, mRpL32, spn-F, CG1750, CG15555, CG3669, CG18672, CG18673, CG11340, gskt, Gcn2, CG31002, CG31204, stops, Gycbeta100B, CG12054 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_wapl / polyhomeotic",
+   "contigNum": "005",
+   "startBp": 2009760,
+   "endBp": 2053016,
+   "text": "wapl/ph (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (Zimbabwe) and Europe. Beisswanger, Stephan & De Lorenzo 2006 Genetics; Beisswanger & Stephan 2008 PNAS; Voigt et al. 2015 Genetics"
+  },
+  {
+   "id": "known_Notch downstream (CG18508 / Fcp3C)",
+   "contigNum": "005",
+   "startBp": 3066301,
+   "endBp": 3068507,
+   "text": "N downstream (unknown)",
+   "color": "#9acd00",
+   "note": "non-African. Bauer DuMont & Aquadro 2005 Genetics"
+  },
+  {
+   "id": "known_unc-119 region (cold tolerance QTL)",
+   "contigNum": "005",
+   "startBp": 7089000,
+   "endBp": 7212999,
+   "text": "unc-119 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Wilches, Voigt, Duchen, Laurent & Stephan 2014 G3"
+  },
+  {
+   "id": "known_Kmn1 / CG11699 TE",
+   "contigNum": "005",
+   "startBp": 11464654,
+   "endBp": 11466475,
+   "text": "Kmn1 (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol; Mateo, Ullastres & Gonzalez 2014 PLoS Genet (xenobiotic resistance)"
+  },
+  {
+   "id": "known_Fezzik",
+   "contigNum": "005",
+   "startBp": 14800367,
+   "endBp": 14803741,
+   "text": "Fezzik (hard)",
+   "color": "#ff6a00",
+   "note": "Europe (Netherlands); signal also in North America (DGRP). Saminadin-Peter et al. 2012 MBE; Glaser-Schmitt & Parsch 2018 Mol Ecol; Harris & Garud 2023 MBE"
+  },
+  {
+   "id": "known_Flotillin-2",
+   "contigNum": "005",
+   "startBp": 14810552,
+   "endBp": 14829908,
+   "text": "Flotillin-2 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Werzner, Pavlidis, Ometto, Stephan & Laurent 2013 PLoS ONE"
+  },
+  {
+   "id": "known_HDAC6",
+   "contigNum": "005",
+   "startBp": 15227343,
+   "endBp": 15234393,
+   "text": "HDAC6 (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (ancestral range). Svetec, Pavlidis & Stephan 2009 MBE"
+  },
+  {
+   "id": "known_para (kdr)",
+   "contigNum": "005",
+   "startBp": 16349060,
+   "endBp": 16427129,
+   "text": "para (unknown)",
+   "color": "#9acd00",
+   "note": "resistant strains. Pittendrigh et al. 1997 Insect Mol Biol; Kaduskar et al. 2022 Nat Commun"
+  },
+  {
+   "id": "known_CG16700 (cold tolerance QTL)",
+   "contigNum": "005",
+   "startBp": 16985887,
+   "endBp": 16992521,
+   "text": "CG16700 (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Svetec et al. 2011 Mol Ecol (Identification of X-linked QTL affecting cold tolerance ... selective sweep analysis)"
+  },
+  {
+   "id": "known_phantom region",
+   "contigNum": "005",
+   "startBp": 18579799,
+   "endBp": 18582466,
+   "text": "phm (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Orengo & Aguade 2004 Genetics; Orengo & Aguade 2007 MBE"
+  },
+  {
+   "id": "known_Sdic",
+   "contigNum": "005",
+   "startBp": 20068250,
+   "endBp": 20096094,
+   "text": "Sdic (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Nurminsky, Nurminskaya, De Aguiar & Hartl 1998 Nature"
   }
  ],
  "Drosophila_melanogaster_DGRP_epoch30": [
   {
+   "id": "known_timeless (ls-tim)",
+   "contigNum": "001",
+   "startBp": 3493986,
+   "endBp": 3508119,
+   "text": "tim (unknown)",
+   "color": "#9acd00",
+   "note": "Europe (from southern Italy). Tauber et al. 2007 Science; Sandrelli et al. 2007 Science"
+  },
+  {
+   "id": "known_H12 peak 46",
+   "contigNum": "001",
+   "startBp": 4148854,
+   "endBp": 4181449,
+   "text": "H12 #46 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #46 (H12 0.048, H2/H1 0.57). Garud et al. 2015 ABC Bayes factor soft/hard = 192.25. Genes: CG2955, Or24a. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 36",
+   "contigNum": "001",
+   "startBp": 8293775,
+   "endBp": 8328523,
+   "text": "H12 #36 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #36 (H12 0.051, H2/H1 0.51). Garud et al. 2015 ABC Bayes factor soft/hard = 124.5. Genes: Scgalpha, wol, CR43752, CG7818, CG7830, CG7806, CG7787, mtsh, CG7810, CG14275, CG7840, CG7781, Btk29A. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 7",
+   "contigNum": "001",
+   "startBp": 8838239,
+   "endBp": 8977912,
+   "text": "H12 #7 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #7 (H12 0.098, H2/H1 0.50). Garud et al. 2015 ABC Bayes factor soft/hard = >22. Genes: CG32986, CG32988, CG32987, CG32983, CG9483, CG42713, CG9510, Tsp29Fb, CG9515, Tsp29Fa, CG31886, CG32985, CG32984, CG18088, CG9541, CG13101, C1GalTA, CG9525, CG34398. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 27",
+   "contigNum": "001",
+   "startBp": 9533192,
+   "endBp": 9548268,
+   "text": "H12 #27 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #27 (H12 0.054, H2/H1 0.41). Garud et al. 2015 ABC Bayes factor soft/hard = 29.176470588235286. Genes: CG13113, CG13114, CG17855, Cpr30B, Oatp30B, jp. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Ge-1",
+   "contigNum": "001",
+   "startBp": 11095150,
+   "endBp": 11100888,
+   "text": "Ge-1 (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Cao, Magwire, Bayer & Jiggins 2016 PLoS Pathog"
+  },
+  {
    "id": "known_kuz TE",
    "contigNum": "001",
    "startBp": 13550139,
@@ -156,13 +1627,130 @@
    "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol"
   },
   {
-   "id": "known_ref(2)P",
+   "id": "known_H12 peak 4",
+   "contigNum": "001",
+   "startBp": 14259362,
+   "endBp": 14299060,
+   "text": "H12 #4 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #4 (H12 0.122, H2/H1 0.28). Garud et al. 2015 ABC Bayes factor soft/hard = >151. Genes: CG32971, CR43639, CR43640, wb. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 34",
+   "contigNum": "001",
+   "startBp": 14840204,
+   "endBp": 14892944,
+   "text": "H12 #34 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #34 (H12 0.051, H2/H1 0.44). Garud et al. 2015 ABC Bayes factor soft/hard = 225.5. Genes: CG42682, CR43805, CG15279, CG15278, CG4480, Mst35Bb, Mst35Ba. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 10",
+   "contigNum": "001",
+   "startBp": 17905347,
+   "endBp": 18149619,
+   "text": "H12 #10 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #10 (H12 0.078, H2/H1 0.20). Garud et al. 2015 ABC Bayes factor soft/hard = 40.78571428571428. Genes: CR43274, CG43271, CG5681, CG31742, CG42634, CG42635, CG5693, CG31740, elfless, CG42659, ninaD, CG31741, Arr1, CG15153, CG5755, CG15152, CG31785, Socs36E, rdo, CG5674, btv, CG5758, kel. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 16",
+   "contigNum": "001",
+   "startBp": 18150953,
+   "endBp": 18263163,
+   "text": "H12 #16 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #16 (H12 0.066, H2/H1 0.26). Garud et al. 2015 ABC Bayes factor soft/hard = 109.83333333333329. Genes: Socs36E, CG7200, CG15155, CG5783, CG7180, CR43413, CG31802, CG31788, CR43408, CG17681, CG43406, CG42750. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Segregation Distorter (RanGAP)",
+   "contigNum": "001",
+   "startBp": 19441959,
+   "endBp": 19447317,
+   "text": "Sd/RanGAP (unknown)",
+   "color": "#9acd00",
+   "note": "Africa (SD chromosomes). Presgraves, Gerard, Cherukuri & Lyttle 2009 Genetics"
+  },
+  {
+   "id": "known_ref(2)P v2",
    "contigNum": "001",
    "startBp": 19542468,
    "endBp": 19545548,
-   "text": "ref(2)P (hard)",
-   "color": "#ff6a00",
+   "text": "ref(2)P (soft)",
+   "color": "#b026ff",
    "note": "Europe / worldwide. Bangham, Kim, Webster & Jiggins 2007 Proc R Soc B; Wayne et al. 1996 MBE"
+  },
+  {
+   "id": "known_H12 peak 23",
+   "contigNum": "001",
+   "startBp": 20013150,
+   "endBp": 20111508,
+   "text": "H12 #23 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #23 (H12 0.056, H2/H1 0.42). Garud et al. 2015 ABC Bayes factor soft/hard = 498. Genes: CG10659, lok, vls, barr, fok, pr, CG10721, nesd, mRpS18B, Taf13, CG10747, CG13970, CG43861, bwa, Kua, CG10730, neb, sNPF. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 12",
+   "contigNum": "002",
+   "startBp": 1982987,
+   "endBp": 2232677,
+   "text": "H12 #12 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #12 (H12 0.074, H2/H1 0.42). Garud et al. 2015 ABC Bayes factor soft/hard = 67.66666666666667. Genes: tRNA:K2:42Ae, tRNA:R2:42Ad, CG14589, tRNA:N5:42Ah, tRNA:N5:42Ag, tRNA:N5:42Af, CR43904, tRNA:CR30316, tRNA:R2:42Ac, tRNA:N5:42Aa, tRNA:N5:42Ab, tRNA:K2:42Ad, tRNA:K2:42Ab, tRNA:K2:42Ac, tRNA:N5:42Ac, tRNA:K2:42Aa, tRNA:I:42A, tRNA:R2:42Ab, Cyp6w1, tRNA:R2:42Aa, tRNA:N5:42Ae, tRNA:N5:42Ad, CG8343, CG11211, CG30432 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 42",
+   "contigNum": "002",
+   "startBp": 2331841,
+   "endBp": 2483131,
+   "text": "H12 #42 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #42 (H12 0.049, H2/H1 0.69). Garud et al. 2015 ABC Bayes factor soft/hard = >957. Genes: CR43905, jing. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 6",
+   "contigNum": "002",
+   "startBp": 5489549,
+   "endBp": 5705769,
+   "text": "H12 #6 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #6 (H12 0.099, H2/H1 0.54). Garud et al. 2015 ABC Bayes factor soft/hard = >227. Genes: CG30339, CG12926, CG30000, CG30005, mir-307a, mir-307b, tRNA:M3:46A, Uba1, CG30002, CG1773, CG10459, CG1690, CheA46a, lectin-46Ca, CG1902, sqa, dap, CG1648, CG1688, CG1698, trpl, lectin-46Cb, Mmp2. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 22",
+   "contigNum": "002",
+   "startBp": 5707191,
+   "endBp": 5808430,
+   "text": "H12 #22 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #22 (H12 0.058, H2/H1 0.51). Garud et al. 2015 ABC Bayes factor soft/hard = 155. Genes: dila, CG30001, CG34033, Orc6, CG1665, CG1663, CG1599, Lsm11, CG1667, CG1671, CG12744, cbx, CG30010, Ntmt, CG18446, CG12923, CG30008, CG1513, CG1441, Fmrf, CG1648, hebe, CG1516, Prosalpha7, CG12140 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 43",
+   "contigNum": "002",
+   "startBp": 6087671,
+   "endBp": 6125491,
+   "text": "H12 #43 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #43 (H12 0.049, H2/H1 0.26). Garud et al. 2015 ABC Bayes factor soft/hard = 226. Genes: CG12912, Hr46. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 15",
+   "contigNum": "002",
+   "startBp": 6182723,
+   "endBp": 6221969,
+   "text": "H12 #15 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #15 (H12 0.069, H2/H1 0.53). Garud et al. 2015 ABC Bayes factor soft/hard = 130. Genes: CG34222, Obp46a, Ndg, CG12909, JhI-1, CAP, CG42732. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Cyp12d1",
+   "contigNum": "002",
+   "startBp": 7004730,
+   "endBp": 7013152,
+   "text": "Cyp12d1 (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide (CNV). Schmidt et al. 2010 PLoS Genet; Good et al. 2014 Genome Biol Evol"
   },
   {
    "id": "known_Cyp6g1",
@@ -174,6 +1762,24 @@
    "note": "worldwide incl. North America (DGRP). Daborn et al. 2002 Science; Catania et al. 2004 Mol Ecol; Schmidt et al. 2010 PLoS Genet; Garud et al. 2015"
   },
   {
+   "id": "known_H12 peak 45",
+   "contigNum": "002",
+   "startBp": 10118647,
+   "endBp": 10172071,
+   "text": "H12 #45 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #45 (H12 0.048, H2/H1 0.47). Garud et al. 2015 ABC Bayes factor soft/hard = 102. Genes: mir-1016, opa1-like, CG8503, Mdr50, CG8494, beta4GalNAcTA, CG8531, CG8547, conv, Ih, CG8485, Hsc70-5, SelD. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 30",
+   "contigNum": "002",
+   "startBp": 13579934,
+   "endBp": 13591158,
+   "text": "H12 #30 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #30 (H12 0.053, H2/H1 0.44). Garud et al. 2015 ABC Bayes factor soft/hard = >536. Genes: snoRNA:U27:54Eb, snoRNA:U27:54Ea, snoRNA:U29:54Ed, snoRNA:snR38:54Eb, snoRNA:U29:54Eb, snoRNA:U76:54Eb, snoRNA:U29:54Ec, snoRNA:U31:54Eb, snoRNA:U31:54Ec, snoRNA:U31:54Ed, snoRNA:snR38:54Ec, rdgBbeta, Uhg1, snoRNA:Me18S-A28a, snoRNA:Me28S-G3081a, snoRNA:Me28S-A1666a, snoRNA:Me28S-A3407a, snoRNA:Me28S-G3277a, CG6424, swi2. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
    "id": "known_Bari-Jheh",
    "contigNum": "002",
    "startBp": 14740939,
@@ -181,6 +1787,105 @@
    "text": "Bari-Jheh (unknown)",
    "color": "#9acd00",
    "note": "out of Africa incl. North America. Gonzalez et al. 2008 PLoS Biol; Gonzalez, Macpherson & Petrov 2009 MBE; Guio et al. 2014 Mol Ecol"
+  },
+  {
+   "id": "known_H12 peak 20",
+   "contigNum": "002",
+   "startBp": 18054633,
+   "endBp": 18111988,
+   "text": "H12 #20 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #20 (H12 0.060, H2/H1 0.46). Garud et al. 2015 ABC Bayes factor soft/hard = >233. Genes: CG30279, CG3045, CG11170, CG6758, CG11275, Vps35, snoRNA:Or-CD1, CG3264, CG3290, CG3292, CG11291, CG30278, Oatp58Dc, Oatp58Da, Oatp58Db, a, MED16, ari-2, Swim. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 26",
+   "contigNum": "002",
+   "startBp": 18714742,
+   "endBp": 18728140,
+   "text": "H12 #26 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #26 (H12 0.054, H2/H1 0.54). Garud et al. 2015 ABC Bayes factor soft/hard = >244. Genes: CG30265, CG12490, CG30272, CG9825, CG42284. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 25",
+   "contigNum": "002",
+   "startBp": 18766062,
+   "endBp": 18789065,
+   "text": "H12 #25 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #25 (H12 0.054, H2/H1 0.38). Garud et al. 2015 ABC Bayes factor soft/hard = 265. Genes: asrij, CG3499, CG3501, PIP5K59B, CG3700, MED23, nahoda, Gmer. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 11",
+   "contigNum": "002",
+   "startBp": 19741997,
+   "endBp": 19782159,
+   "text": "H12 #11 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #11 (H12 0.077, H2/H1 0.29). Garud et al. 2015 ABC Bayes factor soft/hard = 143. Genes: TBPH, Thiolase, CG5569, CG4585, wibg, PHDP, CG4882, TM4SF, Dcp1, DNA-ligI, Upf3, bgcn, CG5597, ken. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_methuselah",
+   "contigNum": "003",
+   "startBp": 343378,
+   "endBp": 346957,
+   "text": "mth (unknown)",
+   "color": "#9acd00",
+   "note": "North America (clinal). Schmidt, Duvernell & Eanes 2000 PNAS; Duvernell, Schmidt & Eanes 2003 Mol Ecol"
+  },
+  {
+   "id": "known_nerfin-1 TE",
+   "contigNum": "003",
+   "startBp": 909112,
+   "endBp": 912319,
+   "text": "nerfin-1 TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_rho TE",
+   "contigNum": "003",
+   "startBp": 1463811,
+   "endBp": 1468944,
+   "text": "rho TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 49",
+   "contigNum": "003",
+   "startBp": 2225398,
+   "endBp": 2253562,
+   "text": "H12 #49 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #49 (H12 0.048, H2/H1 0.61). Garud et al. 2015 ABC Bayes factor soft/hard = 84.33333333333331. Genes: osm-1, ACXD, CG9018, CG32305, CG1275, CG32301. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 31",
+   "contigNum": "003",
+   "startBp": 3355891,
+   "endBp": 3388165,
+   "text": "H12 #31 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #31 (H12 0.052, H2/H1 0.29). Garud et al. 2015 ABC Bayes factor soft/hard = 63.5909090909091. Genes: Drs, YT521-B, CG12012, CG12014, kst, CG12010. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_Jon65Aiv TE",
+   "contigNum": "003",
+   "startBp": 6032255,
+   "endBp": 6033235,
+   "text": "Jon65Aiv TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_pastrel",
+   "contigNum": "003",
+   "startBp": 7350375,
+   "endBp": 7353363,
+   "text": "pst (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Magwire et al. 2012 PLoS Genet; Cao et al. 2016"
   },
   {
    "id": "known_Rdl",
@@ -192,6 +1897,24 @@
    "note": "worldwide (resistant strains). ffrench-Constant et al. 1993 Nature; Remnant et al. 2013 PNAS"
   },
   {
+   "id": "known_Sod",
+   "contigNum": "003",
+   "startBp": 11105381,
+   "endBp": 11106840,
+   "text": "Sod (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Hudson, Bailey, Hernandez & Kreitman 1994 Genetics"
+  },
+  {
+   "id": "known_AGO2 TE",
+   "contigNum": "003",
+   "startBp": 15547213,
+   "endBp": 15554142,
+   "text": "AGO2 TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
    "id": "known_MtnA",
    "contigNum": "004",
    "startBp": 5609129,
@@ -199,6 +1922,51 @@
    "text": "MtnA (unknown)",
    "color": "#9acd00",
    "note": "Europe (Netherlands); clinal worldwide. Catalan et al. 2016 PLoS Genet; Glaser-Schmitt et al. 2019 Genes"
+  },
+  {
+   "id": "known_H12 peak 50",
+   "contigNum": "004",
+   "startBp": 5761854,
+   "endBp": 5891343,
+   "text": "H12 #50 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #50 (H12 0.048, H2/H1 0.46). Garud et al. 2015 ABC Bayes factor soft/hard = 979.5. Genes: Art4, CG5359, Gr85a, Spn85F, CG3909, mtTFB2, Npc2d, Npc2e, Fancl, CG11722, CG3925, CG12811, CR33629, CG33631, CG33630, Npc2c, Mical, CG31407, Glut4EF. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 39",
+   "contigNum": "004",
+   "startBp": 6496925,
+   "endBp": 6565448,
+   "text": "H12 #39 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #39 (H12 0.050, H2/H1 0.29). Garud et al. 2015 ABC Bayes factor soft/hard = 135.25. Genes: CG6465, CG31278, CG14684, CG14689, CG31373, CG14683, CG31467, pug, CG31391, CG4073, tomboy20, CG14688, Skeletor, Takr86C. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 13",
+   "contigNum": "004",
+   "startBp": 6711552,
+   "endBp": 6789665,
+   "text": "H12 #13 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #13 (H12 0.073, H2/H1 0.22). Garud et al. 2015 ABC Bayes factor soft/hard = 204.66666666666669. Genes: Adk3, Tengl4, CG4674, CG6621. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 5",
+   "contigNum": "004",
+   "startBp": 7414456,
+   "endBp": 7746544,
+   "text": "H12 #5 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #5 (H12 0.109, H2/H1 0.25). Garud et al. 2015 ABC Bayes factor soft/hard = >244. Genes: CG6791, CG14711, CG18764, CG14710, CG6808, CG6813, Elp1, CG14715, CG18476, CG18765, Fer3, CG6908, Ho, Taf12, CG6830, CG6834, I-t, CG14717, CG14718, CG14720, mus309, CG14721, CG43062, CG6923, CG17360 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 17",
+   "contigNum": "004",
+   "startBp": 7747647,
+   "endBp": 7929594,
+   "text": "H12 #17 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #17 (H12 0.061, H2/H1 0.39). Garud et al. 2015 ABC Bayes factor soft/hard = 152.6. Genes: CG14731, CG31211, Hsp70Aa, CG3281, CG12201, CG18347, CG12213, aur, Hsp70Ab, Tango9, CG10005, CG3397, CG18547, CG12224, Tk, Ect3, CG3532, KLHL18, Spt3, CG3313, ssp5, CG31358, CG42505, CG42504, CG14739 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
   },
   {
    "id": "known_Desat2",
@@ -210,6 +1978,15 @@
    "note": "cosmopolitan (non-African). Takahashi, Tsaur, Coyne & Wu 2001 PNAS; Greenberg et al. 2003 Science"
   },
   {
+   "id": "known_H12 peak 37",
+   "contigNum": "004",
+   "startBp": 8333340,
+   "endBp": 8562798,
+   "text": "H12 #37 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #37 (H12 0.050, H2/H1 0.39). Garud et al. 2015 ABC Bayes factor soft/hard = 500. Genes: Hsp70Bb, Hsp70Bc, hug, mir-284, Vha55, CG18530, CG18616, CG11608, CG11598, CG6753, CG11600, CG6234, CG6225, CG43630, CG6188, CG14395, Cyp313a4, CG31347, Su(fu), kar, CG14394, Past1, CG12279, CG14391, Men .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
    "id": "known_Ace",
    "contigNum": "004",
    "startBp": 9048673,
@@ -217,6 +1994,132 @@
    "text": "Ace (soft)",
    "color": "#b026ff",
    "note": "worldwide incl. North America (DGRP). Mutero et al. 1994 PNAS; Menozzi et al. 2004 Insect Mol Biol; Karasov, Messer & Petrov 2010 PLoS Genet; Garud et al. 2015 PLoS Genet; Garud, Messer & Petrov 2021 PLoS Genet"
+  },
+  {
+   "id": "known_rdx TE",
+   "contigNum": "004",
+   "startBp": 9792783,
+   "endBp": 9857779,
+   "text": "rdx TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 28",
+   "contigNum": "004",
+   "startBp": 11027121,
+   "endBp": 11108680,
+   "text": "H12 #28 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #28 (H12 0.053, H2/H1 0.34). Garud et al. 2015 ABC Bayes factor soft/hard = 168.8. Genes: CG6654, CG4203, CG4210, Spn88Eb, Spn5, CG12241, CG31344, CR43471, Caf1, Rpb7, Art3, mRpS10, CG34316, CG6499, Hsc70-4, CG42404, Su(var)3-9, Set, eIF-2gamma, CG4334, MRG15, Cp190, CG4338, l(3)neo43, CG14864 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_sra TE",
+   "contigNum": "004",
+   "startBp": 12012721,
+   "endBp": 12023306,
+   "text": "sra TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 44",
+   "contigNum": "004",
+   "startBp": 13195146,
+   "endBp": 13304663,
+   "text": "H12 #44 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #44 (H12 0.049, H2/H1 0.60). Garud et al. 2015 ABC Bayes factor soft/hard = 684. Genes: lute, sds22, CREG, CG43196, CG5863, CG42823, CG42798, CG17283, CG34279, CG34280, CG5860, CG42824, CG42834, CG42835, CG5866, CG33333, CG14332, CG42821, CG42822, CG14331, Eh, CG14330, Brf, Sur-8, CG5873 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 48",
+   "contigNum": "004",
+   "startBp": 14452752,
+   "endBp": 14607381,
+   "text": "H12 #48 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #48 (H12 0.048, H2/H1 0.52). Garud et al. 2015 ABC Bayes factor soft/hard = >983. Genes: tRNA:CR31228, CstF-64, CG31231, CG31230, Cpsf73, Gos28, CG31229, CG7706, CG7708, CG7705, CG34282, CG14300, CG34283, CG14302, CG7715, CG7714, gwl, CG7718, CG31224, Muc91C, CG7702, VAChT, CG14301, CG14299, Mekk1 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 32",
+   "contigNum": "004",
+   "startBp": 15273936,
+   "endBp": 15415377,
+   "text": "H12 #32 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #32 (H12 0.051, H2/H1 0.55). Garud et al. 2015 ABC Bayes factor soft/hard = 87.5. Genes: CG6255, CG15025, snoRNA:Me18S-A1374, CG31221, Dys. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 47",
+   "contigNum": "004",
+   "startBp": 15416317,
+   "endBp": 15528841,
+   "text": "H12 #47 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #47 (H12 0.048, H2/H1 0.59). Garud et al. 2015 ABC Bayes factor soft/hard = 60.16666666666664. Genes: Cpr92A, CG7333, CG7342, CG17752, CG16727, CG34138, CG31220, CG31219, CG6195, Nup58, Vha13, ort, tRNA:V3b:92Ba, CG7432, CG6231, CG17751, Naam, CG6184, CG16718, Dys. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 35",
+   "contigNum": "004",
+   "startBp": 15570025,
+   "endBp": 15993345,
+   "text": "H12 #35 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #35 (H12 0.051, H2/H1 0.61). Garud et al. 2015 ABC Bayes factor soft/hard = >81. Genes: CR43488, CG11391, CG11453, CG11407, CG11659, tRNA:V3b:92Bb, tRNA:CR31215, tRNA:CR31471, CG31459, CG4686, CG11447, CG4572, Ire1, Pk92B, CG17186, Arc42, CG4733, Surf6, CG4465, Xport, RhoGAP92B, CG42508, mira, CR43282, CG4459 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 9",
+   "contigNum": "004",
+   "startBp": 16823903,
+   "endBp": 16997106,
+   "text": "H12 #9 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #9 (H12 0.079, H2/H1 0.31). Garud et al. 2015 ABC Bayes factor soft/hard = 104. Genes: CG10827, CG17278, Rlip, CG7079, CG31207, CG31189, CG12278, CG17279, Mvl, Cortactin, dmrt93B, CG7056, r-l, RhoGAP93B, rtet, CG5745, sec15, Obp93a, ppan, CG17282, slmb, CG5793, CG7009, Ubpy, CG5802 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 8",
+   "contigNum": "004",
+   "startBp": 17518429,
+   "endBp": 17635617,
+   "text": "H12 #8 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #8 (H12 0.081, H2/H1 0.25). Garud et al. 2015 ABC Bayes factor soft/hard = 189. Genes: CG42870, CG42869, Sfp93F, CR43096, CG5849, CG31233, CG31343, CG34034, CG31198, burs, CG42335, tsl, CG6800, RpI12, mir-4969, mir-999, CG31176, GABA-B-R2, CASK. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 40",
+   "contigNum": "004",
+   "startBp": 17842971,
+   "endBp": 17899239,
+   "text": "H12 #40 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #40 (H12 0.050, H2/H1 0.55). Garud et al. 2015 ABC Bayes factor soft/hard = 651. Genes: CG6455, Cchl, ND42, CG13409, mRpL35, CG6028, BG4, scaRNA:mgU5-38, pit, CG6015, CG6439, how. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 24",
+   "contigNum": "004",
+   "startBp": 17900909,
+   "endBp": 17938668,
+   "text": "H12 #24 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #24 (H12 0.055, H2/H1 0.58). Garud et al. 2015 ABC Bayes factor soft/hard = 235.5. Genes: CG5791, CG13407, CG5778, CG13408, how. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 19",
+   "contigNum": "004",
+   "startBp": 18114847,
+   "endBp": 18185495,
+   "text": "H12 #19 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #19 (H12 0.060, H2/H1 0.50). Garud et al. 2015 ABC Bayes factor soft/hard = 375. Genes: mir-1010, CR43696, CR43697, CG7084, CG5386, CG33721, CG7080, CG13862, CG5391, CG5388, rdhB, CG34377, sar1, SKIP. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 33",
+   "contigNum": "004",
+   "startBp": 18542540,
+   "endBp": 18608604,
+   "text": "H12 #33 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #33 (H12 0.051, H2/H1 0.27). Garud et al. 2015 ABC Bayes factor soft/hard = 15.40476190476191. Genes: Irp-1A, Takl2, CG17618, CG6982, CG4813, HP1c, rumi, CG6985, CG31139, CG17141, vret, CG43092, CG43091, CG13841, CG4721, CG4723, CG4725, mir-4953, CG43095, CR43654, CG43094, Dcr-1, CG7023, wge, CG43093 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
   },
   {
    "id": "known_CHKov1",
@@ -228,6 +2131,69 @@
    "note": "worldwide incl. North America (DGRP). Aminetzach, Macpherson & Petrov 2005 Science; Magwire et al. 2011 PLoS Genet; Garud et al. 2015"
   },
   {
+   "id": "known_CG34353 TE",
+   "contigNum": "004",
+   "startBp": 23593688,
+   "endBp": 23731565,
+   "text": "CG34353 TE (unknown)",
+   "color": "#9acd00",
+   "note": "out of Africa incl. North America. Gonzalez, Lenkov, Lipatov, Macpherson & Petrov 2008 PLoS Biol"
+  },
+  {
+   "id": "known_H12 peak 21",
+   "contigNum": "004",
+   "startBp": 24241937,
+   "endBp": 24625912,
+   "text": "H12 #21 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #21 (H12 0.059, H2/H1 0.58). Garud et al. 2015 ABC Bayes factor soft/hard = 592. Genes: CG1894, CG31051, CG12413, fkh, snoRNA:Psi28S-3305b, snoRNA:Psi28S-3405d, snoRNA:Psi28S-3405a, snoRNA:Psi28S-3305a, snoRNA:Psi28S-3405b, snoRNA:Psi28S-3405c, CG43440, Noa36, snoRNA:Psi28S-3305c, CG9986, CG31050, CG14062, CG9988, CG9989, CG33346, AR-2, CG9997, CG14061, CG12558, CG34295, Ppn .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 18",
+   "contigNum": "004",
+   "startBp": 26016366,
+   "endBp": 26044781,
+   "text": "H12 #18 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #18 (H12 0.060, H2/H1 0.51). Garud et al. 2015 ABC Bayes factor soft/hard = 309. Genes: CG9747, snoRNA:Psi18S-1377e, snoRNA:Psi18S-1377d, snoRNA:Psi18S-1377c, snoRNA:Psi18S-1377b, snoRNA:Psi28S-2626, CG9743, snoRNA:Psi28S-2149, snoRNA:Psi18S-1377a, CG15531, CecB, Cec-Psi1, CecA2, Anp, CecA1, CecC, Cec2, RpS7. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 41",
+   "contigNum": "004",
+   "startBp": 26220830,
+   "endBp": 26304059,
+   "text": "H12 #41 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #41 (H12 0.049, H2/H1 0.56). Garud et al. 2015 ABC Bayes factor soft/hard = >983. Genes: CG15533, mRpS18C, CG2218, CG15536, CG15535, CG15534, Osi23, CDase, CG2224, spdo, PH4alphaEFB, CG42740, CG2217, CG15537, aralar1. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 14",
+   "contigNum": "004",
+   "startBp": 26306832,
+   "endBp": 26505650,
+   "text": "H12 #14 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #14 (H12 0.072, H2/H1 0.65). Garud et al. 2015 ABC Bayes factor soft/hard = >458. Genes: CG31371, PH4alphaNE1, PH4alphaMP, Jon99Fi, PH4alphaSG2, Jon99Fii, mir-4908, CG31524, CG9698, PH4alphaNE2, CG15539, CG34041, PH4alphaSG1, CG34155, CG9702, Rpt6R, CG31019, CG2246, CG31016, PH4alphaNE3, CG31021, CG2267, CG31013, PH4alphaPV, CG34432 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 29",
+   "contigNum": "004",
+   "startBp": 26901747,
+   "endBp": 26983861,
+   "text": "H12 #29 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #29 (H12 0.053, H2/H1 0.54). Garud et al. 2015 ABC Bayes factor soft/hard = 393. Genes: CG11318, CG15553, Prosalpha3T, CG15554, CG15556, CR43458, Sox100B, CG11317, Gycbeta100B. Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
+   "id": "known_H12 peak 38",
+   "contigNum": "004",
+   "startBp": 26985171,
+   "endBp": 27253111,
+   "text": "H12 #38 (soft)",
+   "color": "#00b8d4",
+   "note": "unknown; top-50 DGRP H12 peak #38 (H12 0.050, H2/H1 0.47). Garud et al. 2015 ABC Bayes factor soft/hard = 184. Genes: bnk, CG1544, CG15561, mir-4949, RNaseP:RNA, CG1746, CG1542, zwilch, CG15564, CG15563, mRpL32, spn-F, CG1750, CG15555, CG3669, CG18672, CG18673, CG11340, gskt, Gcn2, CG31002, CG31204, stops, Gycbeta100B, CG12054 .... Garud, Messer, Buzbas & Petrov 2015 PLoS Genet (S4 Table)"
+  },
+  {
    "id": "known_wapl / polyhomeotic",
    "contigNum": "005",
    "startBp": 2009760,
@@ -235,6 +2201,15 @@
    "text": "wapl/ph (unknown)",
    "color": "#9acd00",
    "note": "Africa (Zimbabwe) and Europe. Beisswanger, Stephan & De Lorenzo 2006 Genetics; Beisswanger & Stephan 2008 PNAS; Voigt et al. 2015 Genetics"
+  },
+  {
+   "id": "known_Notch downstream (CG18508 / Fcp3C)",
+   "contigNum": "005",
+   "startBp": 3066301,
+   "endBp": 3068507,
+   "text": "N downstream (unknown)",
+   "color": "#9acd00",
+   "note": "non-African. Bauer DuMont & Aquadro 2005 Genetics"
   },
   {
    "id": "known_unc-119 region (cold tolerance QTL)",
@@ -282,6 +2257,15 @@
    "note": "Africa (ancestral range). Svetec, Pavlidis & Stephan 2009 MBE"
   },
   {
+   "id": "known_para (kdr)",
+   "contigNum": "005",
+   "startBp": 16349060,
+   "endBp": 16427129,
+   "text": "para (unknown)",
+   "color": "#9acd00",
+   "note": "resistant strains. Pittendrigh et al. 1997 Insect Mol Biol; Kaduskar et al. 2022 Nat Commun"
+  },
+  {
    "id": "known_CG16700 (cold tolerance QTL)",
    "contigNum": "005",
    "startBp": 16985887,
@@ -289,6 +2273,24 @@
    "text": "CG16700 (unknown)",
    "color": "#9acd00",
    "note": "Europe. Svetec et al. 2011 Mol Ecol (Identification of X-linked QTL affecting cold tolerance ... selective sweep analysis)"
+  },
+  {
+   "id": "known_phantom region",
+   "contigNum": "005",
+   "startBp": 18579799,
+   "endBp": 18582466,
+   "text": "phm (unknown)",
+   "color": "#9acd00",
+   "note": "Europe. Orengo & Aguade 2004 Genetics; Orengo & Aguade 2007 MBE"
+  },
+  {
+   "id": "known_Sdic",
+   "contigNum": "005",
+   "startBp": 20068250,
+   "endBp": 20096094,
+   "text": "Sdic (unknown)",
+   "color": "#9acd00",
+   "note": "worldwide. Nurminsky, Nurminskaya, De Aguiar & Hartl 1998 Nature"
   }
  ]
 }
